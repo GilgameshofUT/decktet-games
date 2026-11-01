@@ -166,7 +166,7 @@
         "1 player",
         "tier placement"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "solo-hex",
@@ -180,7 +180,7 @@
         "1 player",
         "hex grid"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "quincunx",

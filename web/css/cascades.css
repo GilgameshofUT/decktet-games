@@ -1,0 +1,106 @@
+/* Cascades — three tier rows fanned left, deck/waste/draw piles below. */
+
+:root {
+  --card-w: clamp(50px, 14.5vw, 78px);
+  --cs-step: calc(var(--card-w) * 0.46);   /* how far each card overhangs the last */
+}
+
+/* ---- the tiers: cards fan right, the newest (right end) fully visible ---- */
+
+.cs-tier {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: box-shadow 0.12s ease, filter 0.12s ease;
+}
+.cs-tierlabel {
+  flex: 0 0 58px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.cs-fan {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 2px 6px;
+}
+.cs-fan::-webkit-scrollbar { display: none; }
+.cs-fan .card {
+  margin-left: calc(-1 * (var(--card-w) - var(--cs-step)));
+  width: var(--card-w);
+}
+.cs-fan .card:first-child { margin-left: 0; }
+.cs-fan .card img { width: 100%; }
+
+.cs-empty {
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.cs-tier.is-legal {
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.85);
+  background: rgba(233, 196, 106, 0.08);
+}
+.cs-tier.is-dim { filter: brightness(0.7) saturate(0.8); }
+.cs-tier:active { transform: translateY(1px); }
+
+/* ---- deck, waste, draw piles ---- */
+
+.cs-sources {
+  display: flex;
+  gap: clamp(6px, 2vw, 12px);
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+.cs-src {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: var(--card-w);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.cs-src .card { width: 100%; }
+.cs-src small {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.2;
+}
+.cs-src.is-locked { cursor: default; }
+.cs-src.is-locked .n { font-size: calc(var(--card-w) * 0.3); }
+
+.cs-ctrls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 2px;
+}
+
+.shint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 10px 6px 4px;
+  line-height: 1.45;
+}
+.shint strong { color: var(--gold); }

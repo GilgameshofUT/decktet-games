@@ -1,0 +1,65 @@
+/* Solo Hex — the seven-pile hexagon (rows of 2, 3, 2). */
+
+:root {
+  --card-w: clamp(80px, 24vw, 128px);
+}
+
+.shex-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(6px, 1.8vw, 12px) 5px;
+  max-width: 430px;
+  margin: 4px auto 0;
+  justify-items: stretch;
+}
+
+.shex-pile {
+  position: relative;
+  aspect-ratio: 750 / 1050;
+  border-radius: calc(var(--card-w) * 0.062);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.shex-pile .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.shex-pile .card img { height: 100%; object-fit: contain; }
+
+.shex-pile.is-empty {
+  background: rgba(0, 0, 0, 0.16);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+.shex-pile.is-empty::after {
+  content: "empty";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.shex-pile.is-selected {
+  transform: translateY(-5px);
+  box-shadow: 0 0 0 3px var(--gold), 0 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.shex-pile.is-legal {
+  box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.8), var(--card-shadow);
+}
+.shex-pile.is-dim { filter: brightness(0.64) saturate(0.75); }
+.shex-pile:active { transform: translateY(1px); }
+
+.shint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 12px 6px 4px;
+  line-height: 1.45;
+}
+.shint strong { color: var(--gold); }

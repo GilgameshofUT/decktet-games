@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Cascades — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/cascades.html">Play Cascades ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-mill.webp" alt="the Mill" width="750" height="1050">
+  <h1>Cascades</h1>
+  <p class="lede">a Decktet solitaire game in two versions</p>
+
+  <blockquote>Cascades is a Decktet solitaire game where the player progresses
+  through the deck three cards at a time attempting to legally play all the
+  cards into three tiers (rows). The game ends when all cards are played, or
+  none of the remaining cards are able to be played.</blockquote>
+
+  <h2>Setup</h2>
+  <p>Cascades can be played with the standard Decktet or optionally with all
+  the pawns and courts. The only card not used is The Excuse.</p>
+  <p>Shuffle the cards and deal in a vertical column along the left side of
+  the playing area three piles of three cards each, all face down. These are
+  the draw [reserve] piles. The remaining cards will be kept in the deck
+  [stock] to be turned over three at a time during play.</p>
+
+  <h2>Game play</h2>
+  <p>To begin play turn over the top three cards of the deck and play the top
+  card just to the right of the top draw pile. This forms the beginning of the
+  first tier [foundation row]. Then continue to play from the deck to any tier
+  according to the rules below. Work through the deck three cards at a time.</p>
+  <p>After the first pass through the deck turn over the top card in the top
+  draw pile. You may play the cards one by one from this pile in the same way
+  that cards were played from the deck. After the second pass through the deck
+  play from the middle draw pile and likewise begin playing from the bottom
+  draw pile after the third pass through the deck. Once a draw pile is free to
+  be played the top card may be played at any time.</p>
+  <p>Cards are played at the right end of each tier. To play a card on the end
+  at least one suit on the card to be played must match the suit of the card
+  that is already on the end.</p>
+  <p>For the ranked cards only one of each rank is allowed in a tier. To play a
+  card on the middle or bottom tier that rank must already have been played in
+  the tier above.</p>
+
+  <h3>Aces and Crowns</h3>
+  <p>Aces and Crowns must also follow suit and there must be an ace in the
+  tier above to play one in a lower tier. Because there are six they can be
+  played two to a tier. No tier may have more than two aces or two crowns
+  played. To play a second ace or crown on a lower tier, the tier directly
+  above it must have two of the same card.</p>
+  <p>Note that since aces and crowns only have one suit they create a
+  bottleneck of reduced play possibilities on the tier. Be careful when and
+  how they are played.</p>
+
+  <h3>End Game</h3>
+  <p>The game ends in one of two ways. A winning game will end when all cards
+  in the deck and in the draw piles are played somewhere in the three tiers. A
+  game is lost when after at least trips through the deck there are no
+  playable cards in the deck or on top of any of the draw piles.</p>
+
+  <h2>The extended deck</h2>
+  <p>The Excuse is not used.</p>
+  <p>The pawns and courts are optional. Because they have three suits they are
+  both easier to play and they open up the tier so there are more options for
+  the next card to be played.</p>
+  <p>Because there are four of each, the top tier allows two pawns and two
+  courts to be played, but the second pawn or court can only be played on the
+  top tier when the corresponding card has been played on the bottom tier. So
+  the second pawn or court on the top tier is always the last one played.</p>
+
+  <h2>Variants</h2>
+  <p>In version 2, an easier version of Cascades, the Aces are removed from
+  the deck and dealt face up to the left of the three rows. (The face-down
+  piles of three are not used.) Cards are played to the rows following the
+  same rank rules, except that a card must match one of the suits on the Aces
+  of that row (rather than one of the suits on the previous card of that row).
+  The player may go through the stack any number of times until all cards are
+  played or no more cards can be played.</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>Trips through the deck.</strong> The wiki unlocks the draw piles
+  after "the first", "second" and "third" pass through the deck, and defines
+  the loss as what happens "when after at least [one] trip through the deck
+  there are no playable cards in the deck". This app reads a trip as a full
+  pass of the stock: when the stock runs out, the waste is flipped face down
+  onto it (a redeal, as in Klondike) and play continues through it again.
+  Each completed trip frees the next draw pile — the top one after the first
+  trip, the middle after the second, the bottom after the third — and a freed
+  draw pile's top card may indeed be played at any time, alongside the waste.
+  Redealing is what the wiki's own wording implies ("no playable cards in the
+  deck" only makes sense while the deck can still be turned over), what the
+  reference implementation at mcdemarco.net does, and what keeps the game
+  winnable: with a strictly single pass, almost every deal dies within its
+  first trio of cards. You may also turn over the next trio even while the
+  waste still holds cards you chose not to play — they are only buried until
+  the next redeal.</p>
+  <p><strong>Rank bookkeeping.</strong> The wiki's rank sentences are unified
+  here into one rule: after a play, no tier may hold more cards of a rank than
+  the tier directly above it, and a tier holds at most one card of each rank
+  2–9, two Aces and two Crowns (two Pawns and two Courts in the extended
+  deck). An empty tier needs no suit match — there is no card "already on
+  the end" — but the rank gates still apply: to start the middle or bottom
+  tier, that rank must already be in the tier above.</p>
+  <p><strong>Pawns and Courts.</strong> The sentence <em>"the second pawn or
+  court can only be played on the top tier when the corresponding card has
+  been played on the bottom tier"</em> is confusingly worded. This app reads
+  it as: a second Pawn (Court) may be played on the top tier only after one
+  Pawn (Court) has already been played on the bottom tier. (The wiki's
+  concluding "always the last one played" does not follow strictly from any
+  reading of the rule, so the gating condition itself is what this app
+  enforces.) The toggle on the game page switches between the basic 36-card
+  deck and the 44-card deck with all Pawns and Courts; the Excuse is never
+  used.</p>
+  <p><strong>Ending.</strong> "After at least trips through the deck" is read
+  as <em>after at least one trip</em>: the loss is checked once a trip has
+  been completed and nothing on top of the waste or of any freed draw pile
+  can be played — and no redeal would surface anything playable either
+  (every third card of the waste becomes a top during the next trip; if none
+  of those can go anywhere, the game is dead). The wiki defines no score, so
+  this app records whether you won and how many cards you played.</p>
+
+  <h2>Credits</h2>
+  <p>Designed by Joe Conard. Rules text: P.D. Magnus.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:cascades">Cascades page of the
+    Decktet wiki</a> (page revision 3, 23 February 2016) so they can be read
+    offline, under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA
+    3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading: <a href="https://boardgamegeek.com/thread/682107/decktet-solitaire-game-cascades">Cascades
+    thread at BGG</a>,
+    <a href="http://wiki.decktet.com/forum/t-378702/cascades-decktet-solitaire-game">Cascades
+    post in the Wiki forums</a></p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>
