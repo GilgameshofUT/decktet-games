@@ -1,0 +1,171 @@
+/* Hexaract — the dice, the journey, the supply chips and the harm track. */
+
+/* ---- dice ---- */
+
+.hx-dice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.hx-die {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #f4f1e8;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.hx-die i { border-radius: 50%; background: transparent; }
+.hx-die i.is-on {
+  background: radial-gradient(circle at 50% 50%, #20262a 0 38%, transparent 42%);
+}
+.hx-die.is-wild { box-shadow: inset 0 0 0 2px var(--gold); }
+.hx-die.is-selected {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 3px var(--gold), 0 8px 16px rgba(0, 0, 0, 0.45);
+}
+.hx-dice-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+/* ---- journey ---- */
+
+.hx-journey {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 2vw, 10px);
+}
+
+.hx-slot {
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 6px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.12s ease, filter 0.12s ease;
+}
+.hx-slot.is-empty {
+  display: grid;
+  place-items: center;
+  min-height: 90px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: default;
+}
+.hx-slot.is-legal { box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.75); }
+.hx-slot.is-selected {
+  box-shadow: 0 0 0 3px var(--gold), 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+.hx-cardwrap { line-height: 0; transition: transform 0.2s ease, filter 0.2s ease; }
+.hx-cardwrap .card { --card-w: 100%; width: 100%; }
+.hx-cardwrap.is-exhausted { transform: rotate(90deg) scale(0.72); filter: brightness(0.7); margin: 14% 0; }
+
+.hx-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.hx-meta b {
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gold);
+  font-weight: 600;
+}
+.hx-tokens { display: flex; gap: 4px; justify-content: center; }
+.hx-token {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  color: var(--muted);
+}
+.hx-token.is-full { border-style: solid; border-color: var(--gold); background: rgba(0, 0, 0, 0.3); }
+.hx-token .suit-inline { width: 14px; }
+.hx-exhausted-tag {
+  font-style: italic;
+  color: var(--lose);
+}
+
+/* ---- aces / supply / harm ---- */
+
+.hx-aces { --card-w: clamp(44px, 12vw, 62px); }
+
+.hx-supply {
+  display: flex;
+  gap: clamp(4px, 1.8vw, 10px);
+  flex-wrap: wrap;
+}
+.hx-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.hx-chip .suit-inline { width: 18px; }
+.hx-chip.is-zero { opacity: 0.42; }
+
+.hx-harm {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+.hx-harm i {
+  height: 14px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid var(--line);
+}
+.hx-harm i.is-on {
+  background: linear-gradient(180deg, #ef7b6f, #b8382c);
+  border-color: rgba(239, 123, 111, 0.7);
+}
+.hx-deckline { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+
+/* ---- chooser / actions / hint ---- */
+
+.hx-chooser {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.hx-chooser p { margin: 0 0 8px; font-size: 14px; }
+.hx-acebtn .card, .hx-acebtn img { width: 34px; height: auto; border-radius: 4px; }
+.hx-acebtn { padding: 4px; min-height: 0; }
+
+.hx-actions .btn.is-off { opacity: 0.5; }
+
+.hx-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 10px 6px 4px;
+  line-height: 1.45;
+}

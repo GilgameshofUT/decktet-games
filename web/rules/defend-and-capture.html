@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Defend and Capture — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/defend-and-capture.html">Play Defend and Capture ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-battle.webp" alt="the Battle" width="750" height="1050">
+  <h1>Defend and Capture</h1>
+  <p class="lede">a solo game about defending your hometown</p>
+
+  <blockquote>Designed by W. Nai. A solo game about defending you hometown.</blockquote>
+
+  <p>The wiki suggests reading the PDF version of the
+  <a href="https://boardgamegeek.com/filepage/277853/defend-and-capture-rule-book">rule
+  book</a> instead, which has better formatting, illustrations and an example
+  turn.</p>
+
+  <h2>Component</h2>
+  <p>Defend and Capture is played using the extended Decktet excluding the
+  Excuse card, so a total of 44 cards are used.</p>
+  <p>All Pawns/Courts/Crowns have a rank of 10. All Aces have a rank of 1.</p>
+
+  <h2>Table Overview</h2>
+  <p>The table consists of 8 areas:</p>
+  <ol>
+    <li>a) <strong>Battleground Area</strong>, a matrix of 3 by 3 slots. Each
+    slot may or may not contain a card.</li>
+    <li>b) <strong>Defense Area</strong>, a row of 3 slots on south of
+    Battleground Area. Each slot corresponds to a column of Battleground Area.
+    Each slot may or may not contain a card.</li>
+    <li>c) <strong>Side Area</strong>, a column of 3 slots on east of
+    Battleground Area. Each slot corresponds to a row of Battleground Area.
+    Each slot may or may not contains a card.</li>
+    <li>d) <strong>Damaged Area</strong>, a place to hold a pile of cards.
+    Cards put here represent how many damages you have taken. When the rank
+    sum of all the cards in this area reaches or exceeds 20, you lose the
+    game.</li>
+    <li>e) <strong>Captured Area</strong>, a place to hold a pile of cards.
+    Cards put here represent how many enemies you have captured alive. When
+    there are 12 or more cards in this area, you win the game.</li>
+    <li>f) <strong>Main Deck</strong>, a pile of face down cards to draw
+    from.</li>
+    <li>g) <strong>Discard Pile</strong>, a pile of discarded cards.</li>
+    <li>h) <strong>Hand</strong>, cards in your hand.</li>
+  </ol>
+
+  <h2>Setup</h2>
+  <ol>
+    <li>Randomly select 2 Pawns/Courts and put them into Captured Area. They
+    could be two Pawns, or two Courts, or one Pawn plus one Court.</li>
+    <li>Randomly select 2 non-Pawn/Court/Crown cards (i.e. cards ranked 1 ~ 9)
+    and put them also into Captured Area.</li>
+    <li>Shuffle all remaining cards to form the Main Deck.</li>
+  </ol>
+
+  <h2>Game play</h2>
+  <p>After setup, the game goes turn after turn until game ends. Each turn has
+  two phases, an Enemy Phase followed by a Player Phase.</p>
+
+  <h3>1. Enemy Phase</h3>
+
+  <p><strong>1.1 Attack</strong></p>
+  <p>Each card (from left to right) in the bottom row (south-most) of
+  Battleground Area performs an attack to the corresponding slot in the same
+  column in Defense Area.</p>
+  <ol>
+    <li>If the slot is empty, move the attacking card to Damaged Area. (you
+    took full damage from the power of the attacking card.)</li>
+    <li>If the slot contains a card (the defending card) which has an equal or
+    lesser rank than the attacking card, move the defending card to Damaged
+    Area, and put the attacking card into Discard Pile. (you defended part of
+    the coming damage.)</li>
+    <li>If the slot contains a card (the defending card) of greater rank than
+    the attacking card, put the attacking card into Discard Pile. The
+    defending card stays at its place. (defense is completely successful and
+    so no damage is taken.)</li>
+  </ol>
+
+  <p><strong>1.2 Advance</strong></p>
+  <p>After enemy Attack, there should be no cards in the bottom row of
+  Battleground Area now. Move every card in middle and top row of Battleground
+  Area down by one slot.</p>
+
+  <p><strong>1.3 Reinforce</strong></p>
+  <p>Draw 3 cards from Main Deck and fill the top row of Battleground Area,
+  from left to right.</p>
+  <p>Any time you need to draw a card from Main Deck but it is empty, reshuffle
+  Discard Pile to form a new Main Deck. In a very rare case that the Discard
+  Pile is also empty, you simply skip drawing card and skip filling aimed slot
+  (We have not yet encountered this situation).</p>
+
+  <p><strong>1.4 Hasten</strong></p>
+  <p>If there are 8 or more cards in Captured Area, repeat the previous 3
+  enemy steps (Attack, Advance and Reinforce) once.</p>
+
+  <h3>2. Player Phase</h3>
+
+  <p><strong>2.1 Draw cards</strong></p>
+  <p>Draw cards from Main Deck to your Hand, until your Hand contains X cards.
+  X is the number of non-Pawn/Court/Crown cards (i.e. cards ranked 1 to 9) in
+  Captured Area.</p>
+  <p>If you already have X or more cards in your Hand before this step, do not
+  draw any card.</p>
+  <p>Any time you need to draw a card from Main Deck but it is empty, reshuffle
+  Discard Pile to form a new Main Deck. In a very rare case that the Discard
+  Pile is also empty, you simply skip drawing card and skip refilling your Hand
+  (We have not yet encountered this situation).</p>
+
+  <p><strong>2.2 Take Actions</strong></p>
+  <p>Take up to Y actions in any combination in any order. Y is the number of
+  Pawns/Courts/Crowns in Captured Area before you take your first action this
+  turn.</p>
+  <p>Each type of action may be taken multiple times as long as the total
+  number of actions you take does not exceed Y.</p>
+
+  <p>Available action 1: <strong>Play</strong></p>
+  <p>Play a card from your Hand to a slot in Defense Area or Side Area.</p>
+  <p>If there is already a card in the desired slot, replace it. The card
+  being replaced goes into Discard Pile.</p>
+
+  <p>Available action 2: <strong>Counterattack</strong></p>
+  <p>Launch a counterattack from a card in Defense Area or Side Area. If the
+  counterattack is launched from a card in Defense Area, it affects all 3 cards
+  in the same column in Battleground Area. If the counterattack is from a card
+  in Side Area, it affects all 3 cards in the same row in Battleground
+  Area.</p>
+  <p>Check each of the 3 affected cards in Battleground Area:</p>
+  <p>Here, the card in the same column in Defense Area as the affected card is
+  called the defense card. The card in the same row in Side Area as the
+  affected card is called the side card.</p>
+  <ol>
+    <li>If there is no defense card or if there is no side card (the
+    corresponding slot is empty), nothing happens.</li>
+    <li>If both the defense card and the side card share at least one suit with
+    the affected card, AND the rank sum of the defense card and the side card
+    is greater than the rank of the affected card, then the affected card goes
+    into the Discard Pile. (you destroyed an enemy.)</li>
+    <li>If both the defense card and the side card share at least one suit with
+    the affected card, AND the rank sum of the defense card and the side card
+    equals the rank of the affected card, then the affected card goes into the
+    Captured Area. (your power of the counterattack is just right that you
+    captured an enemy alive.)</li>
+    <li>in all other cases (e.g. if the rank sum of the defense card and the
+    side card is less than the rank of the affected card, or if the defense
+    card does not share a suit with the affected card, or if the side card
+    does not share a suit with the affected card, etc.), nothing happens.</li>
+  </ol>
+
+  <p>Available action 3: <strong>Interchange</strong></p>
+  <p>Swap a card from your Hand with a card in Captured Area.</p>
+
+  <p>Available action 4: <strong>Sacrifice</strong></p>
+  <p>Swap a card from your Hand with a card of lesser rank in Damaged Area.</p>
+
+  <p>Available action 5: <strong>Withdraw</strong></p>
+  <p>Pick up a card from Defense Area or Side Area back to your Hand.</p>
+
+  <p><strong>2.3 Discard Cards</strong></p>
+  <p>Discard as many cards as you wish from your Hand to Discard Pile.</p>
+
+  <h2>Game End</h2>
+  <p>When the rank sum of all the cards in Damaged Area reaches or exceeds 20,
+  you lose the game.</p>
+  <p>When there are 12 or more cards in Captured Area, you win the game.</p>
+
+  <h2>Variants</h2>
+  <p>The wiki page leaves this section empty.</p>
+
+  <h2>Links</h2>
+  <ul>
+    <li>A PDF version of <a href="https://boardgamegeek.com/filepage/277853/defend-and-capture-rule-book">rule
+    book</a> that has better formatting, illustrations and an example
+    turn.</li>
+    <li><a href="https://github.com/gjchangmu/A-Few-Decktet-Games">Digital
+    version for Windows</a></li>
+  </ul>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>Turn order.</strong> The wiki's turn is "an Enemy Phase followed
+  by a Player Phase", so the very first thing a game does is run an Enemy
+  Phase — on the empty board of turn 1 that only fills the top row of the
+  Battleground (Attack and Advance have nothing to act on). The app runs it
+  during setup, which is also the order the reference digital version
+  (<a href="https://github.com/gjchangmu/A-Few-Decktet-Games">A Few Decktet
+  Games</a>, <code>src/DefenseCapture1p.cs</code>) uses. Its setup likewise
+  draws the four starting Captured cards (2 Pawns/Courts, 2 cards ranked 1–9)
+  by random selection from the shuffled 44-card deck, and its action model —
+  select one hand card and one slot for Play, select a Defense/Side card alone
+  for Counterattack and Withdraw, combine one hand card with one Captured or
+  Damaged card for Interchange and Sacrifice — is followed here.</p>
+  <p><strong>Ending mid-phase.</strong> The wiki states the two end
+  conditions without saying when they are checked. This app checks after every
+  card added to the Captured or Damaged Area, so a capture during a
+  Counterattack, or the last point of damage during an Enemy Phase, ends the
+  game immediately. If both thresholds trip at the same moment, the win is
+  checked first — the same order as the digital version.</p>
+  <p><strong>Counterattack suits.</strong> "Both the defense card and the side
+  card share at least one suit with the affected card" is read (as the digital
+  version does) as two separate tests: the defense card must share a suit with
+  the enemy, <em>and</em> the side card must share a suit with the enemy. The
+  two guard cards need not share a suit with each other.</p>
+  <p><strong>Sacrifice.</strong> "A card of lesser rank" is read strictly: the
+  Damaged card you swap out must rank <em>lower</em> than the hand card you
+  swap in (the digital version refuses equal ranks too). The hand card goes to
+  the Damaged Area, so a sacrifice can still push the damage sum up — the loss
+  check runs right after it.</p>
+  <p><strong>Hasten.</strong> The repeat is judged on the Captured count after
+  the first Attack/Advance/Reinforce pass, and it repeats that whole pass once
+  (not recursively). The digital version has two optional extra "surprise"
+  twists gated on the same count; they are off by default there and are not
+  implemented here.</p>
+  <p><strong>Discarding and ending the turn.</strong> Step 2.3 is a separate
+  step, so the app lets you discard any number of hand cards one at a time for
+  free, and <em>End turn</em> then runs the Enemy Phase and the next Draw
+  step. Your Y actions are fixed at the Draw step (the digital version's
+  Action Points), which matches the wiki's "before you take your first action
+  this turn" since the Draw step precedes any action.</p>
+  <p><strong>Reshuffling.</strong> When the Main Deck runs dry the Discard
+  Pile is shuffled into a new one; the reshuffle is driven by a counter in the
+  saved state, so a reloaded game reshuffles exactly as it would have. If both
+  piles are empty, draws are skipped, as the wiki says.</p>
+  <p><strong>Score.</strong> The wiki defines no score, so the app records
+  only the win and how many enemies you captured alive.</p>
+
+  <h2>Credits</h2>
+  <p>Original design: W. Nai. Rules text from the Decktet wiki.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:defend-and-capture">Defend and
+    Capture page of the Decktet wiki</a> (page revision 2, 13 April 2024) so
+    they can be read offline, under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA
+    3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading: the PDF
+    <a href="https://boardgamegeek.com/filepage/277853/defend-and-capture-rule-book">rule
+    book at BGG</a> and the
+    <a href="https://github.com/gjchangmu/A-Few-Decktet-Games">digital version
+    for Windows</a>, both of which were consulted while implementing this
+    game.</p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

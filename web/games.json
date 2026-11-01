@@ -264,7 +264,7 @@
         "1 player",
         "lane defence"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "hexaract",
@@ -278,7 +278,7 @@
         "1 player",
         "dice"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "dueling-runes",
