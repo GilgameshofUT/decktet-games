@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Caravan — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/caravan.html">Play Caravan ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-merchant.webp" alt="the Merchant" width="750" height="1050">
+  <h1>Caravan</h1>
+  <p class="lede">a card-shedding game for 2 players</p>
+
+  <p>You and your opponent lead rival caravans across the vast eastern desert,
+  carrying goods between <em>Jacynth</em> and <em>the Valley</em>. Between the
+  sand and the bandits, you just want to be done with it.</p>
+
+  <p>The goal of the game is to score points, which you can do by collecting
+  cards during the hand and by being the first player to lay down your last
+  cards.</p>
+
+  <p>Each hand is played as a series of <em>trade seasons</em>, and the score
+  is tallied up at the end of each hand.</p>
+
+  <h2>Setup</h2>
+  <p>Separate the <em>Aces</em> and <em>Crowns</em> from the basic deck,
+  shuffle them separately, and deal four to each player. Then deal two of them
+  face up at the edge of the play area. This will leave two cards; set them
+  aside without looking at them. (If the two face up cards have the same suit,
+  set aside the second one and flip over one of the two remaining cards.)</p>
+  <p>Shuffle the remainder of the basic deck and deal eleven cards to each
+  player. This will leave two cards; set them aside without looking at them.
+  (The point of having cards left over is to introduce some uncertainty. You
+  won't know just by looking at your hand what cards your opponent must
+  have.)</p>
+  <p>The two Aces or Crowns flipped up indicate which trade goods will be
+  profitable or costly during the hand. If the card is an <em>Ace</em>, then
+  players will lose points for collecting cards of that suit. If the card is a
+  <em>Crown</em>, then players will gain points for collecting cards of that
+  suit. If both cards are Aces, then there is no possible upside to collecting
+  cards; only penalties. If both are Crowns, then there is no possible
+  loss.</p>
+  <p>Randomly decide who will begin the first trade season of the first hand.
+  In subsequent hands, the player with the lower cumulative score plays
+  first.</p>
+
+  <h2>Game play</h2>
+  <p>At the beginning of each trade season, a player plays a collection of
+  cards from their hand called a <em>'caravan.'</em> The opposing player must
+  then play a higher combination of cards or pass. (The higher combination may
+  either be a higher caravan or a different configuration of cards called a
+  <em>'bandit.'</em>) If the opposing player does not pass, then the original
+  player must play a higher combination of cards or pass. And so on, with each
+  player laying down cards that beat the previous cards until one of them
+  passes - once one player passes, the trade season ends.</p>
+  <p><strong>Caravans:</strong> A <em>caravan</em> is a collection of
+  sequential number cards. Each card in the sequence must share a suit symbol
+  with each adjacent card.</p>
+  <p><em>Aces</em> and <em>Crowns</em> may be used in place of any
+  number-ranked card to make a caravan, but their suit does not change.</p>
+  <p>Wild cards can only substitute for a number rank; they can't be rank
+  <em>1</em> or <em>10</em>.</p>
+  <p>A caravan may consist of just one number card, and a caravan must include
+  at least one number card; it can't be made entirely out of <em>Aces</em> and
+  <em>Crowns</em>.</p>
+  <p>A caravan can be beaten by another caravan of the same length with a
+  higher numbered card.</p>
+  <blockquote>Example: Morgan begins the season by playing a <em>3</em>-<em>4</em>-<em>5</em>.
+  His opponent may play a <em>4</em>-<em>5</em>-<em>6</em> caravan,
+  <em>5</em>-<em>6</em>-<em>7</em>, etc. - but not a <em>2</em>-<em>3</em>-<em>4</em>
+  (too low) nor a <em>4</em>-<em>5</em>-<em>6</em>-<em>7</em> (different
+  length).</blockquote>
+  <p><strong>Bandits:</strong> A bandit is either a single Ace, a single
+  Crown, or an Ace and a Crown together. Any bandit beats any caravan,
+  regardless of the caravan's length or rank; bandits themselves are ordered
+  in this way:</p>
+  <ul>
+    <li>A <em>single Ace</em> is the lowest bandit.</li>
+    <li>A <em>single Crown</em> beats a single Ace.</li>
+    <li>An <em>Ace and Crown of different suits</em> beat a single Crown.</li>
+    <li>An <em>Ace and the Crown of the same suit</em> beat everything
+    else.</li>
+  </ul>
+  <blockquote>Example: His opponent answers Morgan's <em>3</em>-<em>4</em>-<em>5</em>
+  caravan with a <em>Crown</em> bandit. Morgan must either play an
+  <em>Ace-Crown</em> bandit or pass.</blockquote>
+  <p><strong>Ending the season:</strong> When one of the players passes, the
+  trade season ends.</p>
+  <p>If the last cards to be played were a caravan, then the player who played
+  the caravan collects all of the cards from the season. Collected cards count
+  for scoring at the end of the hand. They do not become part of the player's
+  hand.</p>
+  <p>If the last card or cards to be played were a bandit, then the opponent
+  of the player who played the bandit collects all of the cards from the
+  season. Again, the collected cards count for scoring and do not become part
+  of the player's hand.</p>
+  <p>If both players have cards remaining in their hands, a new season
+  begins. The player who made the last play in the previous season (the one
+  who did not pass) plays first in the new season.</p>
+  <p>If a player ought to start the next season but cannot play a caravan -
+  because they have only Aces and Crowns - then the other player starts the
+  season. If neither player can start a season, then the round ends and
+  players score only for cards collected.</p>
+
+  <h2>Scoring</h2>
+  <p>When you play the last cards from your hand, your opponent may finish the
+  season by making one play if they have cards to do so. You then score five
+  points, plus one point per card remaining in your opponent's hand. Those
+  remaining cards are set aside; they don't count as having been collected by
+  either player.</p>
+  <p>Both players then score points for cards they collected. For each
+  <em>Crown</em> that was turned up at the beginning of the hand, players
+  score one point for each card they collected during the hand that shares a
+  suit with the Crown. For each <em>Ace</em> that was turned up, players lose
+  one point for each card they collected during the hand that shares a suit
+  with the Ace. A card that shares suits with both up cards may be worth two
+  points (if both up cards are Crowns), negative two (if both are Aces), or
+  zero (if the up cards are a Crown and an Ace).</p>
+  <p>Add each player's score to their score from previous hands. We find that
+  five hands makes for a comfortable game, but you may increase or decrease
+  this depending on how long you want the game to be.</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The "wild cards":</strong> the wiki mentions wild cards that
+  "can only substitute for a number rank", without ever naming them. Read in
+  context — the sentence immediately before grants exactly that power to
+  "Aces and Crowns" — the wilds <em>are</em> the Aces and Crowns: an Ace used
+  in a caravan stands in for some rank 2–9 (never rank 1) and a Crown stands
+  in for some rank 2–9 (never rank 10). On that reading the basic game is
+  complete and this app implements it in full; no other card is wild and no
+  extended-deck cards are used.</p>
+  <p><strong>Setup arithmetic:</strong> "shuffle them separately, and deal four
+  to each player" is dealt as two Aces and two Crowns each; the four cards
+  left over (two Aces, two Crowns) are shuffled together and the two market
+  cards are flipped from them, applying the wiki's same-suit rule ("set aside
+  the second one and flip over one of the two remaining") until the two face
+  up cards carry different suits. Both-Aces and both-Crowns markets are still
+  possible and handled.</p>
+  <p><strong>"Sequential"</strong> caravans are read as ascending — every
+  example on the wiki is ascending, and the "higher" comparisons presuppose
+  it. A caravan is beaten by one of the same length whose top card is higher;
+  for consecutive runs that is the same as every card being higher.</p>
+  <p><strong>Bandit ties:</strong> "an Ace and the Crown of the same suit beat
+  everything else" leaves two different same-suit bandits (say Ace+Crown of
+  Moons versus Ace+Crown of Suns) unranked. This app treats them as tied:
+  neither beats the other, so the first one played ends the answering.</p>
+  <p><strong>Going out:</strong> the opponent's one finishing play follows the
+  usual beat-or-pass rule (it must beat the last play, and passing always ends
+  the hand). If that reply also empties the reply player's hand, both players
+  score the five-point going-out bonus, with no cards left over for either.
+  When neither player can open a season, the hand simply ends and only the
+  collected cards score. Five hands are played; the higher cumulative score
+  wins (a tie is a draw), and the lower score opens each later hand — on a tie,
+  the player who did not open the previous hand does.</p>
+  <p><strong>Pass and play:</strong> this is a hidden-hand game, so after each
+  play or pass the screen is covered with "Player N's turn" until the device
+  is passed on and the hand is revealed.</p>
+
+  <h2>Credits</h2>
+  <p>Original design: P.D. Magnus.</p>
+  <p>Caravan was inspired by Sean Ross'
+  <a href="http://www.boardgamegeek.com/boardgame/37628/haggis">Haggis</a>,
+  which is itself situated in a long history of card-shedding games.</p>
+  <p>Playtesters included Cristyn Magnus, Nathan Morse, and Jorge Arroyo.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:caravan">Caravan page of the Decktet
+    wiki</a> (page revision 7, 12 October 2015) so they can be read offline,
+    under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA
+    3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading: <a href="http://www.geekdo.com/boardgame/64244/caravan">Caravan at BGG</a></p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

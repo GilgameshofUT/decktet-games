@@ -1,0 +1,78 @@
+/* Ace Trump — score pad, the trick, the hand. */
+
+.at-table { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+
+.at-top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.at-score {
+  color: var(--muted);
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+.at-score.on { color: var(--text); }
+.at-score b { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+.at-trump {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  font-size: 13px;
+  color: var(--muted);
+  order: 2;
+  flex: 1 0 100%;
+  justify-content: center;
+}
+.at-trumpsuit { width: 15px; height: 15px; }
+
+.at-trick {
+  display: flex;
+  gap: clamp(12px, 5vw, 26px);
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6px 0 2px;
+}
+.at-slot {
+  width: calc(var(--card-w) * 1.1);
+  text-align: center;
+}
+.at-slot .card { width: 100%; }
+.at-slot .card.is-winner { box-shadow: 0 0 0 3px var(--win), var(--card-shadow); }
+.at-slotlabel {
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.at-blank {
+  aspect-ratio: 750 / 1050;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: calc(var(--card-w) * 0.062);
+  color: var(--muted);
+}
+
+.at-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  min-height: 20px;
+}
+
+.at-sum {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+.at-sum b { color: var(--gold); font-variant-numeric: tabular-nums; }

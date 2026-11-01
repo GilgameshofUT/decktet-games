@@ -1,0 +1,85 @@
+/* Caravan — market row, the season log, the build strip. */
+
+.cv-table { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+
+.cv-top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cv-market { display: flex; gap: 10px; }
+.cv-mcard { width: calc(var(--card-w) * 0.72); text-align: center; }
+.cv-mcard .card { width: 100%; }
+.cv-mlabel {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.cv-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13.5px;
+  color: var(--muted);
+  text-align: right;
+}
+.cv-scores span.on { color: var(--text); }
+.cv-scores b { color: var(--gold); font-variant-numeric: tabular-nums; }
+.cv-hand { font-size: 12px; }
+
+/* the season log */
+.cv-log { display: grid; gap: 6px; }
+.cv-play {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cv-who {
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  min-width: 58px;
+}
+.cv-playcards { display: inline-flex; gap: 4px; }
+.cv-desc { font-size: 13.5px; color: var(--text); }
+
+.cv-mini { --card-w: clamp(30px, 9vw, 44px); }
+.cv-mini .badge { font-size: 10px; padding: 2px 5px; }
+
+/* the play being built */
+.cv-build {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  min-height: 46px;
+  overflow-x: auto;
+  padding: 2px;
+  scrollbar-width: none;
+}
+.cv-build::-webkit-scrollbar { display: none; }
+.cv-build .card { --card-w: clamp(38px, 11vw, 56px); }
+
+.cv-verdict {
+  margin: 8px 0;
+  font-size: 13.5px;
+  color: var(--muted);
+  min-height: 18px;
+}
+.cv-verdict.is-ok { color: var(--win); }
+.cv-verdict.is-bad { color: var(--lose); }
+
+.cv-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+.cv-note b { color: var(--gold); }

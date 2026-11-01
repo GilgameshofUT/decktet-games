@@ -375,7 +375,7 @@
       "meta": [
         "2\u20136 players"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "caravan",
@@ -389,7 +389,7 @@
         "2 players",
         "~30 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "thricewise",
