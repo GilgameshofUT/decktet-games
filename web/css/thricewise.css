@@ -1,0 +1,108 @@
+/* Thricewise — the floating 6x6 grid, the scorepad and the reveal strip. */
+
+.tw-table { display: grid; gap: 12px; }
+
+/* ---- the grid ---- */
+
+.tw-gridwrap { display: flex; justify-content: center; }
+.tw-grid {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+}
+.tw-cell {
+  position: relative;
+  aspect-ratio: 750 / 1050;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+}
+.tw-cell .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.tw-cell .card img { height: 100%; object-fit: contain; }
+
+.tw-cell.is-empty {
+  background: rgba(0, 0, 0, 0.12);
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+.tw-cell.is-legal {
+  border: 1.5px solid rgba(233, 196, 106, 0.85);
+  background: rgba(233, 196, 106, 0.1);
+  cursor: pointer;
+  animation: tw-pulse 1.6s ease-in-out infinite;
+}
+.tw-cell.is-legal:active { transform: scale(0.96); }
+.tw-cell.is-new .card { box-shadow: 0 0 0 3px var(--gold), var(--card-shadow); }
+
+@keyframes tw-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(233, 196, 106, 0.35); }
+  50% { box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-cell.is-legal { animation: none; }
+}
+
+/* ---- the scorepad ---- */
+
+.tw-totals { display: flex; gap: 14px; font-size: 15px; padding: 2px 2px 6px; }
+.tw-totals span { color: var(--muted); }
+.tw-totals span.on { color: var(--text); }
+.tw-totals b { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+.tw-rows { display: grid; gap: 3px; }
+.tw-row {
+  display: grid;
+  grid-template-columns: 2.4em 1fr auto;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 3px;
+}
+.tw-row b { color: var(--gold-dim); font-weight: 600; }
+.tw-row i { font-style: normal; font-variant-numeric: tabular-nums; }
+.tw-row .tw-defer { color: var(--lose); }
+
+/* ---- deferred cards ---- */
+
+.tw-deferred { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
+.tw-deferred > span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.tw-deferred .cardrow { padding: 0; }
+.tw-deferred .card { --card-w: clamp(42px, 12vw, 62px); }
+
+/* ---- laying / notes ---- */
+
+.tw-note {
+  color: var(--gold);
+  font-size: 14px;
+  margin: 8px 2px 2px;
+}
+
+/* ---- the reveal ---- */
+
+.tw-picks { display: flex; gap: 14px; padding: 4px 2px 2px; }
+.tw-pick { text-align: center; }
+.tw-pick > span {
+  display: block;
+  color: var(--muted);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+}
+.tw-pick .card { --card-w: clamp(56px, 15vw, 86px); }
+
+.tw-events { display: grid; gap: 6px; margin-top: 8px; }
+.tw-events p { margin: 0; font-size: 14px; line-height: 1.45; }
+.tw-events strong { color: var(--gold); }

@@ -1,0 +1,121 @@
+/* Second Story — the house, the dice, the chips and the lair. */
+
+.ss-table { display: grid; gap: 12px; }
+
+/* ---- the house being burgled ---- */
+
+.ss-house {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 2px;
+}
+.ss-house .card { --card-w: clamp(58px, 17vw, 96px); }
+.ss-meta {
+  display: grid;
+  gap: 3px;
+  color: var(--muted);
+  font-size: 13.5px;
+  align-content: center;
+}
+.ss-meta b { color: var(--gold); font-size: 15px; }
+
+.ss-dice { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.ss-die {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--gold);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.ss-dice small { color: var(--muted); font-size: 11.5px; }
+
+.ss-events { display: grid; gap: 4px; margin-top: 8px; }
+.ss-events p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--muted);
+  border-left: 2px solid var(--gold-dim);
+  padding-left: 8px;
+}
+
+/* ---- chips ---- */
+
+.ss-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 2px;
+}
+.ss-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+.ss-chip img { width: 16px; height: 16px; }
+.ss-chip b { color: var(--gold); font-weight: 600; }
+.ss-chip.is-out { opacity: 0.4; }
+.ss-chip.is-out b { color: var(--lose); }
+button.ss-chip:active { transform: translateY(1px); }
+
+/* ---- the lairs / score sheet ---- */
+
+.ss-lair {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 2px;
+  border-top: 1px solid var(--line);
+}
+.ss-lair.on .ss-lair-who { color: var(--text); }
+.ss-lair-who {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.ss-lair .ss-chips { flex: 1 1 auto; padding: 0; }
+.ss-score {
+  flex: 0 0 auto;
+  min-width: 1.8em;
+  text-align: right;
+  color: var(--gold);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.ss-note {
+  color: var(--muted);
+  font-size: 12.5px;
+  margin: 6px 2px 2px;
+  line-height: 1.45;
+}
+
+/* ---- the nights so far ---- */
+
+.ss-rows { display: grid; gap: 3px; }
+.ss-row {
+  display: grid;
+  grid-template-columns: 2.6em 5.5em 1fr;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 3px;
+}
+.ss-row b { color: var(--gold-dim); font-weight: 600; }
+.ss-row i { font-style: normal; text-align: right; }
+.ss-row i.bad { color: var(--lose); }

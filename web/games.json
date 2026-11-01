@@ -403,7 +403,7 @@
         "2\u20135 players",
         "~20 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "second-story",
@@ -417,7 +417,7 @@
         "2\u20135 players",
         "~15 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "hermit",
