@@ -515,7 +515,7 @@
         "2\u20137 players",
         "open ended"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "magnate",
@@ -529,7 +529,7 @@
         "2 players",
         "~30 minutes"
       ],
-      "planned": true
+      "planned": false
     }
   ]
 }

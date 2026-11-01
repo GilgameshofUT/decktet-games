@@ -1,0 +1,97 @@
+/* Magnate — dice strip, token supplies, five district chains. */
+
+.mg-table { display: grid; gap: 12px; }
+
+.mg-dice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.mg-die {
+  min-width: 44px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--gold);
+  font: 600 17px/1 Georgia, serif;
+  padding: 10px 8px;
+}
+.mg-diceempty { color: var(--muted); font-size: 14px; }
+.mg-taxlabel {
+  color: var(--lose);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mg-supply { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; padding: 3px 0; }
+.mg-supply .mg-owner { color: var(--muted); font-size: 13px; min-width: 60px; }
+.mg-supply.on .mg-owner { color: var(--text); }
+.mg-supply.on .mg-token { border-color: var(--gold); }
+.mg-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: rgba(0, 0, 0, 0.25);
+}
+.mg-token img { width: 15px; height: 15px; }
+.mg-token b { color: var(--gold); font-variant-numeric: tabular-nums; font-size: 13px; }
+
+.mg-districts { display: grid; gap: 10px; }
+.mg-district {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.mg-district:first-child { border-top: 0; padding-top: 0; }
+.mg-districthead { display: grid; gap: 4px; justify-items: center; width: 54px; }
+.mg-districthead .card { width: 54px; }
+.mg-districtname {
+  color: var(--muted);
+  font-size: 10.5px;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.25;
+}
+.mg-chain {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  min-height: 40px;
+}
+.mg-chain .card { width: calc(var(--card-w) * 0.72); }
+.mg-prop.is-deed { filter: brightness(0.82) saturate(0.8); }
+.mg-prop.is-built { box-shadow: 0 0 0 1px rgba(233, 196, 106, 0.45), var(--card-shadow); }
+.mg-emptydistrict {
+  align-self: center;
+  color: var(--muted);
+  font-size: 12px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+.mg-spend { display: flex; gap: 4px; }
+.mg-spendbtn { min-height: 32px; padding: 2px 8px; display: inline-flex; align-items: center; gap: 4px; }
+.mg-spendbtn img { width: 14px; height: 14px; }
+
+.mg-piles { display: flex; gap: 10px; }
+
+.mg-actions { display: grid; gap: 8px; }
+.mg-cardactions { display: grid; gap: 8px; }
+.mg-trade {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.mg-suit { max-width: 130px; min-height: 38px; }
+.mg-tradearrow { color: var(--muted); }
