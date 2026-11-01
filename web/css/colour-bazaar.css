@@ -1,0 +1,83 @@
+/* Colour Bazaar — six style chips, four growing markets, one hand at a time. */
+
+.cb-table { display: grid; gap: 10px; }
+
+/* ---- the styles on offer ---- */
+.cb-styles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+.cb-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  min-width: 44px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+}
+.cb-chip img { width: 22px; height: auto; }
+.cb-chipn { font-size: 14px; font-variant-numeric: tabular-nums; }
+.cb-chip.is-out { opacity: 0.4; }
+.cb-chip.is-legal { box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.75); }
+.cb-chip:active { transform: translateY(1px); }
+
+/* ---- the markets ---- */
+.cb-stacks {
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cb-stack {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: 1px dashed transparent;
+  border-radius: 10px;
+  padding: 2px;
+  cursor: pointer;
+}
+.cb-stack .card {
+  width: clamp(48px, 17vw, 74px);
+  margin-top: calc(clamp(48px, 17vw, 74px) * -1.25);
+}
+.cb-stack .card:first-child { margin-top: 0; }
+.cb-stack .card:nth-child(odd) { margin-left: -4%; }
+.cb-stack .card:nth-child(even) { margin-right: -4%; }
+.cb-stack.is-legal { border-color: rgba(233, 196, 106, 0.75); background: rgba(233, 196, 106, 0.07); }
+.cb-stacklabel {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* ---- the pad ---- */
+.cb-pad { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.cb-padcell { display: flex; align-items: center; gap: 4px; font-size: 14px; }
+.cb-padcell img { width: 16px; height: auto; }
+.cb-padval { font-variant-numeric: tabular-nums; color: var(--gold); }
+.cb-totals { margin-top: 8px; display: grid; gap: 3px; font-size: 14.5px; }
+.cb-total b { color: var(--gold); font-variant-numeric: tabular-nums; }
+.cb-total.on { color: var(--text); }
+.cb-total:not(.on) { color: var(--muted); }
+
+/* ---- piles and turn ---- */
+.cb-info { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.cb-turn { color: var(--muted); font-size: 13px; flex: 1; min-width: 140px; }
+.cb-piles { display: flex; gap: 12px; }
+
+.cb-note { color: var(--gold); font-size: 14.5px; padding: 8px 2px; }
+
+.panel .cardrow .card { width: clamp(52px, 15vw, 82px); }

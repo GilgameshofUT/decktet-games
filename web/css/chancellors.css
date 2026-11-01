@@ -1,0 +1,82 @@
+/* Chancellors — three services, three dice problems, one hand at a time. */
+
+.chan-table { display: grid; gap: 10px; }
+
+/* ---- the royal services ---- */
+.chan-services {
+  display: flex;
+  gap: clamp(8px, 2.5vw, 16px);
+  justify-content: space-between;
+}
+.chan-service {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+.chan-service .card { width: clamp(58px, 20vw, 86px); margin: 0 auto; }
+.chan-svcname {
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ---- the problems ---- */
+.chan-problem {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 2px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+}
+.chan-problem:last-child { border-bottom: 0; }
+.chan-probname { color: var(--muted); min-width: 74px; }
+.chan-dice {
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.chan-probstate {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ---- scores and piles ---- */
+.chan-info { display: flex; flex-direction: column; gap: 8px; }
+.chan-scores { display: flex; gap: 16px; font-size: 15px; }
+.chan-scores span { color: var(--muted); }
+.chan-scores span.on { color: var(--text); }
+.chan-scores b { color: var(--gold); font-variant-numeric: tabular-nums; }
+.chan-target { color: var(--muted); font-size: 13px; }
+.chan-piles { display: flex; gap: 12px; }
+
+/* ---- the reveal ---- */
+.chan-reveal {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+.chan-played { display: flex; gap: 14px; justify-content: center; }
+.chan-playedcard { text-align: center; width: clamp(56px, 18vw, 76px); }
+.chan-playedcard .card { width: 100%; }
+.chan-byline {
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.chan-revent { font-size: 14px; color: var(--text); }
+
+.chan-note { color: var(--gold); font-size: 14.5px; padding: 8px 2px; }
+
+/* hands sit tighter than a solo game's */
+.panel .cardrow .card { width: clamp(52px, 15vw, 82px); }

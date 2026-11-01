@@ -459,7 +459,7 @@
         "2\u20134 players",
         "~30 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "colour-bazaar",
@@ -473,7 +473,7 @@
         "2\u20133 players",
         "~30 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "fifes-and-drums",
