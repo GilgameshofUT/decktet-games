@@ -119,7 +119,7 @@ const api = mountGame({
       pile.up.forEach((id, j) => {
         const def = data.byId[D.baseId(id)];
         const el = D.cardEl({ ...def, id }, { tag: 'div', static: true, eager: i < 4 && j === pile.up.length - 1 });
-        el.classList.add('mx-card');
+        el.classList.add('mx-card', 'mx-up');
         el.style.setProperty('--k', String(pile.down.length + j));
         const depth = pile.up.length - j;
         const inRun = C.legalRuns(state, i).includes(depth);

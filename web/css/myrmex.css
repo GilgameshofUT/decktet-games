@@ -38,8 +38,8 @@
 
 .mx-grid {
   --card-w: min(21vw, 88px);
-  --fd: calc(var(--card-w) * 0.115);      /* fan step, face-down cards */
-  --fu: calc(var(--card-w) * 0.215);      /* fan step, face-up cards */
+  --fd: calc(var(--card-w) * 0.12);      /* fan step, face-down cards */
+  --fu: calc(var(--card-w) * 0.32);      /* fan step, face-up cards — big enough to tap a buried run */
   display: grid;
   grid-template-columns: repeat(4, var(--card-w));
   gap: 10px 6px;

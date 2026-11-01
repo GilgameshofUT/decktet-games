@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 22
       - name: Rule and asset tests
-        run: node test/assets.test.mjs && node test/adaman.test.mjs
+        run: npm test
 
   deploy:
     needs: test
