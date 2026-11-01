@@ -2,7 +2,7 @@
    scripts are precached from games.json, and card images are cached as they
    are used — so the games keep working offline (and on a flaky LAN). */
 
-const VERSION = 'decktet-v9';
+const VERSION = 'decktet-v10';
 const SHELL = [
   './',
   'index.html',

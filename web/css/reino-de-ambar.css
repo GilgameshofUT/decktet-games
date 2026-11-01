@@ -1,0 +1,121 @@
+/* Reino de Ámbar — the Kingdom board, Problems, markers. */
+
+.rn-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  max-width: 430px;
+  margin: 4px auto 0;
+}
+
+.rn-cell {
+  position: relative;
+  aspect-ratio: 750 / 1050;
+}
+.rn-cell .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.rn-cell .card img { height: 100%; object-fit: contain; }
+
+.rn-cell.is-legal {
+  outline: 3px solid rgba(233, 196, 106, 0.95);
+  outline-offset: -3px;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: rn-pulse 1.3s ease-in-out infinite;
+}
+.rn-cell.is-suggested {
+  outline: 2px dashed rgba(233, 196, 106, 0.55);
+  outline-offset: -3px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+@keyframes rn-pulse {
+  50% { outline-color: rgba(233, 196, 106, 0.45); }
+}
+
+.rn-marker {
+  position: absolute;
+  bottom: 3px;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: center;
+  padding: 0 4px;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  z-index: 3;
+}
+.rn-me { left: 3px; background: #c8402f; color: #fff; border: 1px solid rgba(255, 255, 255, 0.5); }
+.rn-dummy { right: 3px; background: #1c1c22; color: #eee; border: 1px solid rgba(255, 255, 255, 0.35); }
+
+.rn-confidente {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #f4e9c8;
+  color: #4a3a10;
+  border: 1px solid #8a7434;
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.rn-die {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: #7a1f12;
+  color: #ffd9b0;
+  border: 1px solid rgba(233, 196, 106, 0.6);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.rn-problems { align-items: flex-start; }
+.rn-problem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 96px;
+}
+.rn-problem .card { width: 96px; }
+.rn-problem-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: center;
+  font-size: 11.5px;
+}
+.rn-suiticon { width: 15px; height: 15px; vertical-align: middle; }
+.rn-problem-meta .btn { width: 100%; }
+
+.rn-actions { flex-wrap: wrap; }
+.rn-choose { flex-wrap: wrap; }
+
+.rn-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 10px 6px 4px;
+}

@@ -306,7 +306,7 @@
         "1 player",
         "trade route"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "reino-de-ambar",
@@ -320,7 +320,7 @@
         "1 player",
         "area control"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "bharg",
