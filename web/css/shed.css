@@ -1,0 +1,140 @@
+/* Shed — token pools, the supply, the four trick slots, the shed choice. */
+
+.sd-table { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+.sd-table > * { min-width: 0; }   /* let the card row scroll instead of widening the page */
+
+/* ---- pools + supply ---- */
+.sd-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.sd-pool {
+  flex: 1 1 150px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: 6px 8px;
+}
+.sd-pool.on { border-color: var(--gold); }
+.sd-ph { display: block; font-size: 12.5px; color: var(--muted); }
+.sd-pool.on .sd-ph { color: var(--text); }
+.sd-ph b { color: var(--gold); font-variant-numeric: tabular-nums; }
+.sd-toks { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+
+.sd-tok {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  padding: 2px 5px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.sd-tok img { width: 14px; height: 14px; }
+.sd-tok b { font-variant-numeric: tabular-nums; color: var(--text); }
+.sd-tok.is-out { opacity: 0.34; }
+.sd-tok.is-out b { color: var(--muted); }
+
+.sd-supply {
+  flex: 1 0 100%;
+  order: 3;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.sd-slabel {
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---- rule switch + table info ---- */
+.sd-tools {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.sd-km { white-space: normal; text-align: left; }
+.sd-round {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.5;
+}
+.sd-round b { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+/* ---- the trick ---- */
+.sd-trickbox {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  padding: 8px 8px 6px;
+}
+.sd-lead {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.sd-lead b { color: var(--gold); }
+.sd-slots {
+  display: flex;
+  gap: clamp(6px, 2vw, 12px);
+  justify-content: center;
+  align-items: flex-start;
+}
+.sd-slot {
+  width: calc(var(--card-w) * 0.84);
+  text-align: center;
+}
+.sd-slot .card { width: 100%; }
+.sd-slot .card.is-winner { box-shadow: 0 0 0 3px var(--win), var(--card-shadow); }
+.sd-slotlabel {
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.sd-blank {
+  aspect-ratio: 750 / 1050;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: calc(var(--card-w) * 0.05);
+  color: var(--muted);
+}
+.sd-empty { color: var(--muted); font-size: 13.5px; text-align: center; padding: 6px 0; }
+
+.sd-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  min-height: 20px;
+}
+
+/* ---- the shed choice ---- */
+.sd-shed { justify-content: center; }
+.sd-shed .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.sd-shed .btn img { width: 15px; height: 15px; }
+
+.sd-last {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+.sd-last b { color: var(--gold); }

@@ -1,0 +1,94 @@
+/* Hermit — score pad, the tricks in progress, the hand. */
+
+.hm-table { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+.hm-table > * { min-width: 0; }   /* let the card row scroll instead of widening the page */
+
+/* ---- top: two score chips with the hand/Cottage line between them ---- */
+.hm-top {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.hm-score {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.hm-score.on { color: var(--text); }
+.hm-score b { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+.hm-mid {
+  order: 3;
+  flex: 1 0 100%;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.hm-hand { white-space: nowrap; }
+.hm-cottage {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  padding: 3px 10px;
+}
+.hm-cottage b { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+/* ---- the tricks on the table ---- */
+.hm-tricks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.hm-trick {
+  font: inherit;
+  color: inherit;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: 7px 8px 5px;
+  text-align: center;
+  min-width: 132px;
+}
+.hm-trick[data-who="0"] { border-left-color: var(--gold); }
+.hm-trick[data-who="1"] { border-left-color: #6fb3e6; }
+.hm-trick.is-past { opacity: 0.78; }
+.hm-trick.is-target {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.7);
+  cursor: pointer;
+}
+.hm-cards { display: flex; align-items: flex-start; justify-content: center; }
+.hm-cards .card { width: 54px; }
+.hm-cards .card + .card { margin-left: -22px; }
+.hm-cards .card img { width: 100%; height: auto; }
+.hm-tlabel {
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.hm-empty { color: var(--muted); font-size: 13.5px; text-align: center; padding: 4px 0; }
+
+.hm-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  min-height: 20px;
+}
+
+.hm-sum {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+.hm-sum b { color: var(--gold); }

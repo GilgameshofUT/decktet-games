@@ -431,7 +431,7 @@
         "2\u20135 players",
         "~30 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "shed",
@@ -445,7 +445,7 @@
         "2\u20135 players",
         "~10 min/player"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "chancellors",
