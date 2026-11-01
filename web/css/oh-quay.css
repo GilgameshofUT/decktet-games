@@ -1,0 +1,93 @@
+/* Oh Quay — two canals, two docks, one card sliding through a gap. */
+
+.oq-table { display: grid; gap: 10px; }
+
+.oq-info { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+.oq-scores { display: flex; gap: 14px; font-size: 15px; }
+.oq-scores span { color: var(--muted); }
+.oq-scores span.on { color: var(--text); }
+.oq-scores b { color: var(--gold); font-variant-numeric: tabular-nums; }
+.oq-note { color: var(--muted); font-size: 12.5px; }
+
+.oq-docks {
+  display: flex;
+  gap: clamp(10px, 3vw, 20px);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.oq-dock {
+  flex: 1 1 150px;
+  min-width: 0;
+  max-width: 230px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 6px;
+  transition: box-shadow 0.12s ease, background 0.12s ease;
+}
+.oq-dock.is-tappable {
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.55);
+  background: rgba(233, 196, 106, 0.07);
+}
+.oq-dock .pile, .oq-dock .oq-dockcard { margin: 0 auto; }
+.oq-dockcard {
+  position: relative;
+  width: calc(var(--card-w) * 0.82);
+}
+.oq-dockcard .card { width: 100%; }
+.oq-dockcount {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  background: rgba(10, 26, 20, 0.85);
+  color: var(--gold);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  font-variant-numeric: tabular-nums;
+}
+.oq-label {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* canals: smaller cards so a whole nine-card line fits a phone */
+.oq-canal { align-items: flex-start; }
+.oq-canal .card, .oq-canal .oq-gap {
+  --card-w: clamp(33px, 8.6vw, 52px);
+  width: var(--card-w);
+}
+.oq-canal .card.oq-small { --card-w: clamp(28px, 7.2vw, 42px); }
+.oq-canal .oq-front { transform: translateY(-4px); }
+
+/* insertion gaps */
+.oq-gap {
+  flex: 0 0 auto;
+  aspect-ratio: 750 / 1050;
+  border: 1px dashed rgba(233, 196, 106, 0.55);
+  border-radius: calc(var(--card-w) * 0.062);
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: background 0.12s ease, box-shadow 0.12s ease;
+}
+.oq-gap:active, .oq-gap:focus-visible {
+  background: rgba(233, 196, 106, 0.35);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+/* the card just drawn, waiting for a spot */
+.oq-pending {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px;
+}
+.oq-pending .card { --card-w: clamp(46px, 12vw, 66px); width: var(--card-w); }
+.oq-pending-note { color: var(--gold); font-size: 14px; }

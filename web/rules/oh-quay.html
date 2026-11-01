@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Oh Quay — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/oh-quay.html">Play Oh Quay ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-sea.webp" alt="the Sea" width="750" height="1050">
+  <h1>Oh Quay</h1>
+  <p class="lede">a fast-playing game of raft building</p>
+
+  <p><em>Oh Quay</em> can be played without any table space, with the players
+  holding all of the cards in their hands. So it's a game you can play while
+  standing in line, sitting in the back of a car, or with your feet dangling
+  off a pier.</p>
+
+  <p>Rules for the game were introduced in The Decktet Book.</p>
+
+  <h2>Setup</h2>
+  <p>Shuffle the deck and separate it into four equal stacks of nine cards.
+  Each player takes two of the stacks.</p>
+  <p>Without looking at the cards, turn one of the stacks widthwise and hold it
+  so that it faces away from you. This stack is a <em>dock</em>, and it will
+  serve as a draw pile during the game. Your opponent should be able to see the
+  top card in the dock.</p>
+  <p>Take the other stack, turn it upright, and spread the cards out so that you
+  can see them. This is your <em>canal</em>, and the cards represent barges of
+  cargo. You are not allowed to change the order of the cards in your canal.
+  During the game, you will have the chance to insert cards into the series and
+  take cards off from the front <strong>but</strong> you may not re-arrange the
+  cards.</p>
+  <p>It may take a little practice, but it is possible to hold the dock and the
+  canal together in one hand. (The wiki page shows a photograph of the grip;
+  that image is not bundled here — see the link below.)</p>
+
+  <h2>Game play</h2>
+  <p>Decide in some amicable way who will take the first turn. Players alternate
+  turns, until one player has no cards left in their canal.</p>
+  <p>On your turn you <strong>Add Cargo</strong> (draw a card and put it in your
+  canal) and then <strong>Launch a Raft</strong> (remove one or more cards from
+  the front of your canal). You must do these in order.</p>
+  <h3>Adding cargo:</h3>
+  <p>Draw the front card from one of the docks. Your choice is between a card
+  you can see (the one on the dock your opponent is holding) and a card you
+  can't see (the one on the dock that you are holding).</p>
+  <p>Put the card somewhere in your canal. You may put it anywhere in the
+  sequence: as the front card, the back card, or anywhere in between.</p>
+  <p>Although unlikely, it is possible that one of the two docks will run out
+  cards. If this happens, then you must draw from the remaining dock.</p>
+  <h3>Launching a raft:</h3>
+  <p>Remove either a single card or a raft of cards from the front of your
+  canal.</p>
+  <p>A <em>raft</em> is a group of cards that all share a single suit symbol and
+  are arranged in rank order, with the lowest card in front. This represents a
+  cluster of similar cargo that can be lashed together.</p>
+  <p>The cards in the raft must be in order, but they need not be consecutive.
+  The front card must be the low ranked card.</p>
+  <p>When you remove cards from the front of your canal, show them to your
+  opponent.</p>
+  <p>Then, if you took just one card, put it at the bottom of the dock that you
+  are holding. (The bottom is the side closest to you.)</p>
+  <p>If you took a raft, you and your opponent each take a card from the raft
+  and put it at the bottom of your respective docks. If the raft was three
+  cards or longer, this will leave some cards left over. Put these left over
+  cards in your score pile. You can keep your score pile behind your canal, with
+  the cards facing away from you. If this is too much to hold, you can keep your
+  score pile in your pocket.</p>
+  <p>If your canal is empty, then the game ends.</p>
+  <p><strong>Scoring:</strong> Players score one point for each card in their
+  score pile. The player with an empty canal scores one bonus point for each
+  raft remaining in their opponent's canal (single card rafts also count).</p>
+  <p>If you are playing another game, the loser of this game takes the first
+  turn in the next one. You can either play each game as a separate contest or
+  add up scores over a series of games.</p>
+
+  <h2>Strategy</h2>
+  <p>Without making rafts, you will never be able to empty your canal. But two
+  card rafts score no points. So you will often face the choice between
+  completing a two card raft with a card from the dock you can see and taking
+  the card you can't see in hopes of adding to a longer raft.</p>
+  <p>Each turn, the docks are replenished with single cards or parts of rafts.
+  If the first nine cards in the dock have been drawn, then the rest are cards
+  you've seen before.</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The deck:</strong> this app plays the basic 36-card deck, split
+  into the four stacks of nine as described.</p>
+  <p><strong>What is hidden:</strong> the wiki's only hidden information lives
+  in the docks, so the app treats the canals as public — you can look at your
+  opponent's canal, as you could at a real table (the end-game count of "rafts
+  remaining" assumes it). On your turn your own dock shows only a card back —
+  that is the card you hold facing away — while the top of your opponent's dock
+  is shown face up, exactly as the setup describes.</p>
+  <p><strong>Which raft card goes where:</strong> the rules say you and your
+  opponent "each take a card" from a launched raft without choosing which. The
+  app gives the front card of the raft to the bottom of the launcher's own dock,
+  the next card to the opponent's dock, and the rest (in order) to the
+  launcher's score pile. Since both dock cards go to the bottom and are seen
+  only after they reach the top, the choice cannot matter.</p>
+  <p><strong>Rafts remaining at the end:</strong> counted greedily from the
+  front of the canal — the longest same-suit ascending run, then the next from
+  what is left, and so on; any leftover single counts as one raft.</p>
+  <p><strong>Winning:</strong> the points above decide the game; an exact tie is
+  a draw. The loser of a game takes the first turn of the next one in this app
+  (after a draw, the other player starts).</p>
+  <p><strong>Pass and play:</strong> after each launch the screen is covered
+  with "Player N's turn" until the device is passed on, so each blind dock draw
+  stays secret.</p>
+
+  <h2>Credits</h2>
+  <p>Original design: P.D. Magnus and Cristyn Magnus. Rules first published in
+  The Decktet Book.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:oh-quay">Oh Quay page of the Decktet
+    wiki</a> (page revision 8, last edited 07 Jan 2025) so they can be read
+    offline, under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA
+    3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading:
+    <a href="http://www.boardgamegeek.com/boardgame/71054">Oh Quay at BGG</a> ·
+    <a href="http://decktet.wikidot.com/es-game:oh-quay">Spanish translation</a> ·
+    <a href="http://wiki.decktet.com/it-game:oh-quay">Italian translation</a> ·
+    <a href="http://wiki.decktet.com/cn-game:oh-quay">Chinese translation</a></p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

@@ -348,7 +348,7 @@
         "2 players",
         "~25 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "oh-quay",
@@ -362,7 +362,7 @@
         "2 players",
         "~15 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "ace-trump",
