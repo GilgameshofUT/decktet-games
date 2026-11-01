@@ -110,7 +110,7 @@
         "1 player",
         "melding"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "soliterrapin",
@@ -124,7 +124,7 @@
         "1 player",
         "set collection"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "advent-of-the-wyrms",

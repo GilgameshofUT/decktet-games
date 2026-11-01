@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Soliterrapin — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/soliterrapin.html">Play Soliterrapin ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-forest.webp" alt="the Forest" width="750" height="1050">
+  <h1>Soliterrapin</h1>
+  <p class="lede">a tableau-building solitaire game that uses the scoring rules
+  of <a href="https://wiki.decktet.com/game:terrapin">Terrapin</a></p>
+
+  <table>
+    <tr><th>Designed by</th><td>Mike Arlington</td></tr>
+    <tr><th>Players</th><td>1</td></tr>
+    <tr><th>Length</th><td>?</td></tr>
+    <tr><th>Extra material</th><td>None</td></tr>
+  </table>
+
+  <h2>Setup</h2>
+  <p>Soliterrapin uses only the basic Decktet, so you can put aside your pawns
+  and courts.</p>
+  <p>Begin the game, oddly enough, by shuffling the cards.</p>
+
+  <h2>Game play</h2>
+  <p>Once you're done, flip the top card from the Decktet and place it on your
+  table/floor/counter/what-have-you. Congratulations! You've just completed
+  your first turn of Soliterrapin!</p>
+  <p>For your second turn you will once again flip the top card of the
+  Decktet. You may place this card in any space adjacent to any other card
+  already in the tableau (which will currently be the only card on the table).
+  The card does NOT need to be played next to another card that shares a suit,
+  has the same number, or any other restriction. As long as it is adjacent to
+  another card in the tableau, you are good to go! The town that Soliterrapin
+  was created in has never heard of diagonals however, so those are right out.
+  Please stick to the cardinal directions.</p>
+  <p>Continue taking turns in this fashion until you have six cards in either
+  a straight row or column. Once this occurs, the playfield in that direction
+  has been set and may not be expanded any further. If you're familiar with
+  <a href="https://wiki.decktet.com/game:thricewise">Thricewise</a>, you
+  should know how this works. If not, just know that the game will be
+  completely contained in a 6x6 grid when you are complete. The first card you
+  played may be the center, a corner, on a side, or anywhere else in this
+  grid.</p>
+  <p>Once you have all the cards in the Decktet on your playing surface, it is
+  time to score the game. Oh, wait. Did you make any rows or columns that are
+  Turtle Butt? Turtle Butt is a row or column that has all six Decktet suits
+  represented. If this happens, I'm afraid that row or column is worth ZERO
+  points. It's harsh, I know, but it was probably your fault so don't blame
+  me.</p>
+  <p>So with the exception of any Turtle Butt rows or columns, you might be
+  asking yourself, how do I score all these other columns? Well, scoring in
+  Soliterrapin works just like scoring in Terrapin, if you consider each row
+  and column to be its own Terrapin hand:</p>
+  <ul>
+    <li><strong>Pairs are worth 5 points.</strong> If you have a pair of Aces
+    or Crowns, each additional Ace (if you have a pair of Aces) or Crown (if
+    you have a pair of Crowns) in the row is worth an additional 5 points.
+    This means that three-of-a-kind is worth 10 points, four-of-a-kind is 15
+    points, five-of-a-kind is 20 points, and six-of-a-kind is Turtle Butt.
+    Also, any three of a kind that is not Aces or Crowns will result in Turtle
+    Butt, as all 6 suits will have been represented. Pairs (and 3 or more of a
+    kind for that matter), do not need to be placed next to each other. As
+    long as the pair exists anywhere in the row or column, it counts.</li>
+    <li><strong>Straights are worth 2 points for every card after the
+    first.</strong> This means a two card straight is 2 points, and a 6 card
+    straight is 10 points. It is important to note that the cards to form a
+    straight may be played in ANY ORDER. Additionally, only the longest
+    straight in a row or column gets scored. In case of a tie, score either
+    one. For example, playing your cards like such in a row: 4-6-5-3-8-9 will
+    be worth 6 points. That is for the four card straight (3-4-5-6). There is
+    a two card straight (8-9) but it is not worth anything because of the
+    longer straight that exists in the hand. In regards to straight scoring,
+    Aces are considered 1's and Crowns are considered 10's.</li>
+  </ul>
+  <p>And that is all there is to Soliterrapin!</p>
+
+  <h2>The extended deck</h2>
+  <p>No pawns or courts are used. There is also no Excuse.</p>
+
+  <h2>Variants</h2>
+  <ul>
+    <li>A game using only the first 25 cards in a 5x5 grid, but the devisor
+    feels it ends up being too easy.</li>
+    <li>The last three cards of the deck are all seen at the same time and
+    placed in any order. While this can probably stop Turtle Butt from
+    happening most of the time, it seems like a weird fringe case in the
+    rules.</li>
+    <li>A previous version required that straights be played in order
+    (ascending or descending).</li>
+    <li>In a previous version, Turtle Butt was a complete loss, not merely a
+    loss in a column.</li>
+  </ul>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The grid is drawn up front.</strong> The wiki has you place cards
+  freely on a table that ends up "completely contained in a 6x6 grid", with
+  the first card landing "the center, a corner, on a side, or anywhere else in
+  this grid". This app draws that 6x6 grid and lets you put the first card in
+  any of its 36 squares; every later card must go on a free square that
+  touches a placed card straight up, down, left or right — never diagonal.
+  A row or column that holds six cards is sealed simply by being full.</p>
+  <p><strong>A card counts for each of its suits</strong> when Turtle Butt is
+  decided, since numbered cards bear two suits each. That also makes the
+  wiki's remark automatic: the three cards of any rank 2–9 split the six
+  suits between them, so any three-of-a-kind of a numbered rank is a Turtle
+  Butt line.</p>
+  <p><strong>Pairs score 5 × (count − 1) for each rank</strong>, which
+  reproduces every figure the wiki gives (pair 5, three-of-a-kind 10,
+  four-of-a-kind 15, five-of-a-kind 20); different ranks pair separately.</p>
+  <p><strong>The straight is the longest run of consecutive ranks present in
+  the line</strong> (Aces 1, Crowns 10, no wrap). Repeated ranks never extend
+  it, and only the longest run scores — a tie is worth the same either way.
+  The app also scores each card in both its row and its column, as "each row
+  and column … its own Terrapin hand" implies.</p>
+  <p><strong>The score panel is live.</strong> Incomplete lines are scored as
+  they build, so a preview total can drop when a line fills in with its sixth
+  card and turns into Turtle Butt. Tap any chip to see how that row or column
+  scores.</p>
+
+  <h2>Credits</h2>
+  <p>Soliterrapin was devised by Mike Arlington for the
+  <a href="http://boardgamegeek.com/thread/798184/2012-solitaire-print-and-play-contest">2012
+  Solitaire PnP Contest</a> at BoardGameGeek. These rules were posted by Mike
+  to BGG and transcribed to the Decktet wiki with permission, with some minor
+  edits to fit the wiki format.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:soliterrapin">Soliterrapin page of
+    the Decktet wiki</a> (page revision 1, 13 February 2018) so they can be
+    read offline, under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA
+    3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading:
+    <a href="https://boardgamegeek.com/thread/821393/wip-soliterrapin-2012-solitaire-print-and-play-con">Soliterrapin
+    at BoardGameGeek</a>.</p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

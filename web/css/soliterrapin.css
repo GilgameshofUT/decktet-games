@@ -1,0 +1,127 @@
+/* Soliterrapin — the 6x6 tableau and the Terrapin score chips. */
+
+/* ---- the card to place ---- */
+
+.si-current {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin: 2px 0 10px;
+}
+.si-current .card { --card-w: clamp(54px, 16vw, 92px); }
+.si-current-label {
+  color: var(--muted);
+  font-size: 13.5px;
+  max-width: 12rem;
+  line-height: 1.4;
+}
+
+/* ---- the grid ---- */
+
+.si-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.si-cell {
+  position: relative;
+  aspect-ratio: 750 / 1050;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+}
+.si-cell .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.si-cell .card img { height: 100%; object-fit: contain; }
+
+.si-cell.is-empty {
+  background: rgba(0, 0, 0, 0.12);
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+.si-cell.is-legal {
+  border: 1.5px solid rgba(233, 196, 106, 0.85);
+  background: rgba(233, 196, 106, 0.1);
+  cursor: pointer;
+  animation: si-pulse 1.6s ease-in-out infinite;
+}
+.si-cell.is-legal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(233, 196, 106, 0.85) 0 2.5px, transparent 3px);
+}
+.si-cell.is-legal:active { transform: scale(0.96); }
+
+@keyframes si-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(233, 196, 106, 0.35); }
+  50% { box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .si-cell.is-legal { animation: none; }
+}
+
+/* ---- score chips ---- */
+
+.si-chips {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+}
+.si-chips-label {
+  flex: 0 0 100%;
+  color: var(--muted);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 2px;
+}
+.si-chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 9px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.si-chip b { color: var(--muted); font-weight: 600; }
+.si-chip i { font-style: normal; color: var(--gold); font-variant-numeric: tabular-nums; }
+.si-chip.is-tb i { color: var(--lose); }
+.si-chip.is-empty { opacity: 0.45; }
+.si-chip:active { transform: translateY(1px); }
+
+/* ---- hint + end dialog list ---- */
+
+.si-hint {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 12px 4px 4px;
+  line-height: 1.45;
+}
+
+.si-endlist {
+  margin: 0;
+  padding-left: 18px;
+  max-height: 40vh;
+  overflow-y: auto;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}

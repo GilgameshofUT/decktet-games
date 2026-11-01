@@ -1,0 +1,101 @@
+/* Head Solitaire — the piles you hold, the archive and the hand. */
+
+:root { --hs-card: clamp(40px, 13vw, 84px); }
+
+/* ---- draw + discard + pass note ---- */
+
+.hs-piles {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.hs-piles .pile { --card-w: clamp(46px, 13vw, 76px); }
+
+.hs-discard {
+  position: relative;
+  width: clamp(46px, 13vw, 76px);
+  text-align: center;
+}
+.hs-discard .card { --card-w: clamp(46px, 13vw, 76px); width: 100%; }
+.hs-discard small,
+.hs-discard.is-empty small {
+  display: block;
+  color: var(--muted);
+  font-size: 11.5px;
+  margin-top: 3px;
+}
+.hs-discard.is-empty {
+  width: clamp(46px, 13vw, 76px);
+  aspect-ratio: 750 / 1050;
+  border-radius: calc(var(--card-w) * 0.062);
+  background: rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 18px;
+}
+.hs-discard.is-empty small { margin: 0; align-self: end; }
+
+.hs-pass {
+  flex: 1 1 12rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  align-self: center;
+  line-height: 1.4;
+}
+
+/* ---- archive ---- */
+
+.hs-archive {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 2px;
+}
+.hs-meld {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.hs-meld .card { --card-w: 34px; }
+.hs-meld-label {
+  flex: 0 0 100%;
+  order: -1;
+  color: var(--gold);
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+}
+
+/* ---- the hand ---- */
+
+.hs-hand {
+  --card-w: var(--hs-card);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px 2px 8px;
+}
+.hs-hand .card { width: var(--card-w); }
+.hs-hand .card.is-selected { transform: translateY(-6px); }
+
+/* ---- actions + hint ---- */
+
+.hs-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.hs-actions .btn { flex: 1 1 auto; }
+
+.hs-hint {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 12px 4px 4px;
+  line-height: 1.45;
+}

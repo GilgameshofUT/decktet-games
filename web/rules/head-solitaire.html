@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Head Solitaire — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/head-solitaire.html">Play Head Solitaire ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-savage.webp" alt="the Savage" width="750" height="1050">
+  <h1>Head Solitaire</h1>
+  <p class="lede">a Decktet solitaire game that does not require a playing surface</p>
+
+  <table>
+    <tr><th>Designed by</th><td>David L. Van Slyke</td></tr>
+    <tr><th>Players</th><td>1</td></tr>
+    <tr><th>Length</th><td>Short</td></tr>
+    <tr><th>Extra material</th><td>None</td></tr>
+  </table>
+
+  <h2>Setup</h2>
+  <p>Shuffle a basic (not extended) Decktet and hold it in one hand face-down as
+  a draw pile.</p>
+  <p><em>Note: You will soon be holding four piles, one upon another, in one
+  hand. On top is a face-up hand of six cards. Behind it is the draw pile.
+  Behind that, face-up and rotated ninety degrees, is the archive of melds.
+  Behind that is the discard pile.</em></p>
+
+  <h2>Game play</h2>
+  <h3>Definition</h3>
+  <p>A <em>meld</em> is a set of cards fulfilling one of the following
+  conditions:</p>
+  <ul>
+    <li>contains exactly one instance of each of the six suits (a suit-meld)</li>
+    <li>a set of three or more cards of the same rank (a kind-meld)</li>
+    <li>a set of three or more cards of consecutive ranks that all share a
+    single suit (a run-meld)</li>
+  </ul>
+  <p>Note that Aces and Crowns are not considered consecutive: the counting
+  does not "wrap around".</p>
+
+  <h3>Part One</h3>
+  <p>Turn over six cards and hold them face-up on top as your hand. If this
+  group of six cards contains a meld, place the meld face-up and rotated
+  ninety degrees directly behind the draw pile; then draw more cards to refill
+  your hand to six cards. If the six cards contain no melds then re-order them
+  as you desire and discard them face-up at the back of all the cards you are
+  holding; then draw six more cards as your new hand.</p>
+
+  <h3>Interlude</h3>
+  <p>After exhausting the initial draw pile, the discard pile becomes the new
+  draw pile. It stays face-up. Move it from behind the archive of melds to in
+  front of the archive of melds. If you have a partial hand of cards then your
+  hand is refilled to six cards from the top of this new draw pile. If you had
+  no cards in your hand at this time you have the option of immediately
+  discarding the top card of the new draw pile before drawing a hand of six
+  cards.</p>
+
+  <h3>Part Two</h3>
+  <p>Go through the second draw pile as before but do not worry about sorting
+  the cards you discard.</p>
+  <p>The game is over after you go through the second discard pile. Count the
+  number of cards not in melds (in your third discard pile). This is your
+  score: the lower the better. Keep track of your lowest score for the week.</p>
+
+  <h2>The Extended Deck</h2>
+  <p>If the extended Decktet is used: The Excuse counts as any single suit or
+  rank. Pawns and Courts have three suits but no rank.</p>
+
+  <h2>Variants</h2>
+  <p>The wiki lists no variants for Head Solitaire.</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>A card counts for each of its suits.</strong> Most Decktet cards
+  bear two suits, so the wiki's meld definitions are read with a card
+  "counting as" every suit it bears: a suit-meld's cards must bear the six
+  suits <em>exactly once between them</em> — the six Aces qualify, and so do
+  three dual-suit cards whose suits are disjoint (say the Desert, the Journey
+  and the Market). A run's cards must each bear one single shared suit, so the
+  A, 2 and 3 of Moons is a run of Ace-of-Moons, the Author (Moons and Crowns)
+  and the Journey (Moons and Waves).</p>
+  <p><strong>A numbered three-of-a-kind is both a suit-meld and a kind-meld.</strong>
+  The three cards of any rank 2–9 split the six suits between them, so "three
+  7s" fulfils the suit-meld and the kind-meld conditions at once. The app
+  accepts it either way and labels it "Suit + kind meld".</p>
+  <p><strong>One meld per refill.</strong> The wiki words the turn in the
+  singular — "place the meld … then draw more cards to refill your hand to six
+  cards" — so the app lets you place one meld at a time and refills after each
+  one. A hand that contains a meld must meld it; the discard is only offered
+  when no meld is present, which is how the two branches of Part One are
+  written.</p>
+  <p><strong>The new draw pile comes out oldest-first.</strong> You discard
+  "at the back of all the cards you are holding", so the front of the discard
+  pile — the end you draw from once it moves in front of the archive — holds
+  the cards you discarded first. The app therefore feeds the second pass from
+  your earliest discards forward, which makes "re-order them as you desire" a
+  way to set up the order in which you will see those cards again. Tap one
+  hand card and then another to swap them; a Hint button will point at a meld
+  if you cannot spot one.</p>
+  <p><strong>The score</strong> is the pass-two discard pile: every card you
+  saw in the second pass that did not end up in the archive. The game ends
+  when the second draw pile is spent and your hand is empty. Melds are shown
+  upright rather than rotated ninety degrees, for screen readability.</p>
+
+  <h2>Credits</h2>
+  <p>Original design: David L. Van Slyke. A "head solitaire" is a kind of
+  solitaire that requires no playing surface. Many were popular during the era
+  of British sailing merchant ships.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:head-solitaire">Head Solitaire page
+    of the Decktet wiki</a> (page revision 6, 24 March 2021) so they can be
+    read offline, under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA
+    3.0</a> licence. Wiki rules text by P.D. Magnus; cards by P.D. Magnus, same
+    licence.</p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>
