@@ -1,35 +1,5 @@
 import { loadDeck, url, registerSW, records, loadGame } from './decktet.js';
 
-const GAMES = [
-  {
-    id: 'adaman',
-    title: 'Adaman',
-    href: 'games/adaman.html',
-    rules: 'rules/adaman.html',
-    thumb: 'cards/web/the-author.webp',
-    blurb: 'Buy, trick or eliminate everyone who might stand between you and the throne.',
-    meta: ['1 player', '~5 minutes', 'solitaire'],
-  },
-  {
-    id: 'jacynth',
-    title: 'Jacynth',
-    href: 'games/jacynth.html',
-    rules: 'rules/jacynth.html',
-    thumb: 'cards/web/the-window.webp',
-    blurb: 'Lay out a city of cards and claim as many districts as you can control.',
-    meta: ['1 player', 'solitaire variant', 'territory'],
-  },
-  {
-    id: 'gongor-whist',
-    title: 'Gongor Whist',
-    href: 'games/gongor-whist.html',
-    rules: 'rules/gongor-whist.html',
-    thumb: 'cards/web/the-huntress.webp',
-    blurb: 'A trick-taking game against a dummy hand, with a trump you can change at will.',
-    meta: ['1 player', 'quick', 'trick-taking'],
-  },
-];
-
 function recordLine(id) {
   const saved = loadGame(id);
   const inProgress = !!saved && !(saved.state?.over || saved.over);
@@ -47,16 +17,23 @@ function recordLine(id) {
   return bits.join('');
 }
 
-async function main() {
-  await loadDeck();
-
-  const list = document.getElementById('gamelist');
-  list.textContent = '';
-  for (const g of GAMES) {
-    const a = document.createElement('a');
-    a.className = 'gamecard';
-    a.href = url(g.href);
-    a.innerHTML = `
+function gameCard(g) {
+  if (g.planned) {
+    return `
+      <div class="gamecard is-planned" aria-disabled="true">
+        <img class="thumb" src="${url(g.thumb)}" alt="" width="750" height="1050" loading="lazy" decoding="async">
+        <div style="flex:1;min-width:0">
+          <h2>${g.title}</h2>
+          <p>${g.blurb}</p>
+          <div class="meta">
+            ${g.meta.map((m) => `<span class="tag">${m}</span>`).join('')}
+            <span class="tag plain">coming soon</span>
+          </div>
+        </div>
+      </div>`;
+  }
+  return `
+    <a class="gamecard" href="${url(g.href)}">
       <img class="thumb" src="${url(g.thumb)}" alt="" width="750" height="1050" loading="lazy" decoding="async">
       <div style="flex:1;min-width:0">
         <h2>${g.title}</h2>
@@ -66,13 +43,37 @@ async function main() {
           ${recordLine(g.id)}
         </div>
       </div>
-      <div style="color:var(--gold);font-size:20px" aria-hidden="true">›</div>`;
-    list.appendChild(a);
+      <div style="color:var(--gold);font-size:20px" aria-hidden="true">›</div>
+    </a>`;
+}
+
+async function main() {
+  await loadDeck();
+
+  const res = await fetch(url('games.json'), { cache: 'no-cache' });
+  if (!res.ok) throw new Error('cannot read games.json');
+  const catalogue = await res.json();
+
+  const list = document.getElementById('gamelist');
+  list.textContent = '';
+
+  for (const section of catalogue.sections) {
+    const games = catalogue.games.filter((g) => g.section === section.id);
+    if (!games.length) continue;
+
+    const h = document.createElement('h2');
+    h.className = 'sectionhead';
+    h.innerHTML = `${section.title}<span class="sub">${section.blurb}</span>`;
+    list.appendChild(h);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'gamelist';
+    wrap.innerHTML = games.map(gameCard).join('');
+    list.appendChild(wrap);
   }
 
   registerSW();
 
-  // install prompt
   let deferred = null;
   const btn = document.getElementById('install');
   window.addEventListener('beforeinstallprompt', (e) => {

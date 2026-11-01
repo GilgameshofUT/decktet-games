@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Reference</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="css/app.css">
+<style>
+  .suitgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .suitsheet {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 10px;
+  }
+  .suitsheet img { width: 34px; height: auto; }
+  .suitsheet .n { font-weight: 600; }
+  .suitsheet .c { color: var(--muted); font-size: 12.5px; }
+  .chartgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .chartgrid a { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+  .chartgrid img { width: 100%; height: auto; display: block; }
+  .dl { display: grid; gap: 8px; }
+  .dl a {
+    display: flex; justify-content: space-between; gap: 10px; align-items: center;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 12px 14px; text-decoration: none; color: var(--text);
+  }
+  .dl a span.k { color: var(--muted); font-size: 13px; }
+  .bigshot { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  table.ranks { width: 100%; border-collapse: collapse; font-size: 15px; }
+  table.ranks td, table.ranks th { border: 1px solid var(--line); padding: 7px 10px; text-align: left; }
+  .rankglyph { font-family: "Fortune Widgets", monospace; color: var(--gold); }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="iconbtn" href="index.html">‹ Home</a>
+  <h1>Reference<span class="sub">the deck, its charts and its documents</span></h1>
+  <a class="iconbtn" href="gallery.html">Cards ›</a>
+</header>
+
+<main class="rules">
+  <h2 style="border-top:0;padding-top:0">The deck</h2>
+  <p id="deckSummary" class="muted">Loading…</p>
+  <div class="suitgrid" id="suitgrid"></div>
+
+  <h2>Ranks</h2>
+  <table class="ranks">
+    <tr><th>Symbol</th><th>Rank</th><th>Cards in the basic deck</th></tr>
+    <tr><td class="rankglyph">A</td><td>Ace = 1</td><td>6 (one per suit)</td></tr>
+    <tr><td>2 – 9</td><td>number ranks</td><td>24 (three per rank, two suits each)</td></tr>
+    <tr><td class="rankglyph">*</td><td>Crown = 10</td><td>6 (one per suit)</td></tr>
+    <tr><td class="rankglyph">#</td><td>Pawn</td><td>extended deck only — 4, three suits each</td></tr>
+    <tr><td class="rankglyph">%</td><td>Court</td><td>extended deck only — 4, three suits each</td></tr>
+    <tr><td>—</td><td>the Excuse</td><td>extended deck only — no rank, no suit</td></tr>
+  </table>
+
+  <h2>Charts from The Decktet Book</h2>
+  <p>Nine pages of reference tables — suits, ranks, suit combinations per card,
+  extended deck, marks and the full card list. Tap one to open it full size.</p>
+  <div class="chartgrid" id="chartgrid"></div>
+
+  <h2>Reference cards</h2>
+  <p>The insert that ships with the double-sized Decktet: suits, ranks and marks
+  on a single sheet.</p>
+  <img class="bigshot" src="reference/reference-cards-1.png"
+       alt="Decktet reference cards: suits, ranks and marks" loading="lazy" width="1430" height="1100">
+
+  <h2>Documents</h2>
+  <div class="dl">
+    <a href="reference/decktet-rules.pdf"><strong>The Decktet rules</strong><span class="k">PDF · 6 pages</span></a>
+    <a href="reference/decktetbook-charts.pdf"><strong>Charts and tables from the book</strong><span class="k">PDF · 9 pages</span></a>
+    <a href="reference/capital-info-cards.pdf"><strong>Reference cards</strong><span class="k">PDF · 1 page</span></a>
+  </div>
+
+  <div class="credit">
+    <p>All Decktet material — cards, charts, reference cards, rules and the
+    FORTUNE LETTERS / FORTUNE WIDGETS fonts — is by
+    <a href="https://wiki.decktet.com/designer:p-d-magnus">P.D. Magnus</a> and the
+    Decktet community, used under
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.
+    Charts © 2010 P.D. Magnus, from <em>The Decktet Book</em>.</p>
+  </div>
+</main>
+
+<script type="module">
+  import * as D from './js/decktet.js';
+
+  const data = await D.loadDeck();
+
+  const suits = [
+    ['moons', 'Moons', 'A / a'], ['suns', 'Suns', 'B / b'],
+    ['waves', 'Waves', 'C / c'], ['leaves', 'Leaves', 'D / d'],
+    ['daemons', 'Daemons (Wyrms)', 'E / e'], ['crowns', 'Crowns (Knots)', 'F / f'],
+  ];
+  const bySuit = {};
+  for (const c of data.cards) {
+    for (const s of c.suits) bySuit[s] = (bySuit[s] || 0) + 1;
+  }
+
+  document.getElementById('deckSummary').innerHTML =
+    `The basic deck has <strong>36</strong> cards — 6 aces, 24 number cards and 6 crowns. ` +
+    `The extended deck adds <strong>9</strong> more: the Excuse, 4 Pawns and 4 Courts. ` +
+    `Six suits, ten ranks, and most cards belong to two suits at once.`;
+
+  const grid = document.getElementById('suitgrid');
+  for (const [id, name, glyph] of suits) {
+    const row = document.createElement('div');
+    row.className = 'suitsheet';
+    row.innerHTML = `<img src="${D.url(`cards/icons/suits/${id}.png`)}" alt="${name}" width="115" height="114">
+      <div><div class="n">${name}</div><div class="c">${bySuit[id] || 0} cards · widget ${glyph}</div></div>`;
+    grid.appendChild(row);
+  }
+
+  const charts = document.getElementById('chartgrid');
+  for (let i = 1; i <= 9; i++) {
+    const a = document.createElement('a');
+    a.href = `reference/charts/chart-${i}.png`;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `<img src="reference/charts/chart-${i}.png" alt="Chart page ${i}" loading="lazy">`;
+    charts.appendChild(a);
+  }
+
+  D.registerSW();
+</script>
+</body>
+</html>

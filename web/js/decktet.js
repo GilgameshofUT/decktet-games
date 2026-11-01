@@ -55,9 +55,14 @@ export function rankLabel(card) {
 
 /* --------------------------------------------------------------- card DOM */
 
-export const cardUrl = (id, kind = 'web') => (kind === 'png'
-  ? url(`cards/${id}.png`)
-  : url(`cards/${kind}/${id}.webp`));
+/** Strip a two-deck instance suffix: "the-author#2" → "the-author". */
+export const baseId = (id) => String(id).split('#')[0];
+
+/** Strip a two-deck instance suffix: "the-author#2" → "the-author". */
+export const cardUrl = (id, kind = 'web') => {
+  const b = baseId(id);
+  return kind === 'png' ? url(`cards/${b}.png`) : url(`cards/${kind}/${b}.webp`);
+};
 
 /**
  * Build a card element.
@@ -121,7 +126,10 @@ export function renderCards(container, items, opts = {}) {
   const data = DATA;
   container.textContent = '';
   for (const item of items) {
-    const card = typeof item === 'string' ? data.byId[item] : item;
+    // a two-deck game passes instance ids like "the-author#2"
+    const card = typeof item === 'string'
+      ? (data.byId[baseId(item)] ? { ...data.byId[baseId(item)], id: item } : null)
+      : item;
     if (!card) continue;
     const o = typeof opts === 'function' ? opts(item, card) : opts;
     container.appendChild(cardEl(card, o));

@@ -79,15 +79,31 @@ if (shellBlock) {
   check(entries.length >= 15, `SHELL has only ${entries.length} entries`);
 }
 
-/* ---- every game has a page, a rules page, a script and a core ---- */
-for (const g of ['adaman', 'jacynth', 'gongor-whist']) {
+/* ---- the games catalogue: every live game has its files, every thumb exists */
+const cat = JSON.parse(readFileSync(path.join(WEB, 'games.json'), 'utf8'));
+check(Array.isArray(cat.games) && cat.games.length >= 3, 'games.json has no games');
+check(new Set(cat.games.map((g) => g.id)).size === cat.games.length, 'duplicate game ids');
+check(new Set(cat.games.map((g) => g.href)).size === cat.games.length, 'duplicate game hrefs');
+const sections = new Set((cat.sections || []).map((s) => s.id));
+
+let live = 0;
+for (const g of cat.games) {
+  check(sections.has(g.section), `${g.id}: unknown section ${g.section}`);
+  check(existsSync(path.join(WEB, g.thumb)), `${g.id}: thumb ${g.thumb} missing`);
+  for (const field of ['title', 'blurb', 'rules', 'href']) {
+    check(!!g[field], `${g.id}: missing ${field}`);
+  }
+  if (g.planned) continue;
+  live++;
   for (const rel of [
-    `games/${g}.html`, `rules/${g}.html`,
-    `js/games/${g}.js`, `js/games/${g}-core.js`,
+    g.href, g.rules,
+    `js/games/${g.id}.js`,
+    `js/games/${g.id}-core.js`,
   ]) {
-    check(existsSync(path.join(WEB, rel)), `${rel} missing`);
+    check(existsSync(path.join(WEB, rel)), `${g.id}: ${rel} missing`);
   }
 }
+check(live >= 3, `only ${live} live games`);
 
 console.log(failures === 0
   ? `assets: ${pages.length} pages, ${manifest.cards.length} cards, all checks passed`

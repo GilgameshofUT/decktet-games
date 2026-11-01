@@ -1,38 +1,52 @@
-/* Decktet service worker: the shell loads from cache, cards are cached as they
-   are used, so the games keep working offline (and on a flaky LAN). */
+/* Decktet service worker: the shell loads from cache, every game's page and
+   scripts are precached from games.json, and card images are cached as they
+   are used — so the games keep working offline (and on a flaky LAN). */
 
-const VERSION = 'decktet-v1';
+const VERSION = 'decktet-v2';
 const SHELL = [
   './',
   'index.html',
   'gallery.html',
+  'reference.html',
   'css/app.css',
   'js/decktet.js',
+  'js/gamikit.js',
   'js/app.js',
+  'games.json',
   'cards/manifest.json',
   'manifest.webmanifest',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
-  'games/adaman.html',
-  'games/jacynth.html',
-  'games/gongor-whist.html',
-  'js/games/adaman.js',
-  'js/games/adaman-core.js',
-  'js/games/jacynth.js',
-  'js/games/jacynth-core.js',
-  'js/games/gongor-whist.js',
-  'js/games/gongor-whist-core.js',
-  'css/jacynth.css',
-  'css/gongor-whist.css',
-  'rules/adaman.html',
-  'rules/jacynth.html',
-  'rules/gongor-whist.html',
+  'fonts/fortune-letters.ttf',
+  'fonts/fortune_widgets.ttf',
 ];
+
+/** Every game page, its rules, its scripts and its stylesheet. */
+async function precacheGames(cache) {
+  let games = [];
+  try {
+    const res = await fetch('games.json');
+    games = (await res.json()).games || [];
+  } catch {
+    return;
+  }
+  await Promise.all(games.flatMap((g) => [
+    g.href, g.rules,
+    `js/games/${g.id}.js`,
+    `js/games/${g.id}-core.js`,
+    `css/${g.id}.css`,
+  ].map((u) => cache.add(u).catch(() => {}))));
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(VERSION).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting())
+    caches.open(VERSION)
+      .then(async (cache) => {
+        await cache.addAll(SHELL);
+        await precacheGames(cache);
+      })
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -50,8 +64,8 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // navigations: network first, fall back to the cached page (the game pages
-  // are precached, so deep links keep working offline), then the shell
+  // navigations: network first, fall back to the cached page (every game page
+  // is precached, so deep links keep working offline), then the shell
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
@@ -68,7 +82,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // images and data: cache first, refresh in the background
-  const isAsset = /\.(webp|png|jpg|svg|json|css|js|webmanifest)$/.test(url.pathname);
+  const isAsset = /\.(webp|png|jpg|svg|json|css|js|webmanifest|ttf)$/.test(url.pathname);
   if (!isAsset) return;
   event.respondWith(
     caches.match(req).then((hit) => {

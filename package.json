@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Printable Decktet cards cut into game assets, plus a mobile-first PWA playing Adaman, Jacynth and Gongor Whist.",
   "scripts": {
-    "test": "node test/assets.test.mjs && node test/adaman.test.mjs && node test/jacynth.test.mjs && node test/gongor-whist.test.mjs",
+    "test": "for f in test/*.test.mjs; do echo \"▶ $f\"; node \"$f\" || exit 1; done",
     "serve": "python3 -m http.server 8090 --directory web --bind 0.0.0.0",
     "assets": "python3 scripts/extract_cards.py && python3 scripts/analyze_cards.py && python3 scripts/build_manifest.py && python3 scripts/build_icons.py"
   }

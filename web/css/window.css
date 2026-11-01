@@ -1,0 +1,76 @@
+/* Window — the 3x3 grid of piles. */
+
+.wgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 2.4vw, 14px);
+  max-width: 430px;
+  margin: 4px auto 0;
+}
+
+.wstack {
+  position: relative;
+  aspect-ratio: 750 / 1050;
+  border-radius: calc(var(--card-w) * 0.062);
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.wstack .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.wstack .card img { height: 100%; object-fit: contain; }
+
+.wstack.is-empty {
+  background: rgba(0, 0, 0, 0.16);
+  border-style: solid;
+}
+.wstack.is-empty::after {
+  content: "empty";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wstack.is-selected {
+  transform: translateY(-6px);
+  box-shadow: 0 0 0 3px var(--gold), 0 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.wstack.is-legal {
+  box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.8), var(--card-shadow);
+}
+.wstack.is-dim { filter: brightness(0.66) saturate(0.75); }
+.wstack:active { transform: translateY(1px); }
+
+.downbadge {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  z-index: 3;
+  background: rgba(8, 24, 18, 0.9);
+  color: var(--gold);
+  border: 1px solid rgba(233, 196, 106, 0.4);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.whint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 14px 6px 4px;
+}

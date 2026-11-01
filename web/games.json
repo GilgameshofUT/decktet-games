@@ -1,0 +1,535 @@
+{
+  "sections": [
+    {
+      "id": "solo",
+      "title": "Solitaire",
+      "blurb": "One player against the deck."
+    },
+    {
+      "id": "two",
+      "title": "Two players \u00b7 pass and play",
+      "blurb": "From The Decktet Book \u2014 take turns on one device."
+    }
+  ],
+  "games": [
+    {
+      "id": "adaman",
+      "title": "Adaman",
+      "section": "solo",
+      "href": "games/adaman.html",
+      "rules": "rules/adaman.html",
+      "thumb": "cards/web/the-author.webp",
+      "blurb": "Buy, trick or eliminate everyone who might stand between you and the throne.",
+      "meta": [
+        "1 player",
+        "~5 minutes"
+      ],
+      "planned": false
+    },
+    {
+      "id": "jacynth",
+      "title": "Jacynth",
+      "section": "solo",
+      "href": "games/jacynth.html",
+      "rules": "rules/jacynth.html",
+      "thumb": "cards/web/the-window.webp",
+      "blurb": "Lay out a city of cards and claim as many districts as you can control.",
+      "meta": [
+        "1 player",
+        "solitaire variant",
+        "territory"
+      ],
+      "planned": false
+    },
+    {
+      "id": "gongor-whist",
+      "title": "Gongor Whist",
+      "section": "solo",
+      "href": "games/gongor-whist.html",
+      "rules": "rules/gongor-whist.html",
+      "thumb": "cards/web/the-huntress.webp",
+      "blurb": "A trick-taking game against a dummy hand, with a trump you can change at will.",
+      "meta": [
+        "1 player",
+        "quick",
+        "trick-taking"
+      ],
+      "planned": false
+    },
+    {
+      "id": "ivory-tower",
+      "title": "Ivory Tower",
+      "section": "solo",
+      "href": "games/ivory-tower.html",
+      "rules": "rules/ivory-tower.html",
+      "thumb": "cards/web/the-castle.webp",
+      "blurb": "Build one suit into a tower that only ever climbs.",
+      "meta": [
+        "1 player",
+        "easy"
+      ],
+      "planned": true
+    },
+    {
+      "id": "window",
+      "title": "Window",
+      "section": "solo",
+      "href": "games/window.html",
+      "rules": "rules/window.html",
+      "thumb": "cards/web/the-window.webp",
+      "blurb": "Merge stacks in a 3\u00d73 grid onto neighbours of rank \u00b11.",
+      "meta": [
+        "1 player",
+        "small puzzle"
+      ],
+      "planned": false
+    },
+    {
+      "id": "three-towers",
+      "title": "Three Towers",
+      "section": "solo",
+      "href": "games/three-towers.html",
+      "rules": "rules/three-towers.html",
+      "thumb": "cards/web/ace-of-crowns.webp",
+      "blurb": "Three towers, descending runs, and only one legal home for each card.",
+      "meta": [
+        "1 player",
+        "hanoi-like"
+      ],
+      "planned": true
+    },
+    {
+      "id": "head-solitaire",
+      "title": "Head Solitaire",
+      "section": "solo",
+      "href": "games/head-solitaire.html",
+      "rules": "rules/head-solitaire.html",
+      "thumb": "cards/web/the-savage.webp",
+      "blurb": "Meld sets, suits and runs to empty your hand.",
+      "meta": [
+        "1 player",
+        "melding"
+      ],
+      "planned": true
+    },
+    {
+      "id": "soliterrapin",
+      "title": "Soliterrapin",
+      "section": "solo",
+      "href": "games/soliterrapin.html",
+      "rules": "rules/soliterrapin.html",
+      "thumb": "cards/web/the-forest.webp",
+      "blurb": "Place cards freely, then score them with Terrapin's hands.",
+      "meta": [
+        "1 player",
+        "set collection"
+      ],
+      "planned": true
+    },
+    {
+      "id": "advent-of-the-wyrms",
+      "title": "Advent of the Wyrms",
+      "section": "solo",
+      "href": "games/advent-of-the-wyrms.html",
+      "rules": "rules/advent-of-the-wyrms.html",
+      "thumb": "cards/web/the-calamity.webp",
+      "blurb": "Build four ascending incantations before the wyrms arrive.",
+      "meta": [
+        "1 player",
+        "extended deck"
+      ],
+      "planned": true
+    },
+    {
+      "id": "wyvern-pass-not",
+      "title": "Wyvern Pass Not",
+      "section": "solo",
+      "href": "games/wyvern-pass-not.html",
+      "rules": "rules/wyvern-pass-not.html",
+      "thumb": "cards/web/the-borderland.webp",
+      "blurb": "Lay an eight-card ring in which every link shares a suit.",
+      "meta": [
+        "1 player",
+        "ring puzzle"
+      ],
+      "planned": true
+    },
+    {
+      "id": "cascades",
+      "title": "Cascades",
+      "section": "solo",
+      "href": "games/cascades.html",
+      "rules": "rules/cascades.html",
+      "thumb": "cards/web/the-mill.webp",
+      "blurb": "Play cards down three ranked tiers without getting stuck.",
+      "meta": [
+        "1 player",
+        "tier placement"
+      ],
+      "planned": true
+    },
+    {
+      "id": "solo-hex",
+      "title": "Solo Hex",
+      "section": "solo",
+      "href": "games/solo-hex.html",
+      "rules": "rules/solo-hex.html",
+      "thumb": "cards/web/ace-of-waves.webp",
+      "blurb": "Merge hexagonally adjacent piles that share a suit.",
+      "meta": [
+        "1 player",
+        "hex grid"
+      ],
+      "planned": true
+    },
+    {
+      "id": "quincunx",
+      "title": "Quincunx",
+      "section": "solo",
+      "href": "games/quincunx.html",
+      "rules": "rules/quincunx.html",
+      "thumb": "cards/web/the-rite.webp",
+      "blurb": "Fill a 5\u00d75 grid, scoring rows, columns and diagonals.",
+      "meta": [
+        "1 player",
+        "placement"
+      ],
+      "planned": true
+    },
+    {
+      "id": "myrmex",
+      "title": "Myrmex",
+      "section": "solo",
+      "href": "games/myrmex.html",
+      "rules": "rules/myrmex.html",
+      "thumb": "cards/web/the-soldier.webp",
+      "blurb": "Spider solitaire played across six chambers (needs two Decktetts).",
+      "meta": [
+        "1 player",
+        "two decks"
+      ],
+      "planned": true
+    },
+    {
+      "id": "kittyhawk",
+      "title": "Kittyhawk",
+      "section": "solo",
+      "href": "games/kittyhawk.html",
+      "rules": "rules/kittyhawk.html",
+      "thumb": "cards/web/the-battle.webp",
+      "blurb": "Freecell-style solitaire with foundations, tableau and heaps (needs two Decktetts).",
+      "meta": [
+        "1 player",
+        "two decks"
+      ],
+      "planned": true
+    },
+    {
+      "id": "tinker-sailor-soldier-spy",
+      "title": "Tinker, Sailor, Soldier, Spy",
+      "section": "solo",
+      "href": "games/tinker-sailor-soldier-spy.html",
+      "rules": "rules/tinker-sailor-soldier-spy.html",
+      "thumb": "cards/web/the-sailor.webp",
+      "blurb": "Spend suit chips to beat challenges before weariness beats you.",
+      "meta": [
+        "1 player",
+        "chip engine"
+      ],
+      "planned": true
+    },
+    {
+      "id": "aucteraden",
+      "title": "Aucteraden",
+      "section": "solo",
+      "href": "games/aucteraden.html",
+      "rules": "rules/aucteraden.html",
+      "thumb": "cards/web/the-merchant.webp",
+      "blurb": "Buy in the market and grow a 4\u00d74 network of chains.",
+      "meta": [
+        "1 player",
+        "market"
+      ],
+      "planned": true
+    },
+    {
+      "id": "defend-and-capture",
+      "title": "Defend and Capture",
+      "section": "solo",
+      "href": "games/defend-and-capture.html",
+      "rules": "rules/defend-and-capture.html",
+      "thumb": "cards/web/the-watchman.webp",
+      "blurb": "Hold a 3\u00d73 grid against raiders, then take their ground.",
+      "meta": [
+        "1 player",
+        "lane defence"
+      ],
+      "planned": true
+    },
+    {
+      "id": "hexaract",
+      "title": "Hexaract",
+      "section": "solo",
+      "href": "games/hexaract.html",
+      "rules": "rules/hexaract.html",
+      "thumb": "cards/web/ace-of-daemons.webp",
+      "blurb": "Roll dice, assign couplets, gather what you need and dodge harm.",
+      "meta": [
+        "1 player",
+        "dice"
+      ],
+      "planned": true
+    },
+    {
+      "id": "dueling-runes",
+      "title": "Dueling Runes",
+      "section": "solo",
+      "href": "games/dueling-runes.html",
+      "rules": "rules/dueling-runes.html",
+      "thumb": "cards/web/the-pact.webp",
+      "blurb": "Cast spells from rune sequences against a rival mage.",
+      "meta": [
+        "1 player",
+        "duel"
+      ],
+      "planned": true
+    },
+    {
+      "id": "quetinny",
+      "title": "Quetinny",
+      "section": "solo",
+      "href": "games/quetinny.html",
+      "rules": "rules/quetinny.html",
+      "thumb": "cards/web/the-discovery.webp",
+      "blurb": "Run a trade route: pick up spice, deliver it, and pay the taxes.",
+      "meta": [
+        "1 player",
+        "trade route"
+      ],
+      "planned": true
+    },
+    {
+      "id": "reino-de-ambar",
+      "title": "Reino de \u00c1mbar",
+      "section": "solo",
+      "href": "games/reino-de-ambar.html",
+      "rules": "rules/reino-de-ambar.html",
+      "thumb": "cards/web/the-desert.webp",
+      "blurb": "Hold the amber kingdom against the barbarians (Spanish rules).",
+      "meta": [
+        "1 player",
+        "area control"
+      ],
+      "planned": true
+    },
+    {
+      "id": "bharg",
+      "title": "Bharg",
+      "section": "two",
+      "href": "games/bharg.html",
+      "rules": "rules/bharg.html",
+      "thumb": "cards/web/the-diplomat.webp",
+      "blurb": "Bind all seven cards of your tableau with suit-completing sets.",
+      "meta": [
+        "2 players",
+        "~15 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "emu-ranchers",
+      "title": "Emu Ranchers",
+      "section": "two",
+      "href": "games/emu-ranchers.html",
+      "rules": "rules/emu-ranchers.html",
+      "thumb": "cards/web/the-harvest.webp",
+      "blurb": "Grow bird stacks, pay the upkeep, bank the profit.",
+      "meta": [
+        "2 players",
+        "~25 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "oh-quay",
+      "title": "Oh Quay",
+      "section": "two",
+      "href": "games/oh-quay.html",
+      "rules": "rules/oh-quay.html",
+      "thumb": "cards/web/the-mill.webp",
+      "blurb": "Slot cargo into the canal and launch same-suit rafts in order.",
+      "meta": [
+        "2 players",
+        "~15 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "ace-trump",
+      "title": "Ace Trump",
+      "section": "two",
+      "href": "games/ace-trump.html",
+      "rules": "rules/ace-trump.html",
+      "thumb": "cards/web/ace-of-suns.webp",
+      "blurb": "The simplest trick-taker: an ace played at any time changes trump.",
+      "meta": [
+        "2\u20136 players"
+      ],
+      "planned": true
+    },
+    {
+      "id": "caravan",
+      "title": "Caravan",
+      "section": "two",
+      "href": "games/caravan.html",
+      "rules": "rules/caravan.html",
+      "thumb": "cards/web/the-journey.webp",
+      "blurb": "Climb with your caravan while the bandits try to rob it.",
+      "meta": [
+        "2 players",
+        "~30 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "thricewise",
+      "title": "Thricewise",
+      "section": "two",
+      "href": "games/thricewise.html",
+      "rules": "rules/thricewise.html",
+      "thumb": "cards/web/the-painter.webp",
+      "blurb": "Choose cards simultaneously and score three in a row.",
+      "meta": [
+        "2\u20135 players",
+        "~20 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "second-story",
+      "title": "Second Story",
+      "section": "two",
+      "href": "games/second-story.html",
+      "rules": "rules/second-story.html",
+      "thumb": "cards/web/the-betrayal.webp",
+      "blurb": "A press-your-luck burglary: roll the die, bank the chips, get out.",
+      "meta": [
+        "2\u20135 players",
+        "~15 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "hermit",
+      "title": "Hermit",
+      "section": "two",
+      "href": "games/hermit.html",
+      "rules": "rules/hermit.html",
+      "thumb": "cards/web/the-lunatic.webp",
+      "blurb": "Win the tricks you want and dodge every personality card.",
+      "meta": [
+        "2\u20135 players",
+        "~30 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "shed",
+      "title": "Shed",
+      "section": "two",
+      "href": "games/shed.html",
+      "rules": "rules/shed.html",
+      "thumb": "cards/web/the-end.webp",
+      "blurb": "Trick-take by card type, then shed the suit tokens you are stuck with.",
+      "meta": [
+        "2\u20135 players",
+        "~10 min/player"
+      ],
+      "planned": true
+    },
+    {
+      "id": "chancellors",
+      "title": "Chancellors",
+      "section": "two",
+      "href": "games/chancellors.html",
+      "rules": "rules/chancellors.html",
+      "thumb": "cards/web/the-consul.webp",
+      "blurb": "Control the services and solve escalating problems with dice.",
+      "meta": [
+        "2\u20134 players",
+        "~30 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "colour-bazaar",
+      "title": "Colour Bazaar",
+      "section": "two",
+      "href": "games/colour-bazaar.html",
+      "rules": "rules/colour-bazaar.html",
+      "thumb": "cards/web/the-market.webp",
+      "blurb": "Speculate on suit chips: influence, buy low, sell high.",
+      "meta": [
+        "2\u20133 players",
+        "~30 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "fifes-and-drums",
+      "title": "Fifes & Drums",
+      "section": "two",
+      "href": "games/fifes-and-drums.html",
+      "rules": "rules/fifes-and-drums.html",
+      "thumb": "cards/web/the-battle.webp",
+      "blurb": "A hidden-goal tug-of-war: retreat your units along the track.",
+      "meta": [
+        "2 players",
+        "~15 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "xing",
+      "title": "Xing",
+      "section": "two",
+      "href": "games/xing.html",
+      "rules": "rules/xing.html",
+      "thumb": "cards/web/the-island.webp",
+      "blurb": "Race six frogs along a corridor of cards by matching suits.",
+      "meta": [
+        "2\u20135 players",
+        "~20\u201330 minutes"
+      ],
+      "planned": true
+    },
+    {
+      "id": "terrapin",
+      "title": "Terrapin",
+      "section": "two",
+      "href": "games/terrapin.html",
+      "rules": "rules/terrapin.html",
+      "thumb": "cards/web/the-penitent.webp",
+      "blurb": "Bet on pairs and straights \u2014 and avoid Turtle Butt.",
+      "meta": [
+        "2\u20137 players",
+        "open ended"
+      ],
+      "planned": true
+    },
+    {
+      "id": "magnate",
+      "title": "Magnate",
+      "section": "two",
+      "href": "games/magnate.html",
+      "rules": "rules/magnate.html",
+      "thumb": "cards/web/the-merchant.webp",
+      "blurb": "Build districts, collect deeds, tax the city and roll for income.",
+      "meta": [
+        "2 players",
+        "~30 minutes"
+      ],
+      "planned": true
+    }
+  ]
+}

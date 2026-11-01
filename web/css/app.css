@@ -344,6 +344,22 @@ button { font: inherit; color: inherit; touch-action: manipulation; }
 .brand p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
 
 .gamelist { display: grid; gap: 12px; }
+.sectionhead {
+  margin: 20px 0 10px;
+  font: 600 14px/1.3 system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--gold);
+}
+.sectionhead .sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
 .gamecard {
   display: flex;
   gap: 14px;
@@ -356,6 +372,8 @@ button { font: inherit; color: inherit; touch-action: manipulation; }
   color: var(--text);
 }
 .gamecard:active { transform: translateY(1px); }
+.gamecard.is-planned { opacity: 0.62; }
+.gamecard.is-planned .thumb { filter: grayscale(0.5); }
 .gamecard .thumb {
   width: 58px;
   flex: 0 0 58px;

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Window — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/window.html">Play Window ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-window.webp" alt="the Window" width="750" height="1050">
+  <h1>Window</h1>
+  <p class="lede">a Decktet solitaire game</p>
+
+  <blockquote>Object of the game: To merge all of the cards into a single pile.</blockquote>
+
+  <h2>Setup</h2>
+  <p>Deal out nine cards face down, in a three by three grid. Deal nine more
+  cards face down on top of those. Do it again, so that you have nine stacks of
+  three cards each. Finally, deal one card face up onto each of the stacks.</p>
+
+  <h2>Game play</h2>
+  <ul>
+    <li>When a face up card on one stack is a rank higher or lower than the face
+    up card on an adjacent stack, you may take all the face up cards from one of
+    the stacks and move them to the adjacent stack. For example, a 4 card could
+    move onto either a 3 or a 5.</li>
+    <li>When you move face up cards from a stack, immediately flip over the top
+    face down card remaining in that stack.</li>
+    <li>If there are no remaining cards in a stack (if it is just an empty space)
+    then you may move the face up cards from any adjacent stack into that space.</li>
+    <li>Adjacent stacks are right, left, up, or down, but not diagonal.</li>
+    <li>When you move a stack, you must move all the face up cards in that stack.
+    You may not split the face up cards, and you may not move face down cards.</li>
+    <li>Aces may move onto either 1s or Crowns. Crowns may move onto either 9s
+    or Aces.</li>
+  </ul>
+
+  <h2>The extended deck</h2>
+  <p>Window is not meant to be played with the Excuse or Pawns, and I'm not sure
+  what you would do with them. That doesn't mean you couldn't make something up.</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The wrap rule</strong> above is quoted from the wiki as written:
+  <em>"Aces may move onto either 1s or Crowns"</em> — but an Ace <em>is</em>
+  rank 1, so "1s" cannot mean a rank one away. This app reads the rule the way
+  the rest of the sentence implies: a pile may move onto a neighbouring pile
+  whose top card is one rank away (2…9 in the usual way), <strong>and</strong>
+  Ace wraps onto Crown in addition — so Ace meets 2 and Crown, and Crown meets
+  9 and Ace.</p>
+  <p><strong>The move test</strong> is the other ambiguous clause: <em>"When a
+  face up card on one stack is a rank higher or lower than the face up card on
+  an adjacent stack"</em>. Once piles accumulate, a stack shows several face-up
+  cards. This app reads it as <em>any</em> face-up card in the moving pile
+  meeting the neighbour's top card — which is also the reading that leaves the
+  game winnable: a search over both readings found no possible win at all under
+  a strict top-card-only test, and wins under this one. The wiki page does not
+  define a score, so this app records only whether you win and how many moves
+  it took.</p>
+
+  <h2>Credits</h2>
+  <p>Original design: Cristyn Magnus. Rules text: P.D. Magnus.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:window">Window page of the Decktet
+    wiki</a> (page revision 3, 3 April 2009) so they can be read offline, under
+    the wiki's <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC
+    BY-NC-SA 3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading: <a href="http://boardgamegeek.com/game/37098">Window at BGG</a></p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>
