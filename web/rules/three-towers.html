@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Three Towers — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/three-towers.html">Play Three Towers ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-pact.webp" alt="the Pact" width="750" height="1050">
+  <h1>Three Towers</h1>
+  <p class="lede">A variant of <a href="ivory-tower.html">Ivory Tower</a> (with many
+  changes) similar to standard solitaire or Towers of Hanoi.</p>
+
+  <h2>Setup</h2>
+  <p>Remove the Aces, Crowns, Pawns, and Courts from the deck and shuffle.</p>
+
+  <h2>Game play</h2>
+  <p>The goal of this game is to arrange the deck into three towers of descending rank
+  where each card shares at least one suit with the card below it by making moves that
+  keep the same rules.</p>
+
+  <p>There are 5 empty tower spaces in front of you where you can build your towers. To
+  start the game, flip over the top card of the deck and place it into one of the 5 tower
+  spaces, then flip over a new card and leave it on top of the deck.</p>
+
+  <p>Each turn, you may either move the top card from one tower space to another tower
+  space or move the card on top of the deck to a tower space and flip over the new top
+  card of the deck. Always follow these placement rules:</p>
+  <ul>
+    <li>A card must share at least one suit with the card it is placed on top of. (Empty
+    spaces accept cards of any suit)</li>
+    <li>A card must have lower value than the card it is placed on top of.</li>
+  </ul>
+
+  <p>You win when the deck is empty and there are three towers each with all ranks 2-9 in
+  descending order with each card sharing a suit with its neighbors.</p>
+
+  <h2>The extended deck</h2>
+  <p>Pawns and courts are not used in this game.</p>
+
+  <h2>Variants</h2>
+  <p><strong>Adjusting Difficulty:</strong> I believe it is possible to win this game
+  regardless of how the deck is shuffled given enough time, but it can be very difficult.
+  For an easier game, remove high-ranked cards from the deck to select your difficulty
+  level. At level 6 (only cards going up to rank 6 included) the game is easy to win
+  every time; at level 9 (all cards included) I find I win about 1 in 3 games.</p>
+
+  <p><strong>Ivory Three Towers:</strong> For an additional challenge, select a suit at
+  the start of the game that one of your towers will exclusively contain. You win only
+  when you have three towers and one of them has every card it contains matching the suit
+  you selected. While this technically makes the game harder, it also provides direction
+  and is how I usually play. It is not possible to have more than one tower at end of game
+  that is Ivory in different suits.</p>
+
+  <p><strong>Quota:</strong> This game was originally intended as a mini game in an rpg
+  for an extended skill check with a partial Decktet with the number of cards of a given
+  suit fixed to the character's skill. Then, the player wins when they have extracted a
+  specific number of cards of the given suit set as the difficulty of the check. Play as
+  with Ivory Three Towers above, but you win when your ivory tower has at least as many
+  cards as a preset quota. (3 = very easy, 5 or 6 = medium, 8 = very hard)</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>Difficulty levels.</strong> The wiki's <em>"remove high-ranked cards from
+  the deck to select your difficulty level"</em> is offered as a level selector on the
+  table: level N keeps the ranks 2 through N (three cards of each), and you win with
+  three towers running N down to 2. Level 9 is the full 24-card game.</p>
+  <p><strong>The Ivory Three Towers variant</strong> is implemented as written: switch it
+  on, pick a suit before your first move, and the win then also requires one of the three
+  towers to hold only cards of that suit. <strong>Quota</strong> is not implemented here,
+  because it needs a quota number chosen up front for a game of your own devising.</p>
+  <p><strong>Losing.</strong> The wiki defines only the win. This app ends a lost game
+  when no move at all is possible: the card on top of the deck fits in no space and no
+  tower's top card can be stacked on any other tower. In fact no five cards of this deck
+  can lock all five spaces that way (the test suite checks every five-card group at every
+  level), which is presumably why the wiki leaves losing undefined: a running game always
+  has a move. So a game you are not doing well in could be shuffled around for ever — and
+  the table always offers a <strong>Give up</strong> button while a game is running.
+  Calling it ends the game as a loss, with your towers as they stand.</p>
+  <p><strong>What "three towers" means.</strong> The win needs exactly three non-empty
+  spaces, each holding a complete run of the level's ranks in descending order with
+  neighbouring suits shared. Since every card is in play, three complete towers use up
+  the whole deck, so the other two spaces must be empty.</p>
+
+  <h2>Credits</h2>
+  <p>Design: Maginobi, as a variant of P.D. Magnus's Ivory Tower.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:three-towers">Three Towers page of the Decktet
+    wiki</a> (page revision 3, last edited 6 October 2025) so they can be read offline,
+    under the wiki's <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC
+    BY-NC-SA 3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading: the game it descends from,
+    <a href="ivory-tower.html">Ivory Tower</a>, and
+    <a href="https://wiki.decktet.com/game:ivory-tower">its wiki page</a>.</p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

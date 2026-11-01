@@ -68,7 +68,7 @@
         "1 player",
         "easy"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "window",
@@ -96,7 +96,7 @@
         "1 player",
         "hanoi-like"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "head-solitaire",

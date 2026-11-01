@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Ivory Tower — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/ivory-tower.html">Play Ivory Tower ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/ace-of-moons.webp" alt="Ace of Moons" width="750" height="1050">
+  <h1>Ivory Tower</h1>
+  <p class="lede">a Decktet solitaire game</p>
+
+  <blockquote>Object of the game: To complete the tower: a stack of cards all having a
+  specific suit symbol, in order from Ace to Crown.</blockquote>
+
+  <h2>Game play</h2>
+  <p>You begin by turning over the top three cards of the deck, so that you can only see
+  the third card. This packet is placed to begin the draw pile. In the beginning, the top
+  pile of the draw pile is the only card you have available to play.</p>
+
+  <p>You may play cards to build resource piles and a tower.</p>
+
+  <p>Each resource pile starts with a Crown and contains cards in decreasing rank order.
+  Adjacent cards in a resource pile must not share suit symbols. The lowest ranked card
+  in each resource pile is available to play.</p>
+
+  <p>The tower starts with an Ace and contains cards in increasing rank order. The cards
+  in the tower must all share a suit symbol. You win if you can play a Crown to complete
+  the tower.</p>
+
+  <p>If at anytime you are unable to play, you may turn over three more cards from the
+  deck. When you reach the end of the deck, turn over the draw pile and resume. You may
+  recycle the deck in this way as many times as you like.</p>
+
+  <h2>The tower</h2>
+  <p>There is only one tower, but at the beginning of the game it is undecided what suit
+  the tower will be. Once you play an Ace to start the tower, however, all the cards must
+  have the suit of that Ace.</p>
+
+  <p>You are not required to start the tower if an Ace becomes available. For example,
+  you may decide to pass on Ace if you have already buried some of the cards of its suit
+  in a resource pile.</p>
+
+  <h2>Resource piles</h2>
+  <p>If you have a Crown available and fewer than three resource piles, you may start a
+  new resource pile. Once a resource pile is started, you may add a card to it with two
+  restrictions: (a) The new card must be one rank less than the lowest card in the pile.
+  (b) The new card must not shares any suit symbols with the lowest card in the pile.</p>
+
+  <p>The lowest ranked card in a resource pile is available to play. You may move it to
+  the tower or a different resource pile, provided it meets the rank and suit
+  requirements.</p>
+
+  <p>For example: You begin a resource pile with the Crown of Waves. Later, you put the
+  Pact (9 of Suns and Moons) on the pile. You may then place an 8 on the pile, but not an
+  8 of either Suns nor Moons.</p>
+
+  <p>Since you may have up to three resource piles, some of the Crowns become unplayable
+  after the tower and resource piles have all been started.</p>
+
+  <h2>The end</h2>
+  <p>You win if you complete the tower. If you do not win, your score is the rank of the
+  highest card in the tower.</p>
+
+  <p>Unlike some solitaires, Ivory Tower is not the sort of game that you can win every
+  time if you are careful and attentive. Winning is pretty damn rare.</p>
+
+  <h2>Links</h2>
+  <ul>
+    <li><a href="http://boardgamegeek.com/thread/675580/ivory-tower-for-dummies-a-much-more-regularly-succ">A
+    thread at BGG</a> where Justus Pang and Daniël Muilwijk substantially reimagine the
+    game.</li>
+  </ul>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The draw pile.</strong> The wiki's setup — <em>"turning over the top three
+  cards of the deck, so that you can only see the third card. This packet is placed to
+  begin the draw pile"</em> — is read as: the draw pile is a face-up pile whose top card
+  is the only one you can see. Playing that card exposes the one beneath it, and when you
+  <em>"turn over the draw pile"</em> to recycle it, you flip the whole pile face down, so
+  the card that was at its bottom becomes the next one you turn over. Only the top card
+  is ever shown in this app; the rest of the pile is hidden, as it is on the table.</p>
+  <p><strong>When you may turn over cards.</strong> <em>"If at anytime you are unable to
+  play"</em> is read as: the draw pile's top card fits nowhere — not the tower, not any
+  reserve pile. The turn-over button lights up only then. Reserve piles may still be
+  shuffled around while you are stuck; turning cards over is what you do when the card in
+  front of you has no home. If fewer than three cards remain in the deck, you turn over as
+  many as are left.</p>
+  <p><strong>Losing.</strong> The wiki defines only the win (and a score for not
+  winning). This app ends a lost game when the tower cannot take a card <em>and</em> no
+  card in the draw's recycle cycle could ever be played: turning cards over would only
+  bring the same unplayable cards round again, and shuffling the reserve piles could no
+  longer reach the tower. Your score is then the rank of the highest card in the tower,
+  exactly as the wiki says; an empty tower scores 0.</p>
+
+  <h2>Credits</h2>
+  <p>Design: P.D. Magnus. Playtesting: Cristyn Magnus.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:ivory-tower">Ivory Tower page of the Decktet
+    wiki</a> (page revision 28, last edited 16 March 2016) so they can be read offline,
+    under the wiki's <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC
+    BY-NC-SA 3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>
