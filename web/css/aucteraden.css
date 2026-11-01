@@ -1,0 +1,168 @@
+/* Aucteraden — market, 4x4 tableau, chips and pad. */
+
+/* ---- the market ---- */
+
+.ac-market {
+  display: flex;
+  gap: clamp(6px, 2vw, 12px);
+  justify-content: center;
+  overflow: visible;
+}
+.ac-slot {
+  position: relative;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: calc(var(--card-w) * 0.062);
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+  transition: filter 0.12s ease, box-shadow 0.12s ease;
+}
+.ac-slot .card { width: clamp(74px, 21vw, 104px); }
+.ac-slot.is-empty {
+  display: grid;
+  place-items: center;
+  min-height: 110px;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: default;
+}
+.ac-slot:active { transform: translateY(1px); }
+
+.ac-cost {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: #0b2018;
+  border: 1px solid rgba(233, 196, 106, 0.5);
+  color: var(--gold);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.ac-cost.is-free { color: var(--win); border-color: rgba(122, 208, 138, 0.5); }
+
+.ac-discard {
+  display: block;
+  margin: 10px auto 0;
+}
+
+/* ---- the tableau ---- */
+
+.ac-grid {
+  --card-w: clamp(66px, 19.5vw, 92px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(5px, 1.6vw, 9px);
+  max-width: 430px;
+  margin: 10px auto 0;
+}
+.ac-cell {
+  position: relative;
+  aspect-ratio: 750 / 1050;
+  border-radius: calc(var(--card-w) * 0.062);
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: box-shadow 0.12s ease, filter 0.12s ease;
+}
+.ac-cell .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.ac-cell .card img { height: 100%; object-fit: contain; }
+
+.ac-cell.is-empty { border-style: dashed; }
+.ac-cell.is-legal {
+  border: 1px solid rgba(233, 196, 106, 0.8);
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.55);
+  cursor: pointer;
+}
+.ac-cell.is-legal::after {
+  content: "";
+  position: absolute;
+  inset: auto 10% 8% auto;
+  width: 26%;
+  height: 18%;
+  background: radial-gradient(circle, rgba(233, 196, 106, 0.95) 0%, rgba(233, 196, 106, 0) 70%);
+}
+.ac-cell.is-legal:active { transform: translateY(1px); }
+
+/* ---- chips ---- */
+
+.ac-chips {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  overflow: visible;
+}
+.ac-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 7px 0 5px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+}
+.ac-chip img { width: 24px; height: auto; }
+.ac-chip .ac-chipn {
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.ac-chip:active { transform: translateY(1px); }
+.ac-chip.is-out { opacity: 0.4; filter: grayscale(0.6); }
+
+/* ---- the pad ---- */
+
+.ac-pad { display: grid; gap: 3px; overflow: visible; }
+.ac-padline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 6px;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13.5px;
+  cursor: pointer;
+  text-align: left;
+}
+.ac-padline:active { background: rgba(255, 255, 255, 0.06); }
+.ac-padline .suit-inline { width: 17px; }
+.ac-padline span { flex: 1; color: var(--muted); }
+.ac-padline b { font-variant-numeric: tabular-nums; }
+.ac-pen {
+  margin: 6px 6px 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.ac-pen b { color: var(--lose); font-variant-numeric: tabular-nums; }
+
+.ac-endlist {
+  margin: 0 0 14px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+.ac-endlist li { margin-bottom: 3px; }
+
+.ac-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 10px 6px 4px;
+  line-height: 1.45;
+}

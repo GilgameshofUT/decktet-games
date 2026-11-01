@@ -236,7 +236,7 @@
         "1 player",
         "chip engine"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "aucteraden",
@@ -250,7 +250,7 @@
         "1 player",
         "market"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "defend-and-capture",
