@@ -1,0 +1,165 @@
+/* Xing — the corridor of twelve cards (two wrapped rows), frog tokens on the
+   suit symbols, the market and the action pips.  Fits 390px wide. */
+
+#table {
+  --card-w: clamp(56px, 15vw, 84px);
+  --corridor-w: clamp(46px, 13.6vw, 62px);
+}
+
+.xing-table {
+  display: grid;
+  gap: 10px;
+  /* one fixed column: the card rows scroll inside their panels instead of
+     stretching the grid column past the screen */
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---- start: the Excuse ---- */
+
+.xing-start { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+.xing-excusecard { --card-w: clamp(40px, 11vw, 54px); }
+.xing-waiting { flex: 1; }
+.xing-startlabel {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.xing-none { color: var(--muted); font-size: 12.5px; }
+
+/* ---- the corridor ---- */
+
+.xing-corridor {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px 3px;
+  justify-items: center;
+}
+.xing-cell {
+  position: relative;
+  width: var(--corridor-w);
+  text-align: center;
+}
+.xing-cell .card { width: 100%; }
+
+.xing-slots {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+.xing-slot {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(10, 26, 20, 0.85);
+  display: inline-grid;
+  place-items: center;
+  cursor: default;
+}
+.xing-slot img { width: 10px; height: 10px; opacity: 0.9; }
+.xing-slot.is-occ { cursor: pointer; }
+.xing-slot.is-occ.p0 { background: rgba(239, 123, 111, 0.85); border-color: #ffb3aa; }
+.xing-slot.is-occ.p1 { background: rgba(111, 179, 230, 0.85); border-color: #b7ddff; }
+.xing-slot.is-occ img { opacity: 0.55; }
+.xing-slot.is-mine { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.65); cursor: pointer; }
+.xing-slot.is-legal {
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.9);
+  cursor: pointer;
+  animation: xing-pulse 1.1s ease-in-out infinite;
+}
+@keyframes xing-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.xing-pos {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font-size: 7.5px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  padding: 1px 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.xing-legend {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+  margin: 8px 2px 0;
+}
+
+/* ---- home pads ---- */
+
+.xing-homes {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.xing-home { flex: 1; min-width: 130px; }
+.xing-homelabel {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.xing-dotrow { display: flex; gap: 4px; flex-wrap: wrap; }
+.xing-homepip {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+.xing-homepip.p0 { background: var(--win); border-style: solid; border-color: #b8ecc2; }
+.xing-homepip.p1 { background: var(--gold); border-style: solid; border-color: #ffe8ae; }
+
+.xing-frogdot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  padding: 0;
+  border: 2px solid transparent;
+  cursor: default;
+}
+.xing-frogdot.p0 { background: #ef7b6f; }
+.xing-frogdot.p1 { background: #6fb3e6; }
+.xing-frogdot.is-mine { border-color: rgba(255, 255, 255, 0.8); cursor: pointer; }
+
+/* ---- controls ---- */
+
+.xing-ctl { display: grid; gap: 8px; }
+.xing-ctl .btnrow .btn { flex: 1; }
+
+.xing-actions { display: flex; align-items: center; gap: 5px; }
+.xing-actionpip {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.14);
+}
+.xing-actionpip.is-used { background: var(--gold); border-color: var(--gold); }
+.xing-actionlabel {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.xing-hint {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+  margin: 0 2px;
+}

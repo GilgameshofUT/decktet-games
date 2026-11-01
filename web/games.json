@@ -487,7 +487,7 @@
         "2 players",
         "~15 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "xing",
@@ -501,7 +501,7 @@
         "2\u20135 players",
         "~20\u201330 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "terrapin",

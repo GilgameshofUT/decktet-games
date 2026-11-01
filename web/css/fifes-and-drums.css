@@ -1,0 +1,200 @@
+/* Fifes & Drums — the wrapped battlefield track, the pool of orders and the
+   secret order panel.  Everything fits 390px wide with no page scrolling. */
+
+#table { --card-w: clamp(56px, 15vw, 84px); }
+
+.fd-table {
+  display: grid;
+  gap: 10px;
+  /* one fixed column: the pool row scrolls inside its panel instead of
+     stretching the grid column past the screen */
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---- the track: 45 spaces wrapped 8 × 6, serpentine ---- */
+
+.fd-track {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.fd-space {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: grid;
+  place-items: center;
+  padding: 1px;
+}
+.fd-space.is-void {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+}
+.fd-space.is-start {
+  border-color: rgba(239, 123, 111, 0.55);
+  background: rgba(120, 30, 22, 0.28);
+}
+.fd-space.is-end {
+  border-color: rgba(122, 208, 138, 0.55);
+  background: rgba(22, 82, 40, 0.3);
+}
+
+.fd-num {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 7.5px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.34);
+  font-variant-numeric: tabular-nums;
+}
+.fd-space.is-start .fd-num { color: rgba(239, 123, 111, 0.9); }
+.fd-space.is-end .fd-num { color: rgba(122, 208, 138, 0.9); }
+
+.fd-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 8px;
+  max-width: 100%;
+}
+.fd-token {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1.5px solid var(--suit, #fff);
+  background: rgba(10, 26, 20, 0.9);
+  display: inline-grid;
+  place-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.fd-token img { width: 9px; height: 9px; }
+
+.fd-legend {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+  margin: 8px 2px 0;
+}
+
+/* ---- pool + the plan for the selected order ---- */
+
+.fd-hint {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+  margin: 8px 2px 0;
+}
+
+.fd-action {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  display: grid;
+  gap: 8px;
+}
+.fd-action .btnrow { justify-content: center; }
+
+.fd-charged {
+  color: var(--lose);
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.fd-split { display: grid; gap: 6px; }
+.fd-splitline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.fd-suitspec { display: inline-flex; align-items: center; gap: 4px; }
+.fd-splitval { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.fd-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.fd-stepper b {
+  min-width: 74px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+}
+.fd-step {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+.fd-step:disabled { opacity: 0.4; cursor: default; }
+.fd-step:not(:disabled):active { transform: translateY(1px); }
+
+.fd-march {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0;
+  line-height: 1.45;
+}
+.fd-action .btnrow .btn { flex: 1; }
+
+/* ---- deck / last order ---- */
+
+.fd-deckrow {
+  display: flex;
+  gap: clamp(10px, 3vw, 16px);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.fd-last { width: calc(var(--card-w) * 0.82); text-align: center; }
+.fd-last .card { width: 100%; }
+.fd-lastblank {
+  aspect-ratio: 750 / 1050;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: calc(var(--card-w) * 0.062);
+  color: var(--muted);
+}
+.fd-lastlabel {
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.fd-deckrow .pilehint { flex: 1; min-width: 150px; }
+
+/* ---- the secret order ---- */
+
+.fd-goal {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 4px;
+}
+.fd-goal .card { width: calc(var(--card-w) * 0.72); flex: 0 0 auto; }
+.fd-goaltext { font-size: 14px; line-height: 1.55; }
+.fd-goaltext strong { color: var(--gold); }
+.fd-goalscore { color: var(--gold); font-weight: 600; }
+
+.fd-final { margin: 0 0 14px; padding-left: 20px; }
+.fd-final li { margin-bottom: 6px; }
+.fd-final b { color: var(--gold); }
