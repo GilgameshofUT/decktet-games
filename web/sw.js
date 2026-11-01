@@ -64,11 +64,12 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // navigations: network first, fall back to the cached page (every game page
-  // is precached, so deep links keep working offline), then the shell
+  // navigations: network first (revalidated, so a deploy shows up at once),
+  // falling back to the precached page — every game page is precached, so deep
+  // links keep working offline
   if (req.mode === 'navigate') {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' })
         .then((res) => {
           const copy = res.clone();
           caches.open(VERSION).then((c) => c.put(req, copy)).catch(() => {});
@@ -81,11 +82,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // code and data: network first (so a deploy is picked up immediately),
-  // falling back to the cache when the network is unreachable
+  // code, data and the games catalogue: network first with revalidation (so a
+  // deploy is picked up immediately, bypassing any HTTP cache), falling back to
+  // the cache when the network is unreachable
   if (/\.(json|css|js|webmanifest|ttf)$/.test(url.pathname)) {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' })
         .then((res) => {
           if (res && res.ok) {
             const copy = res.clone();
