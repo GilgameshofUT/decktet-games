@@ -334,7 +334,7 @@
         "2 players",
         "~15 minutes"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "emu-ranchers",

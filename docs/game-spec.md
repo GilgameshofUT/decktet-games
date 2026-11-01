@@ -165,6 +165,9 @@ Print one line of useful output (e.g. average score) before the pass line.
 
 ## Two-player pass-and-play
 
+**Exemplar**: `web/js/games/bharg.js` + `bharg-core.js` — a complete hidden-hand
+game (hand-off screen, bound/unbound marks, rounds and a match target).
+
 * One device, alternating turns. Your hand is visible only to the player whose
   turn it is: after each turn show `passDevice(player, onReady, { names })`
   from `gamikit.js`, which covers the screen until they tap **Reveal**.

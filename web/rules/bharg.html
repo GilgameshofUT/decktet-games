@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Bharg — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/bharg.html">Play Bharg ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-diplomat.webp" alt="the Diplomat" width="750" height="1050">
+  <h1>Bharg</h1>
+  <p class="lede">a set-making game for 2 players</p>
+
+  <blockquote>Object of the game: To bind all the cards in your hand.</blockquote>
+
+  <h2>Setup</h2>
+  <p>Each player is dealt a hand of seven cards. The dealer then deals one card
+  face up to start a discard pile. If the face up card is an ace, then that card
+  starts the Ace Pile and the dealer continues to deal cards face up until there
+  is a non-ace to start the discard pile.</p>
+  <p>As the game progresses, there will be two discard piles: one for aces, the
+  other for number cards and crowns. The discard pile for aces is called the Ace
+  Pile.</p>
+
+  <h2>Game play</h2>
+  <p>On your turn, you may take the top card of the numbers-and-crowns discard
+  pile or the top card of the deck. Then you discard a card.</p>
+  <p>A <strong>bharg set</strong> is a group of three or more cards that have one
+  of each suit between them without duplication. A bharg set must have one and
+  only one instance of each suit.</p>
+  <blockquote>For example: A three card bharg set could consist of
+  2<span class="suit-inline-wrap">of Waves and Leaves</span>,
+  4 of Moons and Suns, and 5 of Daemons and Crowns. A four card bharg set could
+  be the Ace of Moons, Crown of Suns, 7 of Waves and Daemons, and 6 of Leaves and
+  Crowns.<br><br>
+  Three cards of the same rank (the three 6s, for example) will always form a
+  bharg set. Sets will be larger than three cards only if they include aces or
+  crowns, which provide one suit each.</blockquote>
+  <p>A card is <strong>bound</strong> if it is part of a bharg set or has a suit
+  symbol matching the top card of the Ace Pile. A bound card may be part of a
+  bharg set and also match the top card of the Ace Pile.</p>
+  <p>If all seven of your cards are bound after you have discarded, then you win
+  the round. Note that you cannot win until you have discarded. If you discard an
+  ace, this may change which cards in your hand are bound and which are not.</p>
+  <p>A card may be counted as part of at most one bharg set.</p>
+  <p><strong>Scoring:</strong> When you win, you score the value of any unbound
+  cards in your opponent's hand: Aces are worth one, crowns are worth ten, and
+  numbered cards are worth their rank.</p>
+  <p>With multiple rounds, play continues until one player reaches a target
+  score. 50 is good.</p>
+
+  <h2>The extended deck</h2>
+  <p>If you want to spice up the game, you can add in some of the extended deck
+  cards. Just shuffle them in at the beginning of the game. I tend to feel that
+  adding both the Pawns and Courts is too much, so we typically play with either
+  but not both.</p>
+  <p><strong>The Excuse:</strong> The Excuse is a blank. It always counts as
+  bound, but it does not help to bind other cards.</p>
+  <p><strong>Pawns:</strong> Pawns contribute all three of their suits to a bharg
+  set and can be bound by an Ace that matches any of those three suits. A player
+  who goes out gets 10 points for an unbound Pawn in their opponent's hand.</p>
+  <p><strong>Courts:</strong> Play as Pawns.</p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The deck:</strong> this app plays the basic 36-card deck. The
+  extended-deck options above (Excuse, Pawns, Courts) are not implemented yet.</p>
+  <p><strong>Boundness:</strong> because "a card may be counted as part of at
+  most one bharg set", whether a hand is fully bound is a covering question. The
+  app searches every way of splitting the hand into groups and asks whether each
+  group is either a valid bharg set or a single card matching the Ace Pile — so
+  a hand counts as bound exactly when such a covering exists, and the cards
+  shown with a red outline are the ones no covering can save (those are also the
+  cards your opponent scores).</p>
+  <p><strong>Pass and play:</strong> this is a hidden-hand game, so after each
+  discard the screen is covered with "Player N's turn" until the device is
+  passed on and the hand is revealed.</p>
+
+  <h2>Credits</h2>
+  <p>Original design: P.D. Magnus. Playtesting: Cristyn Magnus.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:bharg">Bharg page of the Decktet
+    wiki</a> (page revision 12, 26 June 2017) so they can be read offline, under
+    the wiki's <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC
+    BY-NC-SA 3.0</a> licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading: <a href="http://boardgamegeek.com/game/37099">Bharg at BGG</a></p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

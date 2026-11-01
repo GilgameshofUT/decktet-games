@@ -2,7 +2,7 @@
    scripts are precached from games.json, and card images are cached as they
    are used — so the games keep working offline (and on a flaky LAN). */
 
-const VERSION = 'decktet-v2';
+const VERSION = 'decktet-v3';
 const SHELL = [
   './',
   'index.html',
@@ -81,9 +81,25 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // images and data: cache first, refresh in the background
-  const isAsset = /\.(webp|png|jpg|svg|json|css|js|webmanifest|ttf)$/.test(url.pathname);
-  if (!isAsset) return;
+  // code and data: network first (so a deploy is picked up immediately),
+  // falling back to the cache when the network is unreachable
+  if (/\.(json|css|js|webmanifest|ttf)$/.test(url.pathname)) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(VERSION).then((c) => c.put(req, copy)).catch(() => {});
+          }
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // images: cache first, refresh in the background
+  if (!/\.(webp|png|jpg|svg|gif)$/.test(url.pathname)) return;
   event.respondWith(
     caches.match(req).then((hit) => {
       const refresh = fetch(req)
