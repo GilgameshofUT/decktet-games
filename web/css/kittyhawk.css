@@ -1,0 +1,88 @@
+/* Kittyhawk — foundations, heaps, stock and the six-pile tableau. */
+
+.kh-levels {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.kh-levels .iconbtn {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.kh-foundations {
+  --card-w: min(13.5vw, 62px);
+  --fu: calc(var(--card-w) * 0.24);
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+}
+
+.kh-mid {
+  --card-w: min(16.5vw, 74px);
+  --fu: calc(var(--card-w) * 0.3);
+  display: flex;
+  gap: clamp(10px, 4vw, 22px);
+  justify-content: center;
+  align-items: flex-start;
+  margin: 4px 0 12px;
+}
+.kh-stock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.kh-stock .pile { --card-w: min(16.5vw, 74px); }
+
+.kh-tableau {
+  --card-w: min(24vw, 100px);
+  --fu: calc(var(--card-w) * 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 8px;
+  justify-content: center;
+}
+
+.kh-pile {
+  position: relative;
+  width: var(--card-w);
+  min-height: calc(var(--card-w) * 1.4);
+  height: calc(var(--card-w) * 1.4 + var(--fu) * var(--n, 0));
+  border-radius: calc(var(--card-w) * 0.062);
+}
+.kh-pile .kh-card {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(var(--fu) * var(--k));
+}
+.kh-pile.is-empty {
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.16);
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.kh-pile .card.is-selected {
+  transform: none;
+  box-shadow: 0 0 0 3px var(--gold), var(--card-shadow);
+  z-index: 5;
+}
+.kh-pile .card.is-legal { box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.8), var(--card-shadow); z-index: 4; }
+.kh-pile.is-legal-target {
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.55);
+  border-radius: calc(var(--card-w) * 0.062);
+}
+
+.kh-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 12px 6px 4px;
+}

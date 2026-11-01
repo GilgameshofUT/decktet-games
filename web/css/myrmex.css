@@ -1,0 +1,108 @@
+/* Myrmex — the eight-chamber tableau, chambers row and deal button. */
+
+.mx-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.mx-levels .iconbtn {
+  min-height: 36px;
+  padding: 0 9px;
+  font-size: 12.5px;
+}
+
+.mx-chambers {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.mx-chamber {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+}
+.mx-chamber.is-full {
+  border-style: solid;
+  border-color: var(--gold-dim);
+  background: rgba(233, 196, 106, 0.14);
+}
+.mx-chamber .suit-inline { width: 20px; height: 20px; }
+
+.mx-grid {
+  --card-w: min(21vw, 88px);
+  --fd: calc(var(--card-w) * 0.115);      /* fan step, face-down cards */
+  --fu: calc(var(--card-w) * 0.215);      /* fan step, face-up cards */
+  display: grid;
+  grid-template-columns: repeat(4, var(--card-w));
+  gap: 10px 6px;
+  justify-content: center;
+}
+
+.mx-pile {
+  position: relative;
+  width: var(--card-w);
+  min-height: calc(var(--card-w) * 1.4);
+  height: calc(var(--card-w) * 1.4 +
+    var(--fd) * var(--dn, 0) +
+    var(--fu) * var(--up, 0));
+  border-radius: calc(var(--card-w) * 0.062);
+}
+.mx-pile.is-empty {
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+.mx-pile.is-empty::after {
+  content: "empty";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mx-pile .mx-card {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+.mx-pile .mx-back { top: calc(var(--fd) * var(--k)); }
+.mx-pile .mx-up {
+  top: calc(var(--fd) * var(--dn) + var(--fu) * (var(--k) - var(--dn)));
+}
+
+.mx-pile .card.is-selected {
+  transform: none;
+  box-shadow: 0 0 0 3px var(--gold), var(--card-shadow);
+  z-index: 5;
+}
+.mx-pile .card.is-legal { box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.8), var(--card-shadow); }
+.mx-pile.is-legal-target {
+  box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.55);
+  border-radius: calc(var(--card-w) * 0.062);
+}
+
+.mx-deal {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.mx-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 12px 6px 4px;
+}

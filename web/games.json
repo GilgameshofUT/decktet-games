@@ -208,7 +208,7 @@
         "1 player",
         "two decks"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "kittyhawk",
@@ -222,7 +222,7 @@
         "1 player",
         "two decks"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "tinker-sailor-soldier-spy",
