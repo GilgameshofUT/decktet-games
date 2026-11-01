@@ -103,6 +103,33 @@ playouts, scoring fixtures, and a refusal of illegal moves.
 
 ## Status
 
-- **Adaman** — implemented, rules copy at `web/rules/adaman.html`.
-- **Jacynth** (solitaire, 4×4) — implemented, rules at `web/rules/jacynth.html`.
-- **Gongor Whist** — implemented, both scoring systems, rules at `web/rules/gongor-whist.html`.
+**All 37 catalogue games are implemented and live** at
+**https://gilgameshofut.github.io/decktet-games/** — every push to `main` runs
+the whole test suite (`npm test`: asset/link integrity plus one rule suite per
+game) and redeploys only if it passes.
+
+- **22 solitaire games** — the whole 1-player wiki tag (23 entries) minus
+  **Hidden Wall**, whose wiki rules are unfinished, plus Quincunx's solitaire
+  form. The Chinese-language pages are translations of games already listed in
+  English (Advent of the Wyrms, Head Solitaire) and were deliberately not
+  duplicated.
+- **15 two-player pass-and-play games** — everything from *The Decktet Book*
+  that seats exactly 2: Ace Trump, Bharg, Caravan, Chancellors, Colour Bazaar,
+  Emu Ranchers, Fifes & Drums, Hermit, Magnate, Oh Quay, Second Story, Shed,
+  Terrapin, Thricewise and Xing. The book games that need 3+ (Ascend, Bisque,
+  Chicane, Corundum Conundrum, Double Knot, Goblin Market, Kingpins, Nonesuch,
+  Otgovorko, Varg Bid) are out of scope for a two-player app.
+- Every game ships a **copy of its official rules** for offline reading, with an
+  attribution block and — where the wiki was ambiguous, stale, contradictory or
+  silent — a **"Note on this implementation"** stating exactly what this app
+  ruled and why.
+
+Where a source was contested, the implementations say which they followed:
+Quetinny's Google Doc vs. the newer wiki text, Defend and Capture's reference
+digital implementation, Tinker/Sailor/Soldier/Spy's m.c. de Marco write-up,
+Reino de Ámbar's Spanish-only rules, and Dueling Runes' authored rival-mage AI.
+
+`docs/triage.md` records each game's rules source, extra material, feasibility
+and known ambiguities; `docs/game-spec.md` is the contract every implementation
+follows; `web/js/games/window.js` (solo) and `web/js/games/bharg.js` (hidden-hand
+pass-and-play) are the reference implementations.
