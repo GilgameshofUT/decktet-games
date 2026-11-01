@@ -1,0 +1,93 @@
+/* Wyvern Pass Not — the 3×3 ring around the mage, pool, link marks. */
+
+#table { --card-w: clamp(56px, 15.5vw, 92px); }
+
+/* ---- the ring ---- */
+
+.wpn-ring {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: clamp(4px, 1.4vw, 8px);
+  justify-content: center;
+  margin: 4px auto 10px;
+}
+
+.wpn-slot {
+  position: relative;
+  width: var(--card-w);
+}
+.wpn-slot.is-empty {
+  aspect-ratio: 750 / 1050;
+  border-radius: calc(var(--card-w) * 0.062);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+.wpn-slot.is-empty.is-legal { box-shadow: 0 0 0 2px rgba(233, 196, 106, 0.65); }
+.wpn-slot.is-empty:active { transform: translateY(1px); }
+.wpn-empty {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.wpn-slot .card { width: var(--card-w); }
+
+/* ---- link marks under each placed card ---- */
+
+.wpn-links {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+.wpn-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1;
+}
+.wpn-mark img { width: 12px; height: 12px; }
+.wpn-mark.is-ok { background: rgba(122, 208, 138, 0.22); }
+.wpn-mark.is-bad {
+  background: rgba(239, 123, 111, 0.24);
+  color: var(--lose);
+  font-weight: 700;
+}
+.wpn-mark.is-none { color: rgba(255, 255, 255, 0.28); }
+
+/* ---- the mage in the middle ---- */
+
+.wpn-mage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.wpn-magecard { --card-w: clamp(48px, 13vw, 78px); }
+.wpn-magetag {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---- pool / controls / hint ---- */
+
+.wpn-ctl { justify-content: center; margin: 2px 4px 6px; }
+
+.wpnhint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 10px 6px 4px;
+  line-height: 1.45;
+}

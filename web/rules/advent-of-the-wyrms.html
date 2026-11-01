@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Advent of the Wyrms — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/advent-of-the-wyrms.html">Play Advent of the Wyrms ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/the-calamity.webp" alt="the Calamity" width="750" height="1050">
+  <h1>Advent of the Wyrms</h1>
+  <p class="lede">a solitaire set-collection game</p>
+
+  <table>
+    <tr><th>Designed by</th><td>Shane Lelwica-Hebeisen</td></tr>
+    <tr><th>Players</th><td>1</td></tr>
+    <tr><th>Length</th><td>5–10 minutes</td></tr>
+    <tr><th>Extra material</th><td>Extended Decktet</td></tr>
+  </table>
+
+  <h2>Story</h2>
+  <p>A sect of conjurers has unearthed a dangerous tome, which speaks of the
+  primordial wyrms that once ruled the mortal world. These conjurers believe
+  that if they are successful in bringing about the calamity, a mythical event
+  that foretells the return of the wyrms, they will be able to craft a new world
+  over which they will preside. Having discovered the conjurers’ plans, you must
+  stop them from bringing the ancient wyrms back to consume all living souls.</p>
+
+  <h2>Setup</h2>
+  <ol>
+    <li>Add the extended deck cards and shuffle the deck.</li>
+    <li>Draw 4 cards. If you draw a card with the wyrms suit, set it aside and
+    continue drawing until you have 4 cards that do not have the wyrms suit.
+    Then, shuffle any cards you have set aside back into the deck.</li>
+  </ol>
+
+  <h2>Gameplay</h2>
+
+  <h3>Drawing &amp; Playing Cards</h3>
+  <p>Game play occurs over a series of turns. Each turn, you must:</p>
+  <ol>
+    <li><strong>Choose one:</strong> Add a card to an incantation or discard a card.</li>
+    <li><strong>Draw a card from the deck.</strong> If a card with a wyrms suit is
+    drawn, you must negate it (see “Negating Wyrms Cards”).</li>
+  </ol>
+
+  <h3>Incantations</h3>
+  <p>Incantations are the sets being collected during <em>Advent of the
+  Wyrms</em>. You must craft 4 incantations to win the game. An incantation is a
+  set of 3 cards that share 1 suit across all 3 cards and are played in
+  ascending rank order. You may have up to 5 incantations being crafted
+  simultaneously. Once a card is played as part of an incantation, it may not be
+  discarded or moved.</p>
+
+  <h3>Negating Wyrms Cards</h3>
+  <p>Cards with the wyrms suit are treated differently in <em>Advent of the
+  Wyrms</em>. They represent the conjurer sects’ summoning spells that are used
+  in restoring the wyrms to life. Whenever a card with a wyrms suit is drawn,
+  you must dedicate your own magical energies towards negating these spells.
+  Cards with wyrms suits can be negated in 4 ways:</p>
+  <ol>
+    <li>Discard a card that matches the non-wyrms suit of the card. The ace of
+    wyrms and crown of wyrms do not have other suits besides wyrms suits.
+    Therefore, they cannot be negated by discarding a card that matches the
+    non-wyrms suit.</li>
+    <li>Discard a card whose rank equals/exceeds the rank of the wyrms card.
+    Aces are ranked as 1, crowns are ranked as 10, pawns are ranked as 11, and
+    courts are ranked as 12. The Excuse does not have a rank.</li>
+    <li>Discard 2 cards from the top of the deck. Any wyrms cards that would be
+    discarded are set aside instead. Shuffle the set aside cards back into the
+    deck after you have refilled your hand to 4 cards (see below).</li>
+    <li>Discard The Excuse card from your hand.</li>
+  </ol>
+  <p>After negating a wyrms card, draw cards from the deck until you have 4
+  cards in hand. If you draw a wyrms card during the process of re-filling your
+  hand, immediately stop drawing cards and choose how you would like to negate
+  the card.</p>
+  <p>If your hand is reduced to 0 cards, draw from the deck until you have 4
+  cards in hand. If you draw any wyrms cards while re-filling your hand <strong>after
+  having your hand reduced to 0 cards</strong>, set those cards aside and continue
+  drawing until you have 4 non-wyrms cards. Then, shuffle the set aside wyrms
+  cards back into the deck.</p>
+
+  <h3>The Excuse</h3>
+  <p>The Excuse card also has a special function. When you have The Excuse card
+  in hand and you draw a card with the wyrms suit, you may discard The Excuse to
+  negate the wyrms card. You may also play The Excuse card as a wild card in any
+  of your incantations.</p>
+
+  <h2>Winning &amp; Losing</h2>
+  <p>Game play continues until one of the following conditions is met:</p>
+  <ol>
+    <li><strong>You complete your fourth incantation:</strong> You have
+    successfully contained the sect of conjurers’ magical rebellion and kept the
+    mortal world safe from the wrath of the ancient wyrms. <strong>YOU WIN!</strong></li>
+    <li><strong>You would draw from the deck and there are no cards remaining:</strong>
+    You were unable to complete your incantations in time and the sect of
+    conjurers were successful in casting their summoning spells. The calamity
+    has occurred and the wyrms have emerged from the darkness, ready to re-take
+    the world that was once theirs. <strong>YOU LOSE…</strong></li>
+  </ol>
+  <p>If you wish to score your performance, count the number of cards remaining
+  in the deck to calculate your score. You always score 0 points when you lose,
+  as there are no cards left in the deck.</p>
+  <p><strong>Any feedback/scores/experiences of playing that you'd be willing to
+  share would be greatly appreciated! Please enjoy!</strong></p>
+
+  <h2>Note on this implementation</h2>
+  <p><strong>The wyrms suit is the Daemons suit.</strong> The Decktet’s six suits
+  are Moons, Suns, Waves, Leaves, Wyrms and Knots on the wiki; this app’s card
+  data calls the last two Daemons and Crowns (the naming of The Decktet Book).
+  So “wyrms cards” here are the fourteen Daemons-suited cards of the 45-card
+  deck.</p>
+  <p><strong>Ranks</strong> follow this game’s own text exactly: Ace 1 … 9,
+  Crown 10, Pawn 11, Court 12, and The Excuse has no rank — note this is not
+  the usual Decktet rank line, which puts Courts below Pawns.</p>
+  <p><strong>Ascending order</strong> is read as: every card added to an
+  incantation must outrank every card already in it. The shared suit is fixed
+  by the first card played there — you choose which of its suits when it has
+  two or three — and later cards must carry that suit. The Excuse, as a wild,
+  fits any incantation’s suit, adds no rank constraint, and may also start one
+  (the incantation then takes its suit from the next card played).</p>
+  <p><strong>Five at a time</strong> is read as five incantations still being
+  <em>crafted</em>: once a third card completes an incantation it is set aside
+  and its slot is free again, matching “you may have up to 5 incantations being
+  crafted simultaneously”.</p>
+  <p><strong>Negation details.</strong> Method 3 needs at least 2 cards in the
+  deck (it discards exactly two). A drawn wyrms card that can be negated at all
+  always waits for your choice; if a wyrms card is drawn and no method is legal
+  (no matching or high enough card, no Excuse, fewer than 2 cards in the deck),
+  the game is lost — the wiki does not cover that corner. The initial hand of 4
+  is drawn with the set-aside rule, so no negation happens before play begins.
+  The score is the cards left in the deck when you win (set-aside cards have
+  been shuffled back by then); a loss always scores 0.</p>
+
+  <h2>Credits</h2>
+  <p>Advent of the Wyrms was designed by Shane Lelwica-Hebeisen.</p>
+
+  <div class="credit">
+    <p>These rules are copied from the
+    <a href="https://wiki.decktet.com/game:advent-of-the-wyrms">Advent of the
+    Wyrms page of the Decktet wiki</a> (page revision 9, 1 May 2020) so they can
+    be read offline, under the wiki’s
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>
+    licence. Cards by P.D. Magnus, same licence.</p>
+    <p>Further reading:
+      <a href="https://wiki.decktet.com/suit:wyrms">The suit of Wyrms at the wiki</a>
+    </p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

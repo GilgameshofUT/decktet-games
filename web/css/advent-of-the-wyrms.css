@@ -1,0 +1,113 @@
+/* Advent of the Wyrms — incantation slots, the negation panel, the piles. */
+
+#table { --card-w: clamp(46px, 12.6vw, 74px); }
+
+/* ---- incantation slots ---- */
+
+.adv-slotwrap { overflow-x: auto; }
+
+.adv-slots {
+  display: flex;
+  gap: clamp(6px, 2vw, 10px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.adv-slot {
+  position: relative;
+  width: calc(var(--card-w) + 8px);
+  min-height: calc(var(--card-w) * 0.5);
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.adv-slot.is-empty { opacity: 0.75; }
+
+.adv-slothead {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 3px;
+}
+.adv-slothead .suit-inline { width: 0.95em; }
+
+.adv-slot .card { width: var(--card-w); }
+/* stack: the newest card overlaps the one before it */
+.adv-slot .card + .card { margin-top: -28%; }
+.adv-slot .card.adv-c0 { z-index: 1; }
+.adv-slot .card.adv-c1 { z-index: 2; }
+
+.adv-ghost {
+  display: grid;
+  place-items: center;
+  width: var(--card-w);
+  aspect-ratio: 750 / 1050;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: calc(var(--card-w) * 0.062);
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---- completed incantations ---- */
+
+.adv-donewrap {
+  --card-w: clamp(26px, 7vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-x: visible;
+}
+.adv-donerow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.adv-donelbl { color: var(--muted); font-size: 12px; width: 1.2em; }
+.adv-donerow .card { width: var(--card-w); }
+
+/* ---- negation panel ---- */
+
+.adv-negpanel { border-color: rgba(214, 69, 58, 0.5); }
+.adv-negpanel h2 { color: var(--lose); }
+
+.adv-negate {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.adv-negate .card { --card-w: clamp(56px, 15vw, 84px); }
+.adv-negbtns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 190px;
+  min-width: 0;
+}
+.adv-negbtns .btn { justify-content: flex-start; text-align: left; white-space: normal; line-height: 1.25; }
+
+/* ---- hand actions / piles / hint ---- */
+
+.adv-actions { justify-content: center; margin: 2px 4px 8px; }
+.adv-actions .btn .suit-inline { width: 1em; }
+
+.adv-piles { justify-content: center; margin-top: 2px; }
+.adv-piles .pile { --card-w: clamp(40px, 10.5vw, 60px); }
+
+.advhint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 10px 6px 4px;
+  line-height: 1.45;
+}

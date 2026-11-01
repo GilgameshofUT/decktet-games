@@ -138,7 +138,7 @@
         "1 player",
         "extended deck"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "wyvern-pass-not",
@@ -152,7 +152,7 @@
         "1 player",
         "ring puzzle"
       ],
-      "planned": true
+      "planned": false
     },
     {
       "id": "cascades",
