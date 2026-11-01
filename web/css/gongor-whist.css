@@ -1,0 +1,188 @@
+/* Gongor Whist — game-specific styles only: table layout, trump indicator,
+   bid sheet, score progress.  The shared design system lives in app.css. */
+
+/* ------------------------------------------------------------------ tools */
+
+/* The shared topbar buttons are 42px; nudge them to the 44px tap target. */
+.topbar .iconbtn { min-width: 44px; min-height: 44px; }
+
+.gw-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 2px 10px;
+}
+.gw-tool {
+  min-height: 44px;
+  flex: 1 1 auto;
+  padding: 0 14px;
+  font-size: 14.5px;
+}
+
+/* --------------------------------------------------------- trump indicator */
+
+.gw-trump {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 7px 10px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(233, 196, 106, 0.4);
+  border-radius: 10px;
+  background: rgba(233, 196, 106, 0.1);
+  font-size: 15px;
+}
+.gw-trump .suit-inline { width: 1.3em; }
+.gw-trump strong { color: var(--gold); font-weight: 600; }
+.gw-trump .muted { font-size: 13px; }
+.gw-trump.is-none {
+  border-color: var(--line);
+  background: rgba(0, 0, 0, 0.22);
+}
+.gw-trump.is-none strong { color: var(--text); }
+
+/* ------------------------------------------------------------- facts strip */
+
+.gw-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+/* --------------------------------------------------------- score progress */
+
+.gw-progress { margin: 2px 0 8px; }
+.gw-progress[hidden] { display: none; }
+.gw-progress-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.gw-progress-head strong {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.gw-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.gw-bar-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  transition: width 0.3s ease;
+}
+
+/* ------------------------------------------------------------ table layout */
+
+.gw-trick {
+  display: flex;
+  gap: clamp(12px, 6vw, 40px);
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2px 0 4px;
+}
+.gw-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: var(--card-w);
+  min-width: 0;
+}
+.gw-side small {
+  color: var(--muted);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.gw-slot {
+  width: 100%;
+  min-height: calc(var(--card-w) * 1.4);
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: calc(var(--card-w) * 0.062);
+}
+.gw-slot .card { width: 100%; }
+.gw-slot-text {
+  color: var(--muted);
+  font-size: 11.5px;
+  text-align: center;
+  line-height: 1.3;
+  padding: 6px 2px;
+}
+
+/* --------------------------------------------------- trick result / actions */
+
+.gw-reveal {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.gw-reveal[hidden] { display: none; }
+.gw-reveal strong { font-weight: 600; }
+.gw-reveal.is-you strong { color: var(--win); }
+.gw-reveal.is-dummy strong { color: var(--lose); }
+
+.gw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 9px;
+}
+.gw-actions[hidden] { display: none; }
+.gw-actions .btn { flex: 1 1 150px; }
+.gw-actions .muted { font-size: 13.5px; align-self: center; }
+
+/* ------------------------------------------------------------- bid sheet */
+
+.bidsheet {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+@media (min-width: 520px) {
+  .bidsheet { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+}
+.bidchip {
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+.bidchip:active { transform: translateY(1px); }
+.bidchip:disabled { cursor: default; }
+.bidchip.is-used {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: var(--muted);
+  opacity: 0.5;
+}
+.bidchip.is-mine {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #241a08;
+}
+.bidchip.is-mine:disabled { opacity: 1; }
+
+/* ------------------------------------------------------- hand / piles text */
+
+#hand .card.is-dim { cursor: default; }
+
+.pilehint strong { color: var(--gold); }

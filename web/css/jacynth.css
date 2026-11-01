@@ -1,0 +1,62 @@
+/* Jacynth-specific styles: the 4x4 city grid and the influence tokens.
+   Everything else comes from app.css. */
+
+:root { --card-w: clamp(64px, 20vw, 108px); }
+
+/* ------------------------------------------------------------- the grid */
+
+.jgrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(4px, 1.6vw, 8px);
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.jgrid .card,
+.jgrid .jcell {
+  width: 100%;
+  --card-w: 100%;
+  aspect-ratio: 750 / 1050;
+}
+
+.jgrid .jcell.is-empty {
+  border: 1.5px dashed rgba(244, 241, 232, 0.28);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: none;
+  cursor: default;
+}
+.jgrid .jcell.is-empty.is-legal {
+  border: 2px solid var(--gold);
+  background: rgba(233, 196, 106, 0.16);
+  cursor: pointer;
+}
+.jgrid .jcell.is-empty.is-dim { opacity: 0.5; }
+
+.jgrid .jcell.is-legal::after { inset: auto 8% 6% auto; }
+
+/* ------------------------------------------------------- influence token */
+
+.tok {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 26%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #ffe9a8 0%, var(--gold) 55%, var(--gold-dim) 100%);
+  box-shadow: 0 0 0 2px rgba(10, 26, 20, 0.9), 0 2px 6px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------- the rest */
+
+.jgrid .card.is-selected { transform: none; }
+
+.jturn { margin-top: 2px; }
+
+@media (min-width: 700px) {
+  .jgrid { max-width: 420px; }
+}

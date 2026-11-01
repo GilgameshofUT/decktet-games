@@ -1,0 +1,741 @@
+{
+  "source": "decktet.pdf (decktet-for-bgg01, P.D. Magnus 2008-10)",
+  "license": "Decktet cards and wiki text: CC BY-NC-SA 3.0",
+  "cardSize": {
+    "width": 750,
+    "height": 1050
+  },
+  "suits": [
+    "Moons",
+    "Suns",
+    "Waves",
+    "Leaves",
+    "Daemons",
+    "Crowns"
+  ],
+  "ranks": {
+    "ace": 1,
+    "crown": 10
+  },
+  "files": {
+    "png": "cards/{id}.png",
+    "web": "cards/web/{id}.webp",
+    "thumb": "cards/thumb/{id}.webp"
+  },
+  "icons": {
+    "suits": {
+      "moons": [
+        115,
+        114
+      ],
+      "suns": [
+        115,
+        114
+      ],
+      "waves": [
+        115,
+        114
+      ],
+      "leaves": [
+        115,
+        114
+      ],
+      "daemons": [
+        116,
+        116
+      ],
+      "crowns": [
+        115,
+        114
+      ]
+    },
+    "ranks": {
+      "2": [
+        76,
+        112
+      ],
+      "crown": [
+        116,
+        88
+      ],
+      "4": [
+        76,
+        117
+      ],
+      "8": [
+        66,
+        104
+      ],
+      "pawn": [
+        84,
+        91
+      ],
+      "7": [
+        83,
+        100
+      ],
+      "court": [
+        114,
+        88
+      ],
+      "9": [
+        70,
+        103
+      ],
+      "5": [
+        75,
+        104
+      ],
+      "3": [
+        73,
+        109
+      ],
+      "6": [
+        79,
+        109
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "ace-of-crowns",
+      "name": "Ace of Crowns",
+      "rank": 1,
+      "suits": [
+        "crowns"
+      ],
+      "page": 1,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "ace-of-daemons",
+      "name": "Ace of Daemons",
+      "rank": 1,
+      "suits": [
+        "daemons"
+      ],
+      "page": 1,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "ace-of-leaves",
+      "name": "Ace of Leaves",
+      "rank": 1,
+      "suits": [
+        "leaves"
+      ],
+      "page": 1,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "ace-of-moons",
+      "name": "Ace of Moons",
+      "rank": 1,
+      "suits": [
+        "moons"
+      ],
+      "page": 1,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "ace-of-suns",
+      "name": "Ace of Suns",
+      "rank": 1,
+      "suits": [
+        "suns"
+      ],
+      "page": 1,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "ace-of-waves",
+      "name": "Ace of Waves",
+      "rank": 1,
+      "suits": [
+        "waves"
+      ],
+      "page": 1,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-author",
+      "name": "the Author",
+      "rank": 2,
+      "suits": [
+        "moons",
+        "crowns"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-bard",
+      "name": "the Bard",
+      "rank": "crown",
+      "suits": [
+        "suns"
+      ],
+      "page": 5,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-battle",
+      "name": "the Battle",
+      "rank": 4,
+      "suits": [
+        "daemons",
+        "crowns"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-betrayal",
+      "name": "the Betrayal",
+      "rank": 8,
+      "suits": [
+        "daemons",
+        "crowns"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-borderland",
+      "name": "the Borderland",
+      "rank": "pawn",
+      "suits": [
+        "waves",
+        "leaves",
+        "daemons"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-calamity",
+      "name": "the Calamity",
+      "rank": "crown",
+      "suits": [
+        "daemons"
+      ],
+      "page": 5,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-castle",
+      "name": "the Castle",
+      "rank": 7,
+      "suits": [
+        "suns",
+        "crowns"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-cave",
+      "name": "the Cave",
+      "rank": 7,
+      "suits": [
+        "waves",
+        "daemons"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-chance-meeting",
+      "name": "the Chance Meeting",
+      "rank": 7,
+      "suits": [
+        "moons",
+        "leaves"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-consul",
+      "name": "the Consul",
+      "rank": "court",
+      "suits": [
+        "moons",
+        "waves",
+        "crowns"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": true,
+      "personality": false
+    },
+    {
+      "id": "the-darkness",
+      "name": "the Darkness",
+      "rank": 9,
+      "suits": [
+        "waves",
+        "daemons"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-desert",
+      "name": "the Desert",
+      "rank": 2,
+      "suits": [
+        "suns",
+        "daemons"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-diplomat",
+      "name": "the Diplomat",
+      "rank": 8,
+      "suits": [
+        "moons",
+        "suns"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-discovery",
+      "name": "the Discovery",
+      "rank": 5,
+      "suits": [
+        "suns",
+        "waves"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-end",
+      "name": "the End",
+      "rank": "crown",
+      "suits": [
+        "leaves"
+      ],
+      "page": 5,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-excuse",
+      "name": "the Excuse",
+      "rank": null,
+      "suits": [],
+      "page": 5,
+      "deck": "extended",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-forest",
+      "name": "the Forest",
+      "rank": 5,
+      "suits": [
+        "moons",
+        "leaves"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-harvest",
+      "name": "the Harvest",
+      "rank": "pawn",
+      "suits": [
+        "moons",
+        "suns",
+        "leaves"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-huntress",
+      "name": "the Huntress",
+      "rank": "crown",
+      "suits": [
+        "moons"
+      ],
+      "page": 5,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-island",
+      "name": "the Island",
+      "rank": "court",
+      "suits": [
+        "suns",
+        "waves",
+        "daemons"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-journey",
+      "name": "the Journey",
+      "rank": 3,
+      "suits": [
+        "moons",
+        "waves"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-light-keeper",
+      "name": "the Light Keeper",
+      "rank": "pawn",
+      "suits": [
+        "suns",
+        "waves",
+        "crowns"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": true,
+      "personality": false
+    },
+    {
+      "id": "the-lunatic",
+      "name": "the Lunatic",
+      "rank": 6,
+      "suits": [
+        "moons",
+        "waves"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-market",
+      "name": "the Market",
+      "rank": 6,
+      "suits": [
+        "leaves",
+        "crowns"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-merchant",
+      "name": "the Merchant",
+      "rank": 9,
+      "suits": [
+        "leaves",
+        "crowns"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-mill",
+      "name": "the Mill",
+      "rank": 8,
+      "suits": [
+        "waves",
+        "leaves"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-mountain",
+      "name": "the Mountain",
+      "rank": 4,
+      "suits": [
+        "moons",
+        "suns"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-origin",
+      "name": "the Origin",
+      "rank": 2,
+      "suits": [
+        "waves",
+        "leaves"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-pact",
+      "name": "the Pact",
+      "rank": 9,
+      "suits": [
+        "moons",
+        "suns"
+      ],
+      "page": 4,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-painter",
+      "name": "the Painter",
+      "rank": 3,
+      "suits": [
+        "suns",
+        "crowns"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-penitent",
+      "name": "the Penitent",
+      "rank": 6,
+      "suits": [
+        "suns",
+        "daemons"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-rite",
+      "name": "the Rite",
+      "rank": "court",
+      "suits": [
+        "moons",
+        "leaves",
+        "daemons"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-sailor",
+      "name": "the Sailor",
+      "rank": 4,
+      "suits": [
+        "waves",
+        "leaves"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-savage",
+      "name": "the Savage",
+      "rank": 3,
+      "suits": [
+        "leaves",
+        "daemons"
+      ],
+      "page": 2,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-sea",
+      "name": "the Sea",
+      "rank": "crown",
+      "suits": [
+        "waves"
+      ],
+      "page": 5,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-soldier",
+      "name": "the Soldier",
+      "rank": 5,
+      "suits": [
+        "daemons",
+        "crowns"
+      ],
+      "page": 3,
+      "deck": "basic",
+      "portrait": true,
+      "personality": true
+    },
+    {
+      "id": "the-watchman",
+      "name": "the Watchman",
+      "rank": "pawn",
+      "suits": [
+        "moons",
+        "daemons",
+        "crowns"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": true,
+      "personality": false
+    },
+    {
+      "id": "the-windfall",
+      "name": "the Windfall",
+      "rank": "crown",
+      "suits": [
+        "crowns"
+      ],
+      "page": 5,
+      "deck": "basic",
+      "portrait": false,
+      "personality": false
+    },
+    {
+      "id": "the-window",
+      "name": "the Window",
+      "rank": "court",
+      "suits": [
+        "suns",
+        "leaves",
+        "crowns"
+      ],
+      "page": 6,
+      "deck": "extended",
+      "portrait": false,
+      "personality": false
+    }
+  ],
+  "basicDeck": [
+    "ace-of-crowns",
+    "ace-of-daemons",
+    "ace-of-leaves",
+    "ace-of-moons",
+    "ace-of-suns",
+    "ace-of-waves",
+    "the-author",
+    "the-bard",
+    "the-battle",
+    "the-betrayal",
+    "the-calamity",
+    "the-castle",
+    "the-cave",
+    "the-chance-meeting",
+    "the-darkness",
+    "the-desert",
+    "the-diplomat",
+    "the-discovery",
+    "the-end",
+    "the-forest",
+    "the-huntress",
+    "the-journey",
+    "the-lunatic",
+    "the-market",
+    "the-merchant",
+    "the-mill",
+    "the-mountain",
+    "the-origin",
+    "the-pact",
+    "the-painter",
+    "the-penitent",
+    "the-sailor",
+    "the-savage",
+    "the-sea",
+    "the-soldier",
+    "the-windfall"
+  ],
+  "extendedDeck": [
+    "the-borderland",
+    "the-consul",
+    "the-excuse",
+    "the-harvest",
+    "the-island",
+    "the-light-keeper",
+    "the-rite",
+    "the-watchman",
+    "the-window"
+  ],
+  "personalities": [
+    "the-author",
+    "the-bard",
+    "the-diplomat",
+    "the-huntress",
+    "the-lunatic",
+    "the-merchant",
+    "the-painter",
+    "the-penitent",
+    "the-sailor",
+    "the-savage",
+    "the-soldier"
+  ]
+}

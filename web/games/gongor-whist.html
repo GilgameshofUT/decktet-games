@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Gongor Whist</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../css/gongor-whist.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="iconbtn" href="../index.html" aria-label="Back to home">‹</a>
+  <h1>Gongor Whist<span class="sub">solitaire trick-taking</span></h1>
+  <button class="iconbtn" id="undo" aria-label="Undo last move" title="Undo" disabled>↶</button>
+  <a class="iconbtn" href="../rules/gongor-whist.html">Rules</a>
+  <button class="iconbtn" id="new" aria-label="Start a new game">New</button>
+</header>
+
+<div class="status" id="status" role="status">Shuffling the deck…</div>
+
+<div class="gw-tools">
+  <button class="btn gw-tool" id="howto" type="button">How to play</button>
+  <button class="btn gw-tool" id="scoring" type="button">Scoring: checklist</button>
+</div>
+
+<section class="panel">
+  <h2>The table <span class="count" id="tableLabel"></span></h2>
+
+  <div class="gw-trump" id="trump"></div>
+  <div class="gw-strip" id="strip"></div>
+
+  <div class="gw-progress" id="progress" hidden>
+    <div class="gw-progress-head"><span>Towards 50</span><strong id="scoreVal">0 / 50</strong></div>
+    <div class="gw-bar"><div class="gw-bar-fill" id="barFill"></div></div>
+  </div>
+
+  <div class="gw-trick">
+    <div class="gw-side">
+      <div class="gw-slot" id="leadSlot"><span class="gw-slot-text">waiting</span></div>
+      <small>Dummy</small>
+    </div>
+    <div class="gw-side">
+      <div class="gw-slot" id="playSlot"><span class="gw-slot-text">your card</span></div>
+      <small>You</small>
+    </div>
+  </div>
+
+  <div class="gw-reveal" id="reveal" hidden></div>
+  <div class="gw-actions" id="actions" hidden></div>
+</section>
+
+<section class="panel">
+  <h2>Bid sheet <span class="count" id="bidNote"></span></h2>
+  <div class="bidsheet" id="bidsheet"></div>
+</section>
+
+<section class="panel">
+  <h2>Your hand <span class="count" id="handCount"></span></h2>
+  <div class="cardrow" id="hand"></div>
+</section>
+
+<div class="piles">
+  <div class="pile" id="acePile"><span id="aceCount">5</span><small>aces</small></div>
+  <div class="pile" id="deckPile"><span id="deckCount">16</span><small>deck</small></div>
+  <div class="pilehint" id="hint"></div>
+</div>
+
+<script type="module" src="../js/games/gongor-whist.js"></script>
+</body>
+</html>

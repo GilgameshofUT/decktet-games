@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Decktet">
+<meta name="description" content="Play Decktet solitaire games in the browser: Adaman, Jacynth and Gongor Whist.">
+<title>Decktet</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="home">
+  <div class="brand">
+    <img src="cards/web/ace-of-crowns.webp" alt="" width="750" height="1050">
+    <div>
+      <h1>The Decktet</h1>
+      <p>Solitaire games for a deck unlike any other.</p>
+    </div>
+  </div>
+
+  <div class="gamelist" id="gamelist">
+    <div class="empty">Dealing…</div>
+  </div>
+
+  <div class="btnrow" style="margin-top:14px">
+    <button class="btn" id="install" hidden>Install this app</button>
+    <a class="btn" href="gallery.html">Browse the deck</a>
+  </div>
+
+  <p class="homefoot">
+    Cards and rules from the Decktet by P.D. Magnus, used under
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">CC BY-NC-SA 3.0</a>.
+    Rules text is copied from <a href="https://wiki.decktet.com">the Decktet wiki</a>
+    for offline reading. This app works offline once loaded.
+  </p>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

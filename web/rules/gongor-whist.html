@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>Gongor Whist — rules</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<main class="rules">
+  <div class="topbar">
+    <a class="iconbtn" href="../index.html">‹ Home</a>
+    <span style="flex:1"></span>
+    <a class="iconbtn" href="../games/gongor-whist.html">Play Gongor Whist ›</a>
+  </div>
+
+  <img class="rulethumb" src="../cards/web/ace-of-moons.webp" alt="Ace of Moons" width="750" height="1050">
+  <h1>Gongor Whist</h1>
+  <p class="lede">a solitaire trick-taking game</p>
+
+  <p style="margin:0 0 14px">
+    <span class="tag">1 player</span>
+    <span class="tag">quick</span>
+    <span class="tag plain">no extra material</span>
+    <span class="tag plain">P.D. Magnus</span>
+  </p>
+
+  <p>Gongor Whist is a solitaire trick-taking game in which you try to win tricks
+  against a dummy hand. The trump is randomly determined by flipping over an Ace,
+  but with every trick you have the option of randomly determining a new trump.
+  Each pass through the deck is two hands; you play a second hand (called the
+  <em>aft hand</em>) without reshuffling the cards.</p>
+
+  <h2>Setup</h2>
+  <ul>
+    <li>Make a score sheet with the numbers 0 through 7 on it.</li>
+    <li>Separate the Aces from the basic deck. Shuffle them together in their own
+    pile and flip up the top card. This determines the initial trump suit.</li>
+    <li>Shuffle the rest of the deck together. Deal seven cards each into two
+    face-down piles. One of these is your hand of cards. The other is the dummy.</li>
+    <li>Looking at your hand, decide how many tricks you think you will be able
+    to take. This is your bid for the hand.</li>
+    <li>When you make your bid, check off that number on the score sheet. You may
+    not bid that number of tricks again.</li>
+  </ul>
+  <p>For example: You bid four tricks and make exactly four, check off 4. You may
+  not bid four again.</p>
+
+  <h2>Game play</h2>
+  <p>Flip up the top card from the dummy hand. You must play a card that shares a
+  suit with the dummy's card, if you have one; otherwise, play any card from your
+  hand.</p>
+
+  <p>After playing your card, but before resolving the trick, you have the option
+  of <em>twiddling trump</em>. Flip over the next card in the Ace stack. That suit
+  is now trump, instead of the suit of the previous Ace. The new trump determines
+  whether or not you win this trick and remains in effect until you twiddle the
+  trump on a later trick. If you twiddle the trump when there are no cards left
+  in the Ace stack, then there is no trump for the remainder of the hand; with no
+  trump, the highest card that shares a suit with the dummy's lead wins.</p>
+
+  <ul>
+    <li>You win the trick if you played a trump and the dummy didn't, if you
+    played a higher trump than the dummy, or if no trump was played but you
+    followed suit with a higher card. Otherwise, you lose the trick.</li>
+  </ul>
+
+  <p>Note that a card counts as a trump even when you play it for its other suit.
+  For example: The dummy plays the <img class="suit-inline" src="../cards/icons/ranks/crown.png" alt="Crown" width="116" height="88"><img class="suit-inline" src="../cards/icons/suits/suns.png" alt="Suns" width="115" height="114">,
+  Ace<img class="suit-inline" src="../cards/icons/suits/moons.png" alt="Moons" width="115" height="114"> is on top of the Ace stack, and you play
+  4<img class="suit-inline" src="../cards/icons/suits/moons.png" alt="Moons" width="115" height="114"><img class="suit-inline" src="../cards/icons/suits/suns.png" alt="Suns" width="115" height="114">. Your card is trump, so you win the
+  trick.</p>
+
+  <p>Regardless of who wins the trick, start the next trick by flipping over the
+  top card from the dummy hand. Continue until you have resolved seven tricks and
+  depleted both hands.</p>
+
+  <p>If you won exactly as many tricks as you bid, then you go on. If you won
+  either more or fewer tricks, you have lost.</p>
+
+  <p>Set aside the tricks from this hand and, without reshuffling, deal the aft
+  hand.</p>
+
+  <h3>The aft hand</h3>
+  <ul>
+    <li>Leave the Ace pile as it is. Using the remainder of the deck, deal again:
+    Seven cards to yourself and seven to the dummy. (There will be two cards
+    leftover. Set them aside without looking at them.)</li>
+    <li>Bidding and game play for the aft hand are the same as for the fore.</li>
+    <li>After completing the aft hand, reshuffle both the Ace pile and the main
+    deck. Continue with another fore hand.</li>
+  </ul>
+  <p>Succeeding at four fore hands and four aft hands requires making all eight
+  possible bids. If you can do that, you win the game. If you ever fail to make
+  even one bid along the way, however, you lose.</p>
+
+  <h2>Point Scoring</h2>
+  <p>This is a variant scoring rule that was used in the original version of the
+  game.</p>
+  <p>Each hand, you may bid any number of tricks. If you win exactly as many
+  tricks as you bid, then add your bid to your score. If you win either more or
+  fewer tricks, subtract the number of tricks you won from your score.</p>
+  <p>For a beginner, it may be a challenge just to keep a positive score. If you
+  can reach a total of 50 points in one sitting, then you can count it as a
+  decisive win. If you need a further challenge, see how quickly you can get to
+  50; in principle, it can be done in just four passages through the deck.</p>
+
+  <h2>Scoring in this app</h2>
+  <p>This app uses the <strong>standard bid checklist</strong> scoring by default:
+  the 0–7 score sheet is kept for you, each bid may be used only once in the game,
+  one missed bid loses the game, and all eight bids win it.</p>
+  <p>To switch to point scoring, open the game and tap the
+  <strong>Scoring</strong> button beside <strong>How to play</strong>, then choose
+  <strong>“Point scoring to 50”</strong>. The choice is remembered on your device
+  and applies to the game in progress as well as new ones. (The other choice,
+  “Bid checklist (standard)”, puts it back.)</p>
+  <p>A few notes on how this app follows the rules above:</p>
+  <ul>
+    <li>Twiddle with the <strong>Twiddle trump</strong> button that appears once
+    you have played a card and before the trick resolves; the trick is settled
+    when you press <strong>Resolve the trick</strong>.</li>
+    <li>Cards you cannot legally play are dimmed: you must follow suit whenever
+    you hold a card in the dummy's lead suit.</li>
+    <li>“Leave the Ace pile as it is” is taken literally: the ace pile and the
+    trump in effect at the end of a fore hand carry straight into the aft hand,
+    and only a fresh fore hand flips a new initial ace.</li>
+    <li>An <strong>Undo</strong> button takes back the last thing you did, right
+    back through the bid, for as long as the hand is still running.</li>
+  </ul>
+
+  <h2>Credits</h2>
+  <p>Design: P.D. Magnus</p>
+  <p>The game is inspired by Richard Hutnik's <em>Oneonta Whist</em>.</p>
+  <p>The game originally appeared in
+  <a href="https://wiki.decktet.com/the-decktet-book">the Decktet Book</a>.</p>
+
+  <div class="credit">
+    <p>Gongor Whist was designed by <a href="https://wiki.decktet.com/designer:p-d-magnus">P.D. Magnus</a>.
+    These rules are copied from the
+    <a href="https://wiki.decktet.com/game:gongor-whist">Gongor Whist page of the Decktet wiki</a>
+    (page revision 13, 23 April 2020) so that they can be read offline, and are used
+    under the wiki's
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>
+    licence. The cards themselves are by P.D. Magnus, 2008–2010, same licence.</p>
+    <p>Further reading:
+      <a href="http://www.boardgamegeek.com/game/64520">Gongor Whist at BGG</a> ·
+      <a href="http://www.boardgamegeek.com/game/31266">Oneonta Whist at BGG</a>
+    </p>
+  </div>
+</main>
+<script type="module">
+  import { registerSW } from '../js/decktet.js';
+  registerSW();
+</script>
+</body>
+</html>

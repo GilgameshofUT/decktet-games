@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<title>The deck</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="stylesheet" href="css/app.css">
+<style>
+  .filterbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 12px;
+  }
+  .grid .card { width: 100%; }
+  .cardinfo { display: flex; gap: 14px; align-items: flex-start; }
+  .cardinfo img { width: 46%; border-radius: 10px; box-shadow: var(--card-shadow); }
+  .cardinfo dl { margin: 0; font-size: 15px; }
+  .cardinfo dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; margin-top: 10px; }
+  .cardinfo dd { margin: 2px 0 0; }
+  .suitdot {
+    display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+    margin-right: 6px; vertical-align: -2px; border: 1px solid rgba(0,0,0,.4);
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="iconbtn" href="index.html">‹ Home</a>
+  <h1>The deck<span class="sub">45 cards of the Decktet</span></h1>
+  <a class="iconbtn" href="games/adaman.html">Play ›</a>
+</header>
+
+<div class="filterbar" id="filters">
+  <button class="iconbtn" data-filter="all" aria-pressed="true">All 45</button>
+  <button class="iconbtn" data-filter="basic" aria-pressed="false">Basic 36</button>
+  <button class="iconbtn" data-filter="extended" aria-pressed="false">Extended 9</button>
+  <button class="iconbtn" data-filter="personality" aria-pressed="false">Personalities 11</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<p class="homefoot">
+  Cards by P.D. Magnus, 2008–2010, from
+  <a href="https://decktet.com">decktet.com</a>, under
+  <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.
+</p>
+
+<script type="module">
+  import * as D from './js/decktet.js';
+
+  const data = await D.loadDeck();
+  const grid = document.getElementById('grid');
+  let filter = 'all';
+
+  function suitDots(card) {
+    return card.suits.map((s) =>
+      `<span class="suitdot" style="background:${D.SUIT_COLOR[s]}"></span>${D.SUIT_NAME[s]}`).join(', ');
+  }
+
+  function draw() {
+    grid.textContent = '';
+    for (const c of data.cards) {
+      if (filter === 'basic' && c.deck !== 'basic') continue;
+      if (filter === 'extended' && c.deck !== 'extended') continue;
+      if (filter === 'personality' && !c.personality) continue;
+      grid.appendChild(D.cardEl(c, { onPick: () => show(c), eager: true }));
+    }
+  }
+
+  function show(card) {
+    const body = document.createElement('div');
+    body.className = 'cardinfo';
+    body.innerHTML = `
+      <img src="${D.cardUrl(card.id, 'web')}" alt="">
+      <dl>
+        <dt>Name</dt><dd>${card.name}</dd>
+        <dt>Rank</dt><dd>${D.rankLabel(card)}${card.rank === 1 || card.rank === 10 ? ` (${D.rankValue(card)})` : ''}</dd>
+        <dt>Suits</dt><dd>${suitDots(card) || '—'}</dd>
+        <dt>Deck</dt><dd>${card.deck === 'basic' ? 'basic (36 cards)' : 'extended (9 cards)'}</dd>
+        <dt>Printed on</dt><dd>sheet ${card.page}</dd>
+        ${card.personality ? '<dt>Note</dt><dd>a personality — the people Adaman is about</dd>' : ''}
+      </dl>`;
+    D.overlay({ title: card.name, body, actions: [{ label: 'Close', cls: 'primary' }] });
+  }
+
+  document.getElementById('filters').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-filter]');
+    if (!b) return;
+    filter = b.dataset.filter;
+    for (const other of document.querySelectorAll('#filters button')) {
+      other.setAttribute('aria-pressed', String(other === b));
+    }
+    draw();
+  });
+
+  draw();
+  D.registerSW();
+</script>
+</body>
+</html>

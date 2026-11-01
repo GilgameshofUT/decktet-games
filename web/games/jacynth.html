@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#113a2b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Jacynth</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../css/jacynth.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="iconbtn" href="../index.html" aria-label="Back to home">‹</a>
+  <h1>Jacynth<span class="sub" id="subline">influence in the old city</span></h1>
+  <button class="iconbtn" id="undo" aria-label="Undo last move" disabled>↶</button>
+  <a class="iconbtn" href="../rules/jacynth.html">Rules</a>
+  <button class="iconbtn" id="help" aria-label="How to play">?</button>
+  <button class="iconbtn" id="new" aria-label="Start a new game">New</button>
+</header>
+
+<div class="status" id="status" role="status">Shuffling the deck…</div>
+
+<section class="panel">
+  <h2>The city <span class="count" id="cityCount"></span></h2>
+  <div class="jgrid" id="grid"></div>
+</section>
+
+<div class="piles">
+  <div class="pile" id="deckPile"><span id="deckCount">0</span><small>deck</small></div>
+  <div class="pilehint" id="hint"></div>
+</div>
+
+<section class="panel">
+  <h2>Your hand <span class="count" id="handCount"></span></h2>
+  <div class="cardrow" id="hand"></div>
+</section>
+
+<div class="btnrow jturn">
+  <button class="btn" id="done" hidden>Done — end turn</button>
+</div>
+
+<script type="module" src="../js/games/jacynth.js"></script>
+</body>
+</html>
