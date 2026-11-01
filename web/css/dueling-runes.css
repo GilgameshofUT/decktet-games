@@ -1,0 +1,209 @@
+/* Dueling Runes — mage panels, spell sequences, casting rows, the log. */
+
+.dr-hprow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 2px 10px;
+}
+.dr-hplabel {
+  font-size: 13.5px;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dr-hpsel {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 6px;
+  min-height: 32px;
+}
+.dr-hphint { flex: 1; font-size: 12px; color: var(--muted); }
+
+/* ---------- mage panels ---------- */
+
+.dr-mage h2 { gap: auto; justify-content: space-between; }
+.dr-hp {
+  margin-left: auto;
+  min-width: 58px;
+  text-align: center;
+  font: 700 17px/1.1 Georgia, serif;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  border: 1px solid rgba(233, 196, 106, 0.5);
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+.dr-hp small { font-size: 11.5px; color: var(--muted); font-weight: 400; }
+.dr-hp.is-low { color: var(--lose); border-color: rgba(239, 123, 111, 0.6); }
+
+.dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.dr-chip {
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(122, 208, 138, 0.5);
+  color: var(--win);
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-variant-numeric: tabular-nums;
+}
+.dr-chip.is-pending { border-color: var(--line); color: var(--muted); }
+.dr-chip.is-special { border-color: rgba(233, 196, 106, 0.55); color: var(--gold); }
+
+.dr-seq {
+  display: flex;
+  align-items: flex-start;
+  min-height: 58px;
+  padding: 2px 0 4px;
+}
+.dr-seqcard {
+  --card-w: 62px;
+  width: var(--card-w);
+  margin-right: -20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.dr-seqcard:nth-child(odd) { transform: rotate(-1.5deg); }
+.dr-seqcard:nth-child(even) { transform: rotate(1.5deg); }
+.dr-seqempty {
+  align-self: center;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dr-runes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.dr-rune {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.dr-rune .suit-inline { width: 1.1em; }
+
+/* ---------- confusion ---------- */
+
+.dr-confused {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(233, 196, 106, 0.1);
+  border: 1px dashed rgba(233, 196, 106, 0.55);
+  border-radius: var(--radius);
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+.dr-confused strong { color: var(--gold); }
+.dr-confused-text { flex: 1; }
+.dr-confused .btnrow { margin-top: 8px; }
+.dr-drawcard { --card-w: 74px; }
+
+/* ---------- revealed cards / casting ---------- */
+
+.dr-revealed {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+.dr-revealed-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+.dr-revealed-row + .dr-revealed-row { border-top: 1px solid var(--line); }
+.dr-revealed-label {
+  width: 78px;
+  flex: 0 0 78px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+}
+.dr-revealed-row .card { --card-w: 52px; }
+
+.dr-casts { display: flex; flex-direction: column; gap: 8px; }
+.dr-cast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dr-cast-rune {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text);
+  min-width: 74px;
+}
+.dr-cast-rune .suit-inline { width: 1.1em; }
+.dr-opts { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.dr-opt {
+  min-height: 36px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.24);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.dr-opt[aria-pressed="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #241a08;
+  font-weight: 600;
+}
+.dr-opt-suit { width: 1em; filter: brightness(0.35); }
+.dr-opt[aria-pressed="true"] .dr-opt-suit { filter: none; }
+.dr-target {
+  font-size: 12.5px;
+  color: var(--muted);
+  min-width: 56px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- specials / hand / actions ---------- */
+
+.dr-specials { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.dr-specials .iconbtn { min-height: 36px; font-size: 13.5px; }
+.dr-specialnote { flex: 1 0 100%; color: var(--muted); font-size: 12.5px; }
+
+.dr-action { margin-top: 4px; }
+.dr-action .btn { flex: 1; }
+
+/* ---------- log ---------- */
+
+.dr-log { display: flex; flex-direction: column; gap: 3px; }
+.dr-logline {
+  font-size: 12.8px;
+  color: var(--muted);
+  line-height: 1.45;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+}
+.dr-logline:first-child { color: var(--text); border-left-color: var(--gold-dim); }
+
+.dr-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 12px 6px 4px;
+}
