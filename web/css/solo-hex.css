@@ -1,36 +1,57 @@
-/* Solo Hex — the seven-pile hexagon (rows of 2, 3, 2). */
-
-:root {
-  --card-w: clamp(80px, 24vw, 128px);
-}
+/* Solo Hex — the seven-pile hexagon (rows of 2, 3, 2), drawn the way the
+   wiki's setup photo shows it: every pile is splayed so each card shows the
+   top-left corner of its index, and the sideways card lies across its pile. */
 
 .shex-board {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: clamp(6px, 1.8vw, 12px) 5px;
-  max-width: 430px;
-  margin: 4px auto 0;
-  justify-items: stretch;
+  --w: clamp(80px, 25vw, 112px);          /* pile / card width */
+  --step: calc(var(--w) * 0.17);           /* splay: enough to read rank + pip */
+  --gap: clamp(10px, 3vw, 16px);
+  --card-w: var(--w);                      /* card corner radii follow the pile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 2.6vw, 16px);
+  margin: 6px auto 0;
+}
+
+.shex-row {
+  display: flex;
+  gap: var(--gap);
+  justify-content: center;
 }
 
 .shex-pile {
   position: relative;
-  aspect-ratio: 750 / 1050;
-  border-radius: calc(var(--card-w) * 0.062);
+  width: var(--w);
+  /* one card tall, plus a strip for every card behind it */
+  height: calc(var(--w) * 1.4 + var(--step) * var(--n, 0));
+  border-radius: calc(var(--w) * 0.062);
   cursor: pointer;
   transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
-.shex-pile .card {
+
+/* cards are stacked down the pile: the bottom of the pile at the top of the
+   cell, the playable top card in front at the bottom */
+.shex-pile > .card {
   position: absolute;
-  inset: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  top: calc(var(--step) * var(--k, 0));
+  border-radius: calc(var(--w) * 0.062);
 }
-.shex-pile .card img { height: 100%; object-fit: contain; }
+
+/* …and the sideways card lies across the pile at its own slot, its ends
+   sticking out from behind the cards dealt after it, as in the photo */
+.shex-pile > .card.is-sideways {
+  left: 50%;
+  top: calc(var(--step) * (var(--k, 0) + 0.5));
+  transform: translate(-50%, -50%) rotate(90deg) scale(0.76);
+  transform-origin: center;
+}
 
 .shex-pile.is-empty {
-  background: rgba(0, 0, 0, 0.16);
   border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.16);
 }
 .shex-pile.is-empty::after {
   content: "empty";

@@ -1,4 +1,8 @@
-/* Solo Hex — UI.  The rules live in solo-hex-core.js. */
+/* Solo Hex — UI.  The rules live in solo-hex-core.js.
+ *
+ * The board is drawn the way the wiki's setup photo shows it: seven piles in a
+ * hexagon (rows of 2, 3, 2), every pile splayed so each card shows the top-left
+ * corner of its index, and the sideways card lying horizontally across its pile. */
 
 import { mountGame, D } from '../gamikit.js';
 import * as C from './solo-hex-core.js';
@@ -6,12 +10,8 @@ import * as C from './solo-hex-core.js';
 const data = await D.loadDeck();
 C.init(data.byId);
 
-/* The hexagon: rows of 2, 3, 2 in a six-column grid. */
-const AREA = [
-  '1 / 2 / 2 / 4', '1 / 4 / 2 / 6',
-  '2 / 1 / 3 / 3', '2 / 3 / 3 / 5', '2 / 5 / 3 / 7',
-  '3 / 2 / 4 / 4', '3 / 4 / 4 / 6',
-];
+/* The hexagon: two piles on top, three in the middle, two below. */
+const ROWS = [[0, 1], [2, 3, 4], [5, 6]];
 
 let sel = null;   // the picked-up pile index
 
@@ -38,40 +38,14 @@ const api = mountGame({
 
     const board = document.createElement('div');
     board.className = 'shex-board';
-
-    state.piles.forEach((pile, i) => {
-      const cell = document.createElement('div');
-      cell.className = 'shex-pile';
-      cell.setAttribute('role', 'button');
-      cell.tabIndex = 0;
-      cell.style.gridArea = AREA[i];
-
-      if (!pile.cards.length) {
-        cell.classList.add('is-empty');
-        cell.setAttribute('aria-label', `Pile ${i + 1}, empty for the rest of the game`);
-      } else {
-        const id = C.pileTop(state, i);
-        const c = data.byId[D.baseId(id)];
-        cell.appendChild(D.cardEl({ ...c, id }, {
-          tag: 'div', static: true, eager: i < 3,
-          badge: pile.up > 1 ? `×${pile.up}` : null,
-        }));
-        cell.setAttribute('aria-label',
-          `Pile ${i + 1}: ${D.describe(c)}, ${pile.cards.length} cards, ${pile.up} face up`);
-      }
-
-      const isSel = pending ? pending.pile === i : sel === i;
-      if (isSel) cell.classList.add('is-selected');
-      if (legal.has(i)) cell.classList.add('is-legal');
-      if ((pending || sel != null) && !isSel && !legal.has(i)) cell.classList.add('is-dim');
-
-      const hit = () => onPile(state, i, legal);
-      cell.addEventListener('click', hit);
-      cell.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hit(); }
-      });
-      board.appendChild(cell);
-    });
+    for (const row of ROWS) {
+      const rowEl = document.createElement('div');
+      rowEl.className = 'shex-row';
+      rowEl.setAttribute('role', 'group');
+      rowEl.setAttribute('aria-label', 'a row of the hexagon');
+      for (const i of row) rowEl.appendChild(pileEl(state, i, legal, pending));
+      board.appendChild(rowEl);
+    }
 
     api.table.textContent = '';
     api.table.appendChild(board);
@@ -110,6 +84,62 @@ const api = mountGame({
 
   record: (state) => ({ win: state.over === 'won', score: C.score(state) }),
 });
+
+/* ------------------------------------------------------------ pile widget */
+
+function pileEl(state, i, legal, pending) {
+  const pile = state.piles[i];
+  const cell = document.createElement('div');
+  cell.className = 'shex-pile';
+  cell.setAttribute('role', 'button');
+  cell.tabIndex = 0;
+  cell.style.setProperty('--n', String(Math.max(0, pile.cards.length - 1)));
+
+  if (!pile.cards.length) {
+    cell.classList.add('is-empty');
+    cell.setAttribute('aria-label', `Pile ${i + 1}, empty for the rest of the game`);
+  } else {
+    const topId = C.pileTop(state, i);
+    const top = data.byId[D.baseId(topId)];
+
+    /* Every card in the pile, splayed: the bottom of the pile at the top of the
+       cell, the playable top card at the front.  The sideways card lies across
+       the pile at its own position instead of overlapping in line. */
+    pile.cards.forEach((id, k) => {
+      const isTop = k === pile.cards.length - 1;
+      const faceUp = k >= pile.cards.length - pile.up;
+      const sideways = pile.sideways === k;
+      const def = data.byId[D.baseId(id)];
+      const el = D.cardEl({ ...def, id }, {
+        tag: 'div',
+        static: true,
+        faceDown: !faceUp,
+        eager: isTop && i < 3,
+      });
+      el.style.setProperty('--k', String(k));
+      if (sideways) el.classList.add('is-sideways');
+      // the pile's own label carries the details for screen readers
+      el.setAttribute('aria-hidden', 'true');
+      cell.appendChild(el);
+    });
+
+    cell.setAttribute('aria-label',
+      `Pile ${i + 1}: ${D.describe(top)}, ${pile.cards.length} cards, ` +
+      `${pile.up} face up` + (pile.sideways != null ? ', one lying sideways' : ''));
+  }
+
+  const isSel = pending ? pending.pile === i : sel === i;
+  if (isSel) cell.classList.add('is-selected');
+  if (legal.has(i)) cell.classList.add('is-legal');
+  if ((pending || sel != null) && !isSel && !legal.has(i)) cell.classList.add('is-dim');
+
+  const hit = () => onPile(state, i, legal);
+  cell.addEventListener('click', hit);
+  cell.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hit(); }
+  });
+  return cell;
+}
 
 /* ------------------------------------------------------------ interactions */
 
