@@ -57,15 +57,26 @@ export const SIDEWAYS_PILES = [2, 3, 4];                // the three middle pile
 export const SIDeways_INDEX = 3;                        // fourth card from the bottom
 export const SET_ASIDE = 4;                             // 45 - 41
 
-/** Hexagonal neighbours of the seven piles (2-3-2). */
+/** Hexagonal neighbours of the seven piles (rows of 2, 3, 2).
+ *
+ *  The seven piles form a hexagon: the centre touches all six, and every outer
+ *  pile touches the centre plus the two beside it in the ring — which includes
+ *  the two top piles and the two bottom piles, sitting side by side in their
+ *  rows.  Evidence for the same-row edges: the wiki deals the top row "another
+ *  five cards to the right of that" — the same phrasing it uses for the middle
+ *  row, whose same-row adjacency has always been part of the map; the setup
+ *  "should come out in a hexagon shape", and a ring omits the top and bottom
+ *  pair only by breaking it; and in the wiki's own setup photo the two top
+ *  piles are the closest pair on the table (52px apart against a card width of
+ *  ~87, versus ~93px between the middle piles). */
 export const NEIGHBOURS = [
-  [2, 3],                        // 0 top-left
-  [3, 4],                        // 1 top-right
-  [0, 3, 5],                     // 2 middle-left
+  [1, 2, 3],                     // 0 top-left: beside the top-right pile
+  [0, 3, 4],                     // 1 top-right: beside the top-left pile
+  [0, 3, 5],                      // 2 middle-left: centre row + the ring beside it
   [0, 1, 2, 4, 5, 6],            // 3 middle-centre — every other pile
-  [1, 3, 6],                     // 4 middle-right
-  [2, 3],                        // 5 bottom-left
-  [3, 4],                        // 6 bottom-right
+  [1, 3, 6],                      // 4 middle-right: centre row + the ring beside it
+  [2, 3, 6],                     // 5 bottom-left: beside the bottom-right pile
+  [3, 4, 5],                     // 6 bottom-right: beside the bottom-left pile
 ];
 
 export function newGame(seed, deck) {

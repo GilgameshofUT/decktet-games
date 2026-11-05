@@ -107,8 +107,15 @@ for (let seed = 1; seed <= 500; seed++) {
     }
   }
   check(C.NEIGHBOURS[3].length === 6, 'the centre pile touches every other pile');
-  check(C.NEIGHBOURS[0].join() === [2, 3].join(), 'top-left touches the two middle-left piles');
+  check(C.NEIGHBOURS[0].join() === [1, 2, 3].join(),
+    'top-left touches the top-right pile and the two middle piles below it');
+  check(C.NEIGHBOURS[5].join() === [2, 3, 6].join(), 'bottom-left neighbours');
   check(C.NEIGHBOURS[4].join() === [1, 3, 6].join(), 'middle-right neighbours');
+  // every outer pile touches the centre and exactly two ring neighbours
+  for (const i of [0, 1, 2, 4, 5, 6]) {
+    check(C.NEIGHBOURS[i].includes(3) && C.NEIGHBOURS[i].length === 3,
+      `pile ${i} should touch the centre and two ring neighbours`);
+  }
 }
 
 /* ---- a move carries the whole face-up stack ---- */
@@ -143,15 +150,24 @@ for (let seed = 1; seed <= 500; seed++) {
 
 /* ---- may-move branches: self, empties, non-adjacency, the Excuse ---- */
 {
-  // piles 0 (top-left) and 1 (top-right) are NOT neighbours, though the
-  // Savage and the Forest share leaves.
-  const st = board({ piles: { 0: { cards: [S] }, 1: { cards: [F] }, 2: { cards: [J] }, 3: { cards: [D] } } });
+  // piles 0 (top-left) and 6 (bottom-right) are diagonal opposites — NOT
+  // neighbours — even though the Savage and the Forest share leaves.
+  const st = board({ piles: { 0: { cards: [S] }, 6: { cards: [F] }, 2: { cards: [J] }, 3: { cards: [D] } } });
   check(!C.canMove(st, 2, 2), 'a pile cannot move onto itself');
   check(!C.canMove(st, 4, 1), 'an empty pile has nothing to move');
   check(!C.canMove(st, 2, 6), 'an empty pile may not receive');
-  check(!C.canMove(st, 0, 1), 'non-adjacent piles cannot move even when the suits match');
-  check(/not hexagonally adjacent/.test(C.moveRejection(st, 0, 1)), 'the adjacency rejection explains itself');
-  throws(() => C.applyMove(st, 0, 1), 'a non-adjacent move');
+  check(!C.canMove(st, 0, 6), 'diagonally opposite piles cannot move even when the suits match');
+  check(/not hexagonally adjacent/.test(C.moveRejection(st, 0, 6)), 'the adjacency rejection explains itself');
+  throws(() => C.applyMove(st, 0, 6), 'a non-adjacent move');
+
+  // …but the two piles of a row sit side by side and may move between them
+  // (regression: the top and bottom rows used to be missing from the map).
+  const across = board({ piles: { 0: { cards: [S] }, 1: { cards: [F] }, 5: { cards: [F] }, 6: { cards: [S] } } });
+  check(C.canMove(across, 0, 1), 'the top row is adjacent across its own row');
+  check(C.canMove(across, 1, 0), '…in both directions');
+  check(C.canMove(across, 5, 6), 'the bottom row is adjacent across its own row');
+  check(!C.canMove(across, 0, 5), 'the two left piles are a row apart, not adjacent');
+
   check(/cannot move onto itself/.test(C.moveRejection(st, 2, 2)), 'the self rejection explains itself');
   check(/shares no suit/.test(C.moveRejection(st, 2, 0) || C.moveRejection(st, 0, 2)),
     'the suit rejection explains itself');
